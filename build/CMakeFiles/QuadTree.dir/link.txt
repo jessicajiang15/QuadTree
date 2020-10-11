@@ -1,0 +1,1 @@
+/usr/bin/clang++  -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/QuadTree.dir/main.cpp.o CMakeFiles/QuadTree.dir/Node.cpp.o CMakeFiles/QuadTree.dir/QuadTree.cpp.o CMakeFiles/QuadTree.dir/Square.cpp.o CMakeFiles/QuadTree.dir/Point.cpp.o  -o QuadTree 

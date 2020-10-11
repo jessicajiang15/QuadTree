@@ -1,0 +1,27 @@
+[
+{
+  "directory": "/Users/Jessica/git/QuadTree/build",
+  "command": "/usr/bin/clang++    -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk   -o CMakeFiles/QuadTree.dir/main.cpp.o -c /Users/Jessica/git/QuadTree/main.cpp",
+  "file": "/Users/Jessica/git/QuadTree/main.cpp"
+},
+{
+  "directory": "/Users/Jessica/git/QuadTree/build",
+  "command": "/usr/bin/clang++    -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk   -o CMakeFiles/QuadTree.dir/Node.cpp.o -c /Users/Jessica/git/QuadTree/Node.cpp",
+  "file": "/Users/Jessica/git/QuadTree/Node.cpp"
+},
+{
+  "directory": "/Users/Jessica/git/QuadTree/build",
+  "command": "/usr/bin/clang++    -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk   -o CMakeFiles/QuadTree.dir/QuadTree.cpp.o -c /Users/Jessica/git/QuadTree/QuadTree.cpp",
+  "file": "/Users/Jessica/git/QuadTree/QuadTree.cpp"
+},
+{
+  "directory": "/Users/Jessica/git/QuadTree/build",
+  "command": "/usr/bin/clang++    -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk   -o CMakeFiles/QuadTree.dir/Square.cpp.o -c /Users/Jessica/git/QuadTree/Square.cpp",
+  "file": "/Users/Jessica/git/QuadTree/Square.cpp"
+},
+{
+  "directory": "/Users/Jessica/git/QuadTree/build",
+  "command": "/usr/bin/clang++    -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk   -o CMakeFiles/QuadTree.dir/Point.cpp.o -c /Users/Jessica/git/QuadTree/Point.cpp",
+  "file": "/Users/Jessica/git/QuadTree/Point.cpp"
+}
+]
