@@ -27,5 +27,6 @@ class Rectangle
     double getY();
     double getCenterX();
     double getCenterY();
+    double integrate(void *F);
 };
 #endif

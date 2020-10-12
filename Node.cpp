@@ -73,6 +73,7 @@ void Node::createChildren()
     this->ne = new Node(x + width / 2, y, this, temp, width / 2, height / 2, 2);
     this->se = new Node(x + height / 2, y + height / 2, this, temp, width / 2, height / 2, 3);
     this->sw = new Node(x, y + height / 2, this, temp, width / 2, height / 2, 4);
+    this->square=nullptr;
 }
 Node *Node::getIndex(int i)
 {
@@ -135,4 +136,18 @@ void Node::setSquare(Square *s)
 void Node::initializeSquare(double width,double height)
 {
     
+}
+
+double Node::integrate(void* F)
+{
+    if(square==nullptr)
+    {
+        return -1;
+    }
+    return square->integrate(F);
+}
+
+Rectangle* Node::getRekt()
+{
+    return square;
 }

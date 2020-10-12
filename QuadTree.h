@@ -2,6 +2,7 @@
 #define _QUADTREE_H 1
 #include "Node.h"
 #include <unordered_map>
+#include "twoVects.h"
 
 class QuadTree
 {
@@ -13,7 +14,7 @@ public:
     QuadTree(Node *root);
     QuadTree();
     QuadTree(Rectangle *s);
-    QuadTree(vector<Node*> nodes);
+    QuadTree(vector<Node *> nodes);
     virtual ~QuadTree()
     {
         delete root;
@@ -26,12 +27,15 @@ public:
     vector<Node *> getLeaves(Node *n);
     void traverseTree();
     vector<Node *> asVector(Node *n);
-    unordered_map<int,Node *> asMap(Node *n);
+    unordered_map<int, Node *> asMap(Node *n);
     int thisSize();
-    Node* getRoot();
+    Node *getRoot();
     void setRoot(Rectangle *s);
     //divides the tree given a function F; void is placeholder for now
     void divide(void *F);
+    vector<Rectangle *> getOutBoxes(Node *n, void *F, double cutoff);
+    vector<Rectangle *> getInBoxes(Node *n, void *F, double cutoff);
+    twoVects *getAllBoxes(Node *n, void *F, double cutoff);
 
 };
 

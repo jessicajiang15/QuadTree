@@ -61,3 +61,9 @@ double Rectangle::getHeight()
 {
     return height;
 }
+
+//integrate the function
+double Rectangle::integrate(void *F)
+{
+    return 0;
+}

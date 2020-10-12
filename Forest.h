@@ -5,7 +5,12 @@
 
 class Forest
 {
+    struct two{
+        vector<Node*> outboxes;
+        vector<Node*> inboxes;
+    };
 private:
+    
     QuadTree **forest;
     int rows;
     int cols;
@@ -40,8 +45,6 @@ public:
     int numMinCols();
     //returns the total number of cells there are.
     int totalCells();
-    //returns total number of boxes where the sand will be moved in and out from
-    vector<Square*> viableBoxes();
     Point* getXYCoord(int r, int c);
 
     void divide(void *F);
@@ -50,8 +53,11 @@ public:
     int findR(double y);
     int binarySearchX(double x, int lower, int upper);
     int binarySearchY(double x, int lower, int upper);
-    vector<Node*> getOutBoxes;
-
+    double integrate(int r, int c);
+    vector<Rectangle*> getOutBoxes();
+    vector<Rectangle*> getInBoxes();
+    //returns total number of boxes where the sand will be moved in and out from
+    vector<Square*> viableBoxes();
 
 };
 #endif
