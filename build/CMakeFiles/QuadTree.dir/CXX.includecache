@@ -6,7 +6,27 @@
 
 #IncludeRegexTransform: 
 
+/Users/Jessica/git/QuadTree/Node.cpp
+Node.h
+/Users/Jessica/git/QuadTree/Node.h
+
+/Users/Jessica/git/QuadTree/Node.h
+Square.h
+/Users/Jessica/git/QuadTree/Square.h
+
 /Users/Jessica/git/QuadTree/Point.h
+
+/Users/Jessica/git/QuadTree/QuadTree.cpp
+QuadTree.h
+/Users/Jessica/git/QuadTree/QuadTree.h
+
+/Users/Jessica/git/QuadTree/QuadTree.h
+Node.h
+/Users/Jessica/git/QuadTree/Node.h
+unordered_map
+-
+twoVects.h
+/Users/Jessica/git/QuadTree/twoVects.h
 
 /Users/Jessica/git/QuadTree/Rectangle.cpp
 Square.h
@@ -17,6 +37,10 @@ Point.h
 /Users/Jessica/git/QuadTree/Point.h
 vector
 -
+
+/Users/Jessica/git/QuadTree/Square.cpp
+Square.h
+/Users/Jessica/git/QuadTree/Square.h
 
 /Users/Jessica/git/QuadTree/Square.h
 Rectangle.h

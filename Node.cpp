@@ -133,7 +133,7 @@ void Node::setSquare(Square *s)
     this->square=s;
 }
 
-double Node::integrate(void* F)
+double Node::integrate(Function* F)
 {
     if(square==nullptr)
     {

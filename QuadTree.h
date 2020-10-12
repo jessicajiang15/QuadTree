@@ -3,6 +3,7 @@
 #include "Node.h"
 #include <unordered_map>
 #include "twoVects.h"
+#include <math.h>
 
 class QuadTree
 {
@@ -32,10 +33,12 @@ public:
     Node *getRoot();
     void setRoot(Rectangle *s);
     //divides the tree given a function F; void is placeholder for now
-    void divide(void *F);
-    vector<Rectangle *> getOutBoxes(Node *n, void *F, double cutoff);
-    vector<Rectangle *> getInBoxes(Node *n, void *F, double cutoff);
-    twoVects *getAllBoxes(Node *n, void *F, double cutoff);
+    void divide(Function *F, Node *n, double tol);
+    vector<Rectangle *> getOutBoxes(Node *n, Function *F, double cutoff);
+    vector<Rectangle *> getInBoxes(Node *n, Function *F, double cutoff);
+    twoVects *getAllBoxes(Node *n, Function *F, double cutoff);
+    void divideTree(Function *F, double tol);
+
 
 
 };

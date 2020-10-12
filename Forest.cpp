@@ -51,13 +51,16 @@ double Forest::getCoordY(int r)
     return (totalHeight - r) * height + this->minCoordY;
 }
 
-void Forest::divide(void *F)
+/**
+ * Divides the entire forest of trees according to the function F.
+ **/
+void Forest::divide(Function *F, double tol)
 {
     for (int r = 0; r < rows; r++)
     {
         for (int c = 0; c < cols; c++)
         {
-            forest[index(r, c)]->divide(F);
+            forest[index(r, c)]->divideTree(F, tol);
         }
     }
 }
@@ -151,18 +154,18 @@ int Forest::binarySearchY(double y, int lower, int upper)
     }
 }
 
-    twoVects* Forest::getAllBoxes(void *F, double cutoff)
+twoVects *Forest::getAllBoxes(Function *F, double cutoff)
+{
+    vector<Rectangle *> v1;
+    vector<Rectangle *> v2;
+    twoVects *temp = new twoVects(v1, v2);
+    for (int r = 0; r < rows; r++)
     {
-        vector<Rectangle*> v1;
-        vector<Rectangle*> v2;
-        twoVects* temp=new twoVects(v1,v2);
-        for(int r=0;r<rows;r++)
+        for (int c = 0; c < cols; c++)
         {
-            for(int c=0;c<cols;c++)
-            {
-                twoVects* t=this->forest[index(r,c)]->getAllBoxes(this->forest[index(r,c)]->getRoot(),F, cutoff);
-                temp->append(t);
-            }
+            twoVects *t = this->forest[index(r, c)]->getAllBoxes(this->forest[index(r, c)]->getRoot(), F, cutoff);
+            temp->append(t);
         }
-        return temp;
     }
+    return temp;
+}

@@ -48,7 +48,7 @@ public:
     void setSquare(Square *s);
     //1-Node *nw; 2- Node *ne;3- Node *se;4-Node *sw;
     int getRelativeOrientation();
-    double integrate(void *F);
+    double integrate(Function *F);
     Rectangle* getRekt();
 };
 #endif

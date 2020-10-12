@@ -33,5 +33,10 @@
   "directory": "/Users/Jessica/git/QuadTree/build",
   "command": "/usr/bin/clang++    -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk   -o CMakeFiles/QuadTree.dir/twoVects.cpp.o -c /Users/Jessica/git/QuadTree/twoVects.cpp",
   "file": "/Users/Jessica/git/QuadTree/twoVects.cpp"
+},
+{
+  "directory": "/Users/Jessica/git/QuadTree/build",
+  "command": "/usr/bin/clang++    -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk   -o CMakeFiles/QuadTree.dir/Function.cpp.o -c /Users/Jessica/git/QuadTree/Function.cpp",
+  "file": "/Users/Jessica/git/QuadTree/Function.cpp"
 }
 ]

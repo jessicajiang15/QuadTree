@@ -2,6 +2,7 @@
 #define _RECTANGLE_H 1
 #include "Point.h"
 #include <vector>
+#include "Function.h"
 
 class Rectangle
 {
@@ -27,6 +28,9 @@ class Rectangle
     double getY();
     double getCenterX();
     double getCenterY();
-    double integrate(void *F);
+    double integrate(Function *F);
+    double approx(Function *F);
+    double area();
+
 };
 #endif

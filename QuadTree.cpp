@@ -134,11 +134,30 @@ void QuadTree::setRoot(Rectangle *s)
     this->root = new Node(s);
 }
 
-void QuadTree::divide(void *F)
+void QuadTree::divide(Function *F, Node *n, double tol)
 {
+    if(abs(n->getRekt()->integrate(F)-n->getRekt()->approx(F))>tol)
+    {
+        root->createChildren();
+        vector<Node*> children=root->getChildren();
+        divide(F, children[0], tol);
+        divide(F, children[1], tol);
+        divide(F, children[2], tol);
+        divide(F, children[3], tol);
+
+    }
+    else
+    {
+        return;
+    }
 }
 
-vector<Rectangle *> QuadTree::getOutBoxes(Node *n, void *F, double cutoff)
+void QuadTree::divideTree(Function *F, double tol)
+{
+    QuadTree::divide(F,this->root,tol);
+}
+
+vector<Rectangle *> QuadTree::getOutBoxes(Node *n, Function *F, double cutoff)
 {
     vector<Rectangle *> temp;
     if (n->isLeaf())
@@ -164,7 +183,7 @@ vector<Rectangle *> QuadTree::getOutBoxes(Node *n, void *F, double cutoff)
     temp.insert(temp.end(), r4.begin(), r4.end());
     return temp;
 }
-vector<Rectangle *> QuadTree::getInBoxes(Node *n, void *F, double cutoff)
+vector<Rectangle *> QuadTree::getInBoxes(Node *n, Function *F, double cutoff)
 {
     vector<Rectangle *> temp;
     if (n->isLeaf())
@@ -192,7 +211,7 @@ vector<Rectangle *> QuadTree::getInBoxes(Node *n, void *F, double cutoff)
 }
 
 //first box is outbox second is in box
- twoVects *QuadTree::getAllBoxes(Node *n, void *F, double cutoff)
+ twoVects *QuadTree::getAllBoxes(Node *n, Function *F, double cutoff)
 {
     vector<Rectangle *> temp1;
     vector<Rectangle *> temp2;
