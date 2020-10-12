@@ -75,34 +75,6 @@ void Node::createChildren()
     this->sw = new Node(x, y + height / 2, this, temp, width / 2, height / 2, 4);
     this->square=nullptr;
 }
-Node *Node::getIndex(int i)
-{
-    return nullptr;
-}
-//1-4 in order of the instance variables above
-Node *Node::getChild(int i)
-{
-    switch (i)
-    {
-    case 1:
-    {
-        return nw;
-    }
-    case 2:
-    {
-        return ne;
-    }
-    case 3:
-    {
-        return se;
-    }
-    case 4:
-    {
-        return sw;
-    }
-    }
-    return nullptr;
-}
 
 vector<Node *> Node::getChildren()
 {

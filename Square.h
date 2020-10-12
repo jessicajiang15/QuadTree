@@ -8,6 +8,7 @@ class Square : public Rectangle
 {
     
     public:
+    //constructor
     Square(double x, double y, double length);
 };
 

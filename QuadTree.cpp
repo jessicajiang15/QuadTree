@@ -5,11 +5,6 @@ QuadTree::QuadTree(Rectangle *s)
 {
     this->root = new Node(s);
 }
-
-Node *QuadTree::get(int index)
-{
-}
-
 QuadTree::QuadTree()
 {
     root = nullptr;
@@ -82,9 +77,6 @@ vector<Node *> QuadTree::getLeaves(Node *n)
 
     return temp;
 }
-void QuadTree::traverseTree()
-{
-}
 
 vector<Node *> QuadTree::asVector(Node *n)
 {
@@ -114,9 +106,6 @@ unordered_map<int, Node *> QuadTree::asMap(Node *n)
 {
 }
 void QuadTree::draw()
-{
-}
-void QuadTree::traverse(Node *node)
 {
 }
 
@@ -225,10 +214,12 @@ vector<Rectangle *> QuadTree::getInBoxes(Node *n, Function *F, double cutoff)
         {
             if (integral < -cutoff)
             {
+                //inboxes
                 temp2.push_back(n->getRekt());
             }
             else
             {
+                //outboxes
                 temp1.push_back(n->getRekt());
             }
         }

@@ -33,10 +33,6 @@ double Rectangle::getWidth()
 {
     return width;
 }
-int Rectangle::getLayer()
-{
-    return height;
-}
 
 double Rectangle::getX()
 {
@@ -72,10 +68,6 @@ double Rectangle::integrate(Function *F)
 //gives a mid point riemann sum approximation of F on this interval
 double Rectangle::approx(Function *F)
 {
-    return area()*F->value(point->getX()+width/2,point->getY()-height/2);
+    return getArea()*F->value(point->getX()+width/2,point->getY()-height/2);
 }
 
-double Rectangle::area()
-{
-    return width*height;
-}
