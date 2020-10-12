@@ -46,7 +46,6 @@ public:
     Node *getChild(int i);
     vector<Node*> getChildren();
     void setSquare(Square *s);
-    void initializeSquare(double width,double height);
     //1-Node *nw; 2- Node *ne;3- Node *se;4-Node *sw;
     int getRelativeOrientation();
     double integrate(void *F);

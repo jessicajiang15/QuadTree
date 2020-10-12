@@ -37,6 +37,7 @@ public:
     vector<Rectangle *> getInBoxes(Node *n, void *F, double cutoff);
     twoVects *getAllBoxes(Node *n, void *F, double cutoff);
 
+
 };
 
 #endif

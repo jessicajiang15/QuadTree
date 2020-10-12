@@ -12,7 +12,7 @@ Rectangle::Rectangle(Point *p, double width, double y)
 {
     this->point=p;
     this->width=width;
-    this->height=height;
+    this->height=width;
 }
 
 double Rectangle::getArea()

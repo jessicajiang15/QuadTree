@@ -6,7 +6,29 @@
 
 #IncludeRegexTransform: 
 
-/Users/Jessica/git/QuadTree/main.cpp
-iostream
+/Users/Jessica/git/QuadTree/Point.h
+
+/Users/Jessica/git/QuadTree/Rectangle.cpp
+Square.h
+/Users/Jessica/git/QuadTree/Square.h
+
+/Users/Jessica/git/QuadTree/Rectangle.h
+Point.h
+/Users/Jessica/git/QuadTree/Point.h
+vector
 -
+
+/Users/Jessica/git/QuadTree/Square.h
+Rectangle.h
+/Users/Jessica/git/QuadTree/Rectangle.h
+
+/Users/Jessica/git/QuadTree/twoVects.cpp
+twoVects.h
+/Users/Jessica/git/QuadTree/twoVects.h
+
+/Users/Jessica/git/QuadTree/twoVects.h
+vector
+-
+Rectangle.h
+/Users/Jessica/git/QuadTree/Rectangle.h
 

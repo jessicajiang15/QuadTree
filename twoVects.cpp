@@ -17,11 +17,11 @@ void twoVects::appendToV2(std::vector<Rectangle *> t)
 
 void twoVects::setV1(std::vector<Rectangle *> t)
 {
-    this->v1 = v1;
+    this->v1 = t;
 }
 void twoVects::setV2(std::vector<Rectangle *> t)
 {
-    this->v2 = v2;
+    this->v2 = t;
 }
 
 void twoVects::append(twoVects* other)

@@ -133,11 +133,6 @@ void Node::setSquare(Square *s)
     this->square=s;
 }
 
-void Node::initializeSquare(double width,double height)
-{
-    
-}
-
 double Node::integrate(void* F)
 {
     if(square==nullptr)

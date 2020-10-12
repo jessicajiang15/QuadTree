@@ -5,18 +5,10 @@
 
 class Forest
 {
-    struct two{
-        vector<Node*> outboxes;
-        vector<Node*> inboxes;
-    };
 private:
-    
     QuadTree **forest;
     int rows;
     int cols;
-    int index(int row, int col);
-    double getCoordY(int r);
-    double getCoordX(int c);
     double minCoordY;
     double minCoordX;
     double maxCoordY;
@@ -25,8 +17,10 @@ private:
     double height;
     int inRangeX(double x, int c);
     bool inRangeY(double y, int r);
+    int index(int row, int col);
+    double getCoordY(int r);
+    double getCoordX(int c);
     //need the 2 functions that it is sitting in
-
 
 public:
     virtual ~Forest()
@@ -35,9 +29,9 @@ public:
     }
     Forest(QuadTree **forest);
     Forest(int row, int col, double minCoordY, double minCoordX, double maxCoordY, double maxCoordX);
-    QuadTree* get(int r, int c);
-    Point* getRC(double x, double y);
-    //adds a QuadTree to 
+    QuadTree *get(int r, int c);
+    Point *getRC(double x, double y);
+    //adds a QuadTree to
     bool add(QuadTree *t, int r, int c);
     //returns the starting number of rows.
     int numMinRows();
@@ -45,7 +39,7 @@ public:
     int numMinCols();
     //returns the total number of cells there are.
     int totalCells();
-    Point* getXYCoord(int r, int c);
+    Point *getXYCoord(int r, int c);
 
     void divide(void *F);
 
@@ -53,11 +47,8 @@ public:
     int findR(double y);
     int binarySearchX(double x, int lower, int upper);
     int binarySearchY(double x, int lower, int upper);
-    double integrate(int r, int c);
-    vector<Rectangle*> getOutBoxes();
-    vector<Rectangle*> getInBoxes();
     //returns total number of boxes where the sand will be moved in and out from
-    vector<Square*> viableBoxes();
-
+    //vector<Square*> viableBoxes();
+    twoVects *getAllBoxes(void *F, double cutoff);
 };
 #endif

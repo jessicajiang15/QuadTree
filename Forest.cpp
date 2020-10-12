@@ -151,26 +151,18 @@ int Forest::binarySearchY(double y, int lower, int upper)
     }
 }
 
-    vector<Rectangle*> Forest::getOutBoxes()
+    twoVects* Forest::getAllBoxes(void *F, double cutoff)
     {
-        vector<Rectangle*> temp;
+        vector<Rectangle*> v1;
+        vector<Rectangle*> v2;
+        twoVects* temp=new twoVects(v1,v2);
         for(int r=0;r<rows;r++)
         {
             for(int c=0;c<cols;c++)
             {
-
+                twoVects* t=this->forest[index(r,c)]->getAllBoxes(this->forest[index(r,c)]->getRoot(),F, cutoff);
+                temp->append(t);
             }
         }
-    }
-
-        double Forest::integrate(int r, int c)
-    {
-        vector<Rectangle*> temp;
-        for(int r=0;r<rows;r++)
-        {
-            for(int c=0;c<cols;c++)
-            {
-                
-            }
-        }
+        return temp;
     }

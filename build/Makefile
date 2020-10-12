@@ -601,6 +601,33 @@ QuadTree.cpp.s:
 	$(MAKE) -f CMakeFiles/QuadTree.dir/build.make CMakeFiles/QuadTree.dir/QuadTree.cpp.s
 .PHONY : QuadTree.cpp.s
 
+Rectangle.o: Rectangle.cpp.o
+
+.PHONY : Rectangle.o
+
+# target to build an object file
+Rectangle.cpp.o:
+	$(MAKE) -f CMakeFiles/QuadTree.dir/build.make CMakeFiles/QuadTree.dir/Rectangle.cpp.o
+.PHONY : Rectangle.cpp.o
+
+Rectangle.i: Rectangle.cpp.i
+
+.PHONY : Rectangle.i
+
+# target to preprocess a source file
+Rectangle.cpp.i:
+	$(MAKE) -f CMakeFiles/QuadTree.dir/build.make CMakeFiles/QuadTree.dir/Rectangle.cpp.i
+.PHONY : Rectangle.cpp.i
+
+Rectangle.s: Rectangle.cpp.s
+
+.PHONY : Rectangle.s
+
+# target to generate assembly for a file
+Rectangle.cpp.s:
+	$(MAKE) -f CMakeFiles/QuadTree.dir/build.make CMakeFiles/QuadTree.dir/Rectangle.cpp.s
+.PHONY : Rectangle.cpp.s
+
 Square.o: Square.cpp.o
 
 .PHONY : Square.o
@@ -655,6 +682,33 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles/QuadTree.dir/build.make CMakeFiles/QuadTree.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+twoVects.o: twoVects.cpp.o
+
+.PHONY : twoVects.o
+
+# target to build an object file
+twoVects.cpp.o:
+	$(MAKE) -f CMakeFiles/QuadTree.dir/build.make CMakeFiles/QuadTree.dir/twoVects.cpp.o
+.PHONY : twoVects.cpp.o
+
+twoVects.i: twoVects.cpp.i
+
+.PHONY : twoVects.i
+
+# target to preprocess a source file
+twoVects.cpp.i:
+	$(MAKE) -f CMakeFiles/QuadTree.dir/build.make CMakeFiles/QuadTree.dir/twoVects.cpp.i
+.PHONY : twoVects.cpp.i
+
+twoVects.s: twoVects.cpp.s
+
+.PHONY : twoVects.s
+
+# target to generate assembly for a file
+twoVects.cpp.s:
+	$(MAKE) -f CMakeFiles/QuadTree.dir/build.make CMakeFiles/QuadTree.dir/twoVects.cpp.s
+.PHONY : twoVects.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -704,12 +758,18 @@ help:
 	@echo "... QuadTree.o"
 	@echo "... QuadTree.i"
 	@echo "... QuadTree.s"
+	@echo "... Rectangle.o"
+	@echo "... Rectangle.i"
+	@echo "... Rectangle.s"
 	@echo "... Square.o"
 	@echo "... Square.i"
 	@echo "... Square.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... twoVects.o"
+	@echo "... twoVects.i"
+	@echo "... twoVects.s"
 .PHONY : help
 
 
