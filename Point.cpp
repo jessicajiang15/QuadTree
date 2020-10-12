@@ -1,4 +1,5 @@
 #include "Point.h"
+//generic point class containing an x and y value pair
 
     Point::Point(double x, double y)
     {

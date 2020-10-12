@@ -120,7 +120,7 @@ int Forest::binarySearchX(double x, int lower, int upper)
     {
     case 1:
     {
-        return binarySearchX(x, mid, upper);
+        return binarySearchX(x, mid+1, upper);
     }
     case 0:
     {
@@ -128,7 +128,7 @@ int Forest::binarySearchX(double x, int lower, int upper)
     }
     case -1:
     {
-        return binarySearchX(x, lower, mid);
+        return binarySearchX(x, lower-1, mid);
     }
     }
 }
@@ -169,3 +169,13 @@ twoVects *Forest::getAllBoxes(Function *F, double cutoff)
     }
     return temp;
 }
+
+
+ bool Forest::add(QuadTree *t, int r, int c)
+ {
+     if(r>=rows||r<0||c>=cols||c<0||forest[index(r,c)]!=nullptr)
+     {
+         return false;
+     }
+     forest[index(r,c)]=t;
+ }

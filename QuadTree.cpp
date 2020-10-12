@@ -1,4 +1,5 @@
 #include "QuadTree.h"
+//A quad tree
 
 QuadTree::QuadTree(Rectangle *s)
 {

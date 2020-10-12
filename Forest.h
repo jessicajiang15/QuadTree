@@ -135,11 +135,30 @@ public:
      * @return the column index containing the cartesian x coordinate we are interested in
      **/
     int findC(double x);
+    /**
+     * Given an y, find the row index in the forest 2D array that contains that y value.
+     * @param y the cartesian y coordinate we want to convert into a row index
+     * @return the row index containing the cartesian y coordinate we are interested in
+     **/
     int findR(double y);
+    /**
+     * A binary search method to find the row indicies given a cartesian x value.
+     * @param x the cartesian x coordinate we want to convert into a col index
+     * @return the row index that does actually have our x value
+     **/
     int binarySearchX(double x, int lower, int upper);
+    /**
+     * A binary search method to find a given y value.
+     * @param x the cartesian y coordinate we want to convert into a row index
+     * @return the row index containing the cartesian y coordinate we are interested in
+     **/
     int binarySearchY(double x, int lower, int upper);
-    //returns total number of boxes where the sand will be moved in and out from
-    //vector<Square*> viableBoxes();
+    /**
+     * Returns a twoVects object with v1 being the inboxes and v2 being the outboxes
+     * @param F the function we are interested in
+     * @param cutoff the minimum allowed difference we will allow
+     * @return a twoVects object containing vectors of inboxes and outboxes
+     **/
     twoVects *getAllBoxes(Function *F, double cutoff);
 };
 #endif

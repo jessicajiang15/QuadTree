@@ -1,5 +1,7 @@
 #ifndef _POINT_H
 #define _POINT_H 1
+//generic point class containing an x and y value pair
+
 class Point
 {
     private:

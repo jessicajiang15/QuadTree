@@ -4,6 +4,7 @@
 #include <unordered_map>
 #include "twoVects.h"
 #include <math.h>
+//A quad tree
 
 class QuadTree
 {

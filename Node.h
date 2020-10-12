@@ -2,7 +2,7 @@
 #define _NODE_H 1
 #include "Square.h"
 using namespace std;
-
+//Placeholder
 class Node
 {
 private:

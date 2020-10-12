@@ -1,5 +1,5 @@
 #include "Node.h"
-
+//Node of a tree, .cpp
 Node::Node(Rectangle *s)
 {
     this->square=s;

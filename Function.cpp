@@ -1,4 +1,5 @@
 #include "Function.h"
+//Placeholder
 
 double Function::integrate(double xi, double xf, double yi, double yf)
 {
