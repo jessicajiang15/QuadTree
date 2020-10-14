@@ -45,6 +45,10 @@ private:
     void allNullESq();
     //should i have x y values for nodes until the tree is finalized, and then initialize the square?
     Point *temp;
+    /**
+     * The current layer that the node is at.
+     * */
+    int level;
 
 public:
 /**
@@ -52,7 +56,7 @@ public:
  * the node.
  * */
     Node(double x, double y, Node *parent, vector<Node *> siblings, int orientation);
-    Node(double x, double y, Node *parent, vector<Node *> siblings, double width, double height, int orientation);
+    Node(double x, double y, Node *parent, vector<Node *> siblings, double width, double height, int orientation, int level);
     Node(double x, double y, Node *parent, vector<Node *> siblings, Rectangle *s, int orientation);
     Node(Rectangle *s);
     /**

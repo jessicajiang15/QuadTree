@@ -178,4 +178,5 @@ twoVects *Forest::getAllBoxes(Function *F, double cutoff)
          return false;
      }
      forest[index(r,c)]=t;
+     return true;
  }

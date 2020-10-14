@@ -4,9 +4,10 @@ Node::Node(Rectangle *s)
 {
     this->square=s;
     Node::allNullESq();
+    level=0;
 }
 
-Node::Node(double x, double y, Node *parent, vector<Node *> siblings, double width, double height, int orientation)
+Node::Node(double x, double y, Node *parent, vector<Node *> siblings, double width, double height, int orientation, int level)
 {
     Rectangle *temp = new Rectangle(x, y, width, height);
     this->square = temp;
@@ -41,6 +42,7 @@ Node::Node(double x, double y, Node *parent, vector<Node *> siblings, double wid
         }
         }
     }
+    this->level=level;
 }
 
 bool Node::isLeaf()
@@ -69,10 +71,10 @@ void Node::createChildren()
     double height = square->getHeight();
     double y = square->getY();
     double x = square->getX();
-    this->nw = new Node(x, y, this, temp, width / 2, height / 2, 1);
-    this->ne = new Node(x + width / 2, y, this, temp, width / 2, height / 2, 2);
-    this->se = new Node(x + height / 2, y + height / 2, this, temp, width / 2, height / 2, 3);
-    this->sw = new Node(x, y + height / 2, this, temp, width / 2, height / 2, 4);
+    this->nw = new Node(x, y, this, temp, width / 2, height / 2, 1, this->level+1);
+    this->ne = new Node(x + width / 2, y, this, temp, width / 2, height / 2, 2,this->level+1);
+    this->se = new Node(x + height / 2, y + height / 2, this, temp, width / 2, height / 2, 3,this->level+1);
+    this->sw = new Node(x, y + height / 2, this, temp, width / 2, height / 2, 4,this->level+1);
     this->square=nullptr;
 }
 

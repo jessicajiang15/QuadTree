@@ -128,8 +128,8 @@ void QuadTree::divide(Function *F, Node *n, double tol)
 {
     if(abs(n->getRekt()->integrate(F)-n->getRekt()->approx(F))>tol)
     {
-        root->createChildren();
-        vector<Node*> children=root->getChildren();
+        n->createChildren();
+        vector<Node*> children=n->getChildren();
         divide(F, children[0], tol);
         divide(F, children[1], tol);
         divide(F, children[2], tol);
