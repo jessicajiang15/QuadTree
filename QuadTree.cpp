@@ -124,16 +124,16 @@ void QuadTree::setRoot(Rectangle *s)
     this->root = new Node(s);
 }
 
-void QuadTree::divide(Function *F, Node *n, double tol)
+void QuadTree::divide(Function *F, Node *n, double tol, int maximumLevel)
 {
-    if(abs(n->getRekt()->integrate(F)-n->getRekt()->approx(F))>tol)
+    if(abs(n->getRekt()->integrate(F)-n->getRekt()->approx(F))>tol&&n->getLevel()<=maximumLevel)
     {
         n->createChildren();
         vector<Node*> children=n->getChildren();
-        divide(F, children[0], tol);
-        divide(F, children[1], tol);
-        divide(F, children[2], tol);
-        divide(F, children[3], tol);
+        divide(F, children[0], tol, maximumLevel);
+        divide(F, children[1], tol,maximumLevel);
+        divide(F, children[2], tol,maximumLevel);
+        divide(F, children[3], tol,maximumLevel);
 
     }
     else
@@ -142,9 +142,9 @@ void QuadTree::divide(Function *F, Node *n, double tol)
     }
 }
 
-void QuadTree::divideTree(Function *F, double tol)
+void QuadTree::divideTree(Function *F, double tol, int maximumLevel)
 {
-    QuadTree::divide(F,this->root,tol);
+    QuadTree::divide(F,this->root,tol, maximumLevel);
 }
 
 vector<Rectangle *> QuadTree::getOutBoxes(Node *n, Function *F, double cutoff)

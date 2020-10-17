@@ -71,3 +71,7 @@ double Rectangle::approx(Function *F)
     return getArea()*F->value(point->getX()+width/2,point->getY()-height/2);
 }
 
+std::string Rectangle::toStringCoord()
+{
+    return "("+std::to_string(getCenterX())+", "+std::to_string(getCenterY())+")";
+}

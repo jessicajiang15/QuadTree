@@ -2,6 +2,8 @@
 #define _FOREST_H 1
 
 #include "QuadTree.h"
+#include <fstream>
+
 
 class Forest
 {
@@ -69,6 +71,7 @@ private:
      * Obtains the cartesian x coordinate of a given col c.
      **/
     double getCoordX(int c);
+     int maximumLevel;
 
 public:
 /**
@@ -160,5 +163,9 @@ public:
      * @return a twoVects object containing vectors of inboxes and outboxes
      **/
     twoVects *getAllBoxes(Function *F, double cutoff);
+    void appendOutboxesToFile(ofstream file, double cutoff, Function *F);
+    void appendInboxesToFile(ofstream file, double cutoff, Function *F);
+
+    
 };
 #endif

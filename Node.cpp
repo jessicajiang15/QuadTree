@@ -120,3 +120,8 @@ Rectangle* Node::getRekt()
 {
     return square;
 }
+
+int Node::getLevel()
+{
+    return level;
+}

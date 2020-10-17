@@ -85,7 +85,7 @@ public:
      * @param tol the maximum absolute error that we are allowing between the analytical integral
      * over a region and the approximate integral over the region.
      * */
-    void divide(Function *F, Node *n, double tol);
+    void divide(Function *F, Node *n, double tol, int maximumLevel);
     /**
      * Returns a list of all of the outboxes corresponding to the region that this QuadTree represents
      * i.e. the boxes where sand needs to be removed from.
@@ -120,7 +120,7 @@ public:
      * @param F the function that we are looking at
      * @param tol the maximum tolerable error between the estimated integral and the actual integral
      * */
-    void divideTree(Function *F, double tol);
+    void divideTree(Function *F, double tol, int maximumLevel);
 
 
 

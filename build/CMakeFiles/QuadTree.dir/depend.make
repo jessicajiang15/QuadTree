@@ -35,7 +35,15 @@ CMakeFiles/QuadTree.dir/Square.cpp.o: ../Rectangle.h
 CMakeFiles/QuadTree.dir/Square.cpp.o: ../Square.cpp
 CMakeFiles/QuadTree.dir/Square.cpp.o: ../Square.h
 
+CMakeFiles/QuadTree.dir/main.cpp.o: ../Forest.h
+CMakeFiles/QuadTree.dir/main.cpp.o: ../Function.h
+CMakeFiles/QuadTree.dir/main.cpp.o: ../Node.h
+CMakeFiles/QuadTree.dir/main.cpp.o: ../Point.h
+CMakeFiles/QuadTree.dir/main.cpp.o: ../QuadTree.h
+CMakeFiles/QuadTree.dir/main.cpp.o: ../Rectangle.h
+CMakeFiles/QuadTree.dir/main.cpp.o: ../Square.h
 CMakeFiles/QuadTree.dir/main.cpp.o: ../main.cpp
+CMakeFiles/QuadTree.dir/main.cpp.o: ../twoVects.h
 
 CMakeFiles/QuadTree.dir/twoVects.cpp.o: ../Function.h
 CMakeFiles/QuadTree.dir/twoVects.cpp.o: ../Point.h

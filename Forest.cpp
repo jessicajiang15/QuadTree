@@ -60,7 +60,7 @@ void Forest::divide(Function *F, double tol)
     {
         for (int c = 0; c < cols; c++)
         {
-            forest[index(r, c)]->divideTree(F, tol);
+            forest[index(r, c)]->divideTree(F, tol, maximumLevel);
         }
     }
 }
@@ -180,3 +180,45 @@ twoVects *Forest::getAllBoxes(Function *F, double cutoff)
      forest[index(r,c)]=t;
      return true;
  }
+
+    void Forest::appendOutboxesToFile(ofstream file, double cutoff, Function *F)
+    {
+        file<<"{";
+        twoVects *temp=getAllBoxes(F, cutoff);
+        
+        for(int i=0;i<temp->v1.size();i++)
+        {
+            if(i==temp->v1.size()-1)
+            {
+                file<<temp->v1[i];
+            }
+            else
+            {
+                file<<temp->v1[i]->toStringCoord()+", ";
+            }
+            
+        }   
+        file<<"}";
+        delete temp;
+    }
+
+    void Forest::appendInboxesToFile(ofstream file, double cutoff, Function *F)
+    {
+        file<<"{";
+        twoVects *temp=getAllBoxes(F, cutoff);
+        
+        for(int i=0;i<temp->v2.size();i++)
+        {
+            if(i==temp->v2.size()-1)
+            {
+                file<<temp->v2[i];
+            }
+            else
+            {
+                file<<temp->v2[i]->toStringCoord()+", ";
+            }
+            
+        }   
+        file<<"}";
+        delete temp;
+    }

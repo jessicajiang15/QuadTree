@@ -16,3 +16,8 @@ double Point::getX()
     {
         return y;
     }
+
+double Point::distanceTo(Point *p2)
+{
+    return sqrt(pow(p2->getX()-this->getX(),2)+pow(p2->getY()-this->getY(),2));
+}

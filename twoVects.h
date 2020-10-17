@@ -19,10 +19,12 @@ class twoVects{
     /**
      * The first vector.
      **/
+    //outboxes
     std::vector<Rectangle*> v1;
     /**
      * The second vector.
      **/
+    //inboxes
     std::vector<Rectangle*> v2;
     /**
      * Append to the first vector.

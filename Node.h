@@ -107,5 +107,7 @@ public:
      * Getter for the rectangle in this node.
      * */
     Rectangle* getRekt();
+
+    int getLevel();
 };
 #endif

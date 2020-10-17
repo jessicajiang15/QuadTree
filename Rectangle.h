@@ -3,6 +3,7 @@
 #include "Point.h"
 #include <vector>
 #include "Function.h"
+#include <iostream>
 //rectangle
 
 class Rectangle
@@ -80,6 +81,7 @@ class Rectangle
      * of a function F over the region represented by this rectangle.
      * */
     double approx(Function *F);
+    std::string toStringCoord();
 
 
 };
