@@ -4,6 +4,9 @@
 #include <vector>
 #include "Function.h"
 #include <iostream>
+#include <SFML/Graphics.hpp>
+#include "GraphicsMechanics.h"
+
 //rectangle
 
 class Rectangle
@@ -21,6 +24,7 @@ class Rectangle
      * Height of the rectangle.
      **/
     double height;
+    sf::RectangleShape* rect;
 
     public:
     /**
@@ -82,6 +86,9 @@ class Rectangle
      * */
     double approx(Function *F);
     std::string toStringCoord();
+    //draws the rectangle
+    void draw(sf::RenderWindow *window);
+    void createSfRectFromCartesian(double minX, double maxX, double minY, double maxY);
 
 
 };

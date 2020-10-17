@@ -1,11 +1,10 @@
-cmake_minimum_required(VERSION 3.0.0)
-project(QuadTree VERSION 0.1.0)
+cmake_minimum_required(VERSION 3.13)
+find_package(SFML COMPONENTS system window graphics audio REQUIRED)
+include_directories(${SFML_INCLUDE_DIR})
+set(CMAKE_CXX_FLAGS "-O0 -ggdb")
+set (CMAKE_CXX_STANDARD 11)
 
-include(CTest)
-enable_testing()
 
-add_executable(QuadTree main.cpp Node.cpp QuadTree.cpp Square.cpp Point.cpp Rectangle.cpp twoVects.cpp Function.cpp)
+add_executable(QuadTree main.cpp Node.cpp QuadTree.cpp Square.cpp Point.cpp Rectangle.cpp twoVects.cpp Function.cpp GraphicsMechanics.cpp)
 
-set(CPACK_PROJECT_NAME ${PROJECT_NAME})
-set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
-include(CPack)
+target_link_libraries(QuadTree sfml-system sfml-window sfml-graphics sfml-audio)

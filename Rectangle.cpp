@@ -71,7 +71,19 @@ double Rectangle::approx(Function *F)
     return getArea()*F->value(point->getX()+width/2,point->getY()-height/2);
 }
 
+void Rectangle::draw(sf::RenderWindow *window)
+{
+    window->draw(*rect);
+}
 std::string Rectangle::toStringCoord()
 {
     return "("+std::to_string(getCenterX())+", "+std::to_string(getCenterY())+")";
+}
+
+void Rectangle::createSfRectFromCartesian(double minX, double maxX, double minY, double maxY)
+{
+    Point *temp=GraphicsMechanics::convertFromCartesian(minX, maxX, minY, maxY, point);
+    rect=new sf::RectangleShape();
+    rect->setPosition(temp->getX(),temp->getY());
+    rect->setSize(sf::Vector2f(width*GraphicsMechanics::getXScale(minX, maxX),height*GraphicsMechanics::getYScale(minY, maxY)));
 }

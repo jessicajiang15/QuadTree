@@ -1,6 +1,5 @@
 #ifndef _FOREST_H
 #define _FOREST_H 1
-
 #include "QuadTree.h"
 #include <fstream>
 

@@ -151,7 +151,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=QuadTree
+CMAKE_PROJECT_NAME:STATIC=Project
 
 //Value Computed by CMake
 CMAKE_PROJECT_VERSION:STATIC=0.1.0
@@ -331,10 +331,22 @@ MEMORYCHECK_SUPPRESSIONS_FILE:FILEPATH=
 P4COMMAND:FILEPATH=P4COMMAND-NOTFOUND
 
 //Value Computed by CMake
+Project_BINARY_DIR:STATIC=/Users/Jessica/git/QuadTree/build
+
+//Value Computed by CMake
+Project_SOURCE_DIR:STATIC=/Users/Jessica/git/QuadTree
+
+//Value Computed by CMake
 QuadTree_BINARY_DIR:STATIC=/Users/Jessica/git/QuadTree/build
 
 //Value Computed by CMake
 QuadTree_SOURCE_DIR:STATIC=/Users/Jessica/git/QuadTree
+
+//The directory containing a CMake configuration file for SFML.
+SFML_DIR:PATH=/usr/local/lib/cmake/SFML
+
+//Path to a file.
+SFML_DOC_DIR:PATH=SFML_DOC_DIR-NOTFOUND
 
 //Name of the computer/site where compile is being run
 SITE:STRING=Jessica-Jiang-1144.local
@@ -373,8 +385,6 @@ CMAKE_COLOR_MAKEFILE-ADVANCED:INTERNAL=1
 CMAKE_COMMAND:INTERNAL=/usr/local/Cellar/cmake/3.16.4/bin/cmake
 //Path to cpack program executable.
 CMAKE_CPACK_COMMAND:INTERNAL=/usr/local/Cellar/cmake/3.16.4/bin/cpack
-//ADVANCED property for variable: CMAKE_CTEST_COMMAND
-CMAKE_CTEST_COMMAND-ADVANCED:INTERNAL=1
 //Path to ctest program executable.
 CMAKE_CTEST_COMMAND:INTERNAL=/usr/local/Cellar/cmake/3.16.4/bin/ctest
 //ADVANCED property for variable: CMAKE_CXX_COMPILER
