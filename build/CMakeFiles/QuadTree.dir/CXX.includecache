@@ -14,10 +14,6 @@ fstream
 
 /Users/Jessica/git/QuadTree/Function.h
 
-/Users/Jessica/git/QuadTree/GraphicsMechanics.cpp
-GraphicsMechanics.h
-/Users/Jessica/git/QuadTree/GraphicsMechanics.h
-
 /Users/Jessica/git/QuadTree/GraphicsMechanics.h
 SFML/Graphics.hpp
 -
@@ -26,10 +22,6 @@ iostream
 Point.h
 /Users/Jessica/git/QuadTree/Point.h
 
-/Users/Jessica/git/QuadTree/Node.cpp
-Node.h
-/Users/Jessica/git/QuadTree/Node.h
-
 /Users/Jessica/git/QuadTree/Node.h
 Square.h
 /Users/Jessica/git/QuadTree/Square.h
@@ -37,10 +29,6 @@ Square.h
 /Users/Jessica/git/QuadTree/Point.h
 math.h
 /Users/Jessica/git/QuadTree/math.h
-
-/Users/Jessica/git/QuadTree/QuadTree.cpp
-QuadTree.h
-/Users/Jessica/git/QuadTree/QuadTree.h
 
 /Users/Jessica/git/QuadTree/QuadTree.h
 Node.h
@@ -51,10 +39,6 @@ twoVects.h
 /Users/Jessica/git/QuadTree/twoVects.h
 math.h
 -
-
-/Users/Jessica/git/QuadTree/Rectangle.cpp
-Square.h
-/Users/Jessica/git/QuadTree/Square.h
 
 /Users/Jessica/git/QuadTree/Rectangle.h
 Point.h
@@ -69,10 +53,6 @@ SFML/Graphics.hpp
 -
 GraphicsMechanics.h
 /Users/Jessica/git/QuadTree/GraphicsMechanics.h
-
-/Users/Jessica/git/QuadTree/Square.cpp
-Square.h
-/Users/Jessica/git/QuadTree/Square.h
 
 /Users/Jessica/git/QuadTree/Square.h
 Rectangle.h
@@ -89,10 +69,6 @@ GraphicsMechanics.h
 /Users/Jessica/git/QuadTree/GraphicsMechanics.h
 Game.h
 /Users/Jessica/git/QuadTree/Game.h
-
-/Users/Jessica/git/QuadTree/twoVects.cpp
-twoVects.h
-/Users/Jessica/git/QuadTree/twoVects.h
 
 /Users/Jessica/git/QuadTree/twoVects.h
 vector

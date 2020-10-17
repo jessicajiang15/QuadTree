@@ -10,7 +10,8 @@ int main() {
     settings.antialiasingLevel = 8;
 
     sf::RenderWindow window(sf::VideoMode(GraphicsMechanics::WINDOW_WIDTH,GraphicsMechanics::WINDOW_HEIGHT), "QuadTree", sf::Style::Default, settings);
-
+    Rectangle *test=new Rectangle(new Point(0,0),5,5);
+    test->createSfRectFromCartesian(-10, 10, 10, 10);
     // run the program as long as the window is open
     //window.setFramerateLimit(60);
     window.setVerticalSyncEnabled(true);
@@ -34,7 +35,7 @@ int main() {
 
         // background color
         window.clear(sf::Color::White);
-
+        test->draw(&window);
 
         window.display();
     }

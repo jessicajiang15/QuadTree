@@ -8,8 +8,8 @@
 class GraphicsMechanics
 {
     public:
-    static int WINDOW_HEIGHT;
-    static int WINDOW_WIDTH;
+    static int const WINDOW_HEIGHT=800;
+    static int const WINDOW_WIDTH=800;
     static Point* convertFromCartesian(double minX, double maxX, double minY, double maxY, Point *p);
     static Point* convertToCartesian(double minX, double maxX, double minY, double maxY, Point *p);
     static double getXScale(double minX, double maxX);
