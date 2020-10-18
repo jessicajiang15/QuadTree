@@ -60,7 +60,7 @@ void Forest::divide(Function *F, double tol)
     {
         for (int c = 0; c < cols; c++)
         {
-            forest[index(r, c)]->divideTree(F, tol, maximumLevel);
+            forest[index(r, c)]->divideTree(minCoordX, maxCoordX, minCoordY, maxCoordY, F, tol, maximumLevel);
         }
     }
 }

@@ -124,27 +124,28 @@ void QuadTree::setRoot(Rectangle *s)
     this->root = new Node(s);
 }
 
-void QuadTree::divide(Function *F, Node *n, double tol, int maximumLevel)
+void QuadTree::divide(double minX, double maxX, double minY, double maxY, Function *F, Node *n, double tol, int maximumLevel)
 {
     if(abs(n->getRekt()->integrate(F)-n->getRekt()->approx(F))>tol&&n->getLevel()<=maximumLevel)
     {
         n->createChildren();
         vector<Node*> children=n->getChildren();
-        divide(F, children[0], tol, maximumLevel);
-        divide(F, children[1], tol,maximumLevel);
-        divide(F, children[2], tol,maximumLevel);
-        divide(F, children[3], tol,maximumLevel);
+        divide(minX, maxX, minY,maxY, F, children[0], tol, maximumLevel);
+        divide(minX, maxX, minY,maxY, F, children[1], tol,maximumLevel);
+        divide(minX, maxX, minY,maxY, F, children[2], tol,maximumLevel);
+        divide(minX, maxX, minY,maxY, F, children[3], tol,maximumLevel);
 
     }
     else
     {
+        n->getRekt()->createSfRectFromCartesian(minX, maxX, minY, maxY);
         return;
     }
 }
 
-void QuadTree::divideTree(Function *F, double tol, int maximumLevel)
+void QuadTree::divideTree(double minX, double maxX, double minY, double maxY, Function *F, double tol, int maximumLevel)
 {
-    QuadTree::divide(F,this->root,tol, maximumLevel);
+    QuadTree::divide(minX, maxX, minY,maxY, F,this->root,tol, maximumLevel);
 }
 
 vector<Rectangle *> QuadTree::getOutBoxes(Node *n, Function *F, double cutoff)

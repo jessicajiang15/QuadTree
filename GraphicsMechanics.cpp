@@ -2,6 +2,9 @@
 
 Point *GraphicsMechanics::convertFromCartesian(double minX, double maxX, double minY, double maxY, Point *p)
 {
+        std::cout<<"min: "<<minY<<std::endl;
+        std::cout<<"max: "<<maxY<<std::endl;
+
     double intervalX = maxX - minX;
     double xScale = WINDOW_WIDTH / intervalX;
     double intervalY = maxY - minY;
@@ -13,7 +16,10 @@ Point *GraphicsMechanics::convertFromCartesian(double minX, double maxX, double 
     double x = p->getX();
     double y = p->getY();
     double newX = x * xScale + xShiftSf;
-    double newY = y * yScale - yShiftSf;
+    double newY = GraphicsMechanics::WINDOW_HEIGHT-(y*yScale)-yShiftSf;
+        //convertY(F(midX)*Main.scale)-Main.yShift
+    //convertY -> main.height-y
+    std::cout<<"new: "<<newY<<std::endl;
     return new Point(newX, newY);
 }
 
@@ -30,7 +36,9 @@ Point *GraphicsMechanics::convertToCartesian(double minX, double maxX, double mi
     double x = p->getX();
     double y = p->getY();
     double newX = (x - xShiftSf) / xScale;
-    double newY = (y + yShiftSf) / yScale;
+    double newY = (y - yShiftSf) / yScale;
+    //convertY(F(midX)*Main.scale)-Main.yShift
+    //convertY -> main.height-y
     return new Point(newX, newY);
 }
 
