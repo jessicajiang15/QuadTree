@@ -6,6 +6,10 @@
 
 #IncludeRegexTransform: 
 
+/Users/Jessica/git/QuadTree/Forest.cpp
+Forest.h
+/Users/Jessica/git/QuadTree/Forest.h
+
 /Users/Jessica/git/QuadTree/Forest.h
 QuadTree.h
 /Users/Jessica/git/QuadTree/QuadTree.h
@@ -29,6 +33,10 @@ Square.h
 /Users/Jessica/git/QuadTree/Point.h
 math.h
 /Users/Jessica/git/QuadTree/math.h
+
+/Users/Jessica/git/QuadTree/QuadTree.cpp
+QuadTree.h
+/Users/Jessica/git/QuadTree/QuadTree.h
 
 /Users/Jessica/git/QuadTree/QuadTree.h
 Node.h
@@ -59,10 +67,6 @@ Rectangle.h
 /Users/Jessica/git/QuadTree/Rectangle.h
 
 /Users/Jessica/git/QuadTree/main.cpp
-iostream
--
-fstream
--
 Forest.h
 /Users/Jessica/git/QuadTree/Forest.h
 GraphicsMechanics.h

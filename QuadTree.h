@@ -26,7 +26,7 @@ public:
     /**
      * Constructs a QuadTree with the given rectangle s.
      * */
-    QuadTree(Rectangle *s);
+    QuadTree(Rectangle *s, double minX, double maxX, double minY, double maxY);
     /**
      * Constructs a QuadTree given a list of nodes.
      * */
@@ -38,8 +38,6 @@ public:
     {
         delete root;
     }
-    //prototype for when we need to draw the QuadTree out on the screen
-    void draw();
     /**
      * Returns the size of the QuadTree
      * */
@@ -85,7 +83,7 @@ public:
      * @param tol the maximum absolute error that we are allowing between the analytical integral
      * over a region and the approximate integral over the region.
      * */
-    void divide(Function *F, Node *n, double tol, int maximumLevel);
+    void divide(double minX, double maxX, double minY, double maxY, Function *F, Node *n, double tol, int maximumLevel);
     /**
      * Returns a list of all of the outboxes corresponding to the region that this QuadTree represents
      * i.e. the boxes where sand needs to be removed from.
@@ -120,9 +118,10 @@ public:
      * @param F the function that we are looking at
      * @param tol the maximum tolerable error between the estimated integral and the actual integral
      * */
-    void divideTree(Function *F, double tol, int maximumLevel);
+    void divideTree(double minX, double maxX, double minY, double maxY, Function *F, double tol, int maximumLevel);
 
-
+    void draw(sf::RenderWindow*);
+    void drawRoot(Node*, sf::RenderWindow*);
 
 };
 

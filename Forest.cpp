@@ -2,7 +2,7 @@
 
 Forest::Forest(int rows, int cols, double minCoordY, double minCoordX, double maxCoordY, double maxCoordX)
 {
-    *forest = new QuadTree[rows * cols];
+    forest = new QuadTree*[rows * cols];
     this->rows = rows;
     this->cols = cols;
     this->minCoordX = minCoordX;
@@ -16,11 +16,11 @@ Forest::Forest(int rows, int cols, double minCoordY, double minCoordX, double ma
         for (int c = 0; c < cols; c++)
         {
             Rectangle *temp = new Rectangle(Forest::getCoordX(c), Forest::getCoordY(r), width, height);
-            forest[index(r, c)] = new QuadTree(temp);
-            //double x, double y, double width, double height
+            forest[index(r, c)] = new QuadTree(temp,minCoordX, maxCoordX, minCoordY, minCoordX);
         }
     }
 }
+
 int Forest::index(int row, int col)
 {
     return row * col + col;
@@ -131,6 +131,7 @@ int Forest::binarySearchX(double x, int lower, int upper)
         return binarySearchX(x, lower-1, mid);
     }
     }
+    return 0;
 }
 
 int Forest::binarySearchY(double y, int lower, int upper)
@@ -152,6 +153,7 @@ int Forest::binarySearchY(double y, int lower, int upper)
         return binarySearchY(y, mid, upper);
     }
     }
+    return 0;
 }
 
 twoVects *Forest::getAllBoxes(Function *F, double cutoff)
@@ -221,4 +223,15 @@ twoVects *Forest::getAllBoxes(Function *F, double cutoff)
         }   
         file<<"}";
         delete temp;
+    }
+
+    void Forest::draw(sf::RenderWindow* window)
+    {
+        for(int r=0;r<rows;r++)
+        {
+            for(int c=0;c<cols;c++)
+            {
+                forest[index(r,c)]->draw(window);
+            }
+        }
     }

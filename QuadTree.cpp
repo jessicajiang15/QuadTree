@@ -1,9 +1,10 @@
 #include "QuadTree.h"
 //A quad tree
 
-QuadTree::QuadTree(Rectangle *s)
+QuadTree::QuadTree(Rectangle *s, double minX, double maxX, double minY, double maxY)
 {
     this->root = new Node(s);
+    root->getRekt()->createSfRectFromCartesian(minX, maxY,minY,maxY);
 }
 QuadTree::QuadTree()
 {
@@ -102,12 +103,6 @@ vector<Node *> QuadTree::asVector(Node *n)
     return temp;
 }
 
-unordered_map<int, Node *> QuadTree::asMap(Node *n)
-{
-}
-void QuadTree::draw()
-{
-}
 
 int QuadTree::thisSize()
 {
@@ -240,4 +235,25 @@ vector<Rectangle *> QuadTree::getInBoxes(Node *n, Function *F, double cutoff)
     temp->append(r4);
 
     return temp;
+}
+
+void QuadTree::draw(sf::RenderWindow* window)
+{
+    QuadTree::drawRoot(root, window);
+}
+
+void QuadTree::drawRoot(Node *n, sf::RenderWindow* window)
+{
+    if(n->isLeaf())
+    {
+        n->getRekt()->draw(window);
+    }
+    else
+    {
+        vector<Node *> children = n->getChildren();
+        drawRoot(children[0],window);
+        drawRoot(children[1],window);
+        drawRoot(children[2],window);
+        drawRoot(children[3],window);
+    }
 }

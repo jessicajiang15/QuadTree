@@ -43,5 +43,10 @@
   "directory": "/Users/Jessica/git/QuadTree/build",
   "command": "/usr/bin/clang++   -isystem /usr/local/include  -O0 -ggdb -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk   -std=gnu++11 -o CMakeFiles/QuadTree.dir/GraphicsMechanics.cpp.o -c /Users/Jessica/git/QuadTree/GraphicsMechanics.cpp",
   "file": "/Users/Jessica/git/QuadTree/GraphicsMechanics.cpp"
+},
+{
+  "directory": "/Users/Jessica/git/QuadTree/build",
+  "command": "/usr/bin/clang++   -isystem /usr/local/include  -O0 -ggdb -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk   -std=gnu++11 -o CMakeFiles/QuadTree.dir/Forest.cpp.o -c /Users/Jessica/git/QuadTree/Forest.cpp",
+  "file": "/Users/Jessica/git/QuadTree/Forest.cpp"
 }
 ]

@@ -2,9 +2,9 @@
 //Node of a tree, .cpp
 Node::Node(Rectangle *s)
 {
-    this->square=s;
+    this->square = s;
     Node::allNullESq();
-    level=0;
+    level = 0;
 }
 
 Node::Node(double x, double y, Node *parent, vector<Node *> siblings, double width, double height, int orientation, int level)
@@ -42,7 +42,7 @@ Node::Node(double x, double y, Node *parent, vector<Node *> siblings, double wid
         }
         }
     }
-    this->level=level;
+    this->level = level;
 }
 
 bool Node::isLeaf()
@@ -71,11 +71,11 @@ void Node::createChildren()
     double height = square->getHeight();
     double y = square->getY();
     double x = square->getX();
-    this->nw = new Node(x, y, this, temp, width / 2, height / 2, 1, this->level+1);
-    this->ne = new Node(x + width / 2, y, this, temp, width / 2, height / 2, 2,this->level+1);
-    this->se = new Node(x + height / 2, y + height / 2, this, temp, width / 2, height / 2, 3,this->level+1);
-    this->sw = new Node(x, y + height / 2, this, temp, width / 2, height / 2, 4,this->level+1);
-    this->square=nullptr;
+    this->nw = new Node(x, y, this, temp, width / 2, height / 2, 1, this->level + 1);
+    this->ne = new Node(x + width / 2, y, this, temp, width / 2, height / 2, 2, this->level + 1);
+    this->se = new Node(x + height / 2, y + height / 2, this, temp, width / 2, height / 2, 3, this->level + 1);
+    this->sw = new Node(x, y + height / 2, this, temp, width / 2, height / 2, 4, this->level + 1);
+    this->square = nullptr;
 }
 
 vector<Node *> Node::getChildren()
@@ -88,35 +88,35 @@ vector<Node *> Node::getChildren()
     return temp;
 }
 
-    int Node::getRelativeOrientation()
-    {
-        return orientation;
-    }
+int Node::getRelativeOrientation()
+{
+    return orientation;
+}
 
 void Node::allNullESq()
 {
-    this->p=nullptr;
-    this->ne=nullptr;
-    this->nw=nullptr;
-    this->se=nullptr;
-    this->sw=nullptr;
+    this->p = nullptr;
+    this->ne = nullptr;
+    this->nw = nullptr;
+    this->se = nullptr;
+    this->sw = nullptr;
 }
 
 void Node::setSquare(Square *s)
 {
-    this->square=s;
+    this->square = s;
 }
 
-double Node::integrate(Function* F)
+double Node::integrate(Function *F)
 {
-    if(square==nullptr)
+    if (square == nullptr)
     {
         return -1;
     }
     return square->integrate(F);
 }
 
-Rectangle* Node::getRekt()
+Rectangle *Node::getRekt()
 {
     return square;
 }

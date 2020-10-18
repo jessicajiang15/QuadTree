@@ -1,5 +1,3 @@
-#include <iostream>
-#include <fstream>
 #include "Forest.h"
 #include "GraphicsMechanics.h"
 
@@ -10,6 +8,7 @@ int main() {
     settings.antialiasingLevel = 8;
 
     sf::RenderWindow window(sf::VideoMode(GraphicsMechanics::WINDOW_WIDTH,GraphicsMechanics::WINDOW_HEIGHT), "QuadTree", sf::Style::Default, settings);
+    /*
     Rectangle *test=new Rectangle(new Point(-5,-4),5,5);
     sf::RectangleShape *rect;
     rect=new sf::RectangleShape();
@@ -18,11 +17,12 @@ int main() {
     rect->setFillColor(sf::Color(100, 250, 50));
     rect->setOutlineColor(sf::Color(0, 0, 0));
     test->createSfRectFromCartesian(-10, 10, -10, 10);
+    */
     // run the program as long as the window is open
     //window.setFramerateLimit(60);
     window.setVerticalSyncEnabled(true);
-    //music.setVolume(50);
-    //music.play();
+    Forest *forest=new Forest(2,2,-10,-10,10,10);
+    //int row, int col, double minCoordY, double minCoordX, double maxCoordY, double maxCoordX
 
     while (window.isOpen())
     {
@@ -41,9 +41,8 @@ int main() {
 
         // background color
         window.clear(sf::Color::White);
-        test->draw(&window);
         //window.draw(*rect);
-
+        forest->draw(&window);
         window.display();
     }
     /*

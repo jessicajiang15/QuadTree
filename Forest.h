@@ -164,6 +164,7 @@ public:
     twoVects *getAllBoxes(Function *F, double cutoff);
     void appendOutboxesToFile(ofstream file, double cutoff, Function *F);
     void appendInboxesToFile(ofstream file, double cutoff, Function *F);
+    void draw(sf::RenderWindow*);
 
     
 };
