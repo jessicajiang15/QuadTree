@@ -2,6 +2,7 @@
 //Node of a tree, .cpp
 Node::Node(Rectangle *s)
 {
+    this->orientation=0;
     this->square = s;
     Node::allNullESq();
     level = 0;
@@ -12,6 +13,7 @@ Node::Node(double x, double y, Node *parent, vector<Node *> siblings, double wid
     Rectangle *temp = new Rectangle(x, y, width, height);
     this->square = temp;
     this->siblings = siblings;
+    this->orientation=orientation;
     for (int i = 0; i < siblings.size(); i++)
     {
         if (siblings[i]->getRelativeOrientation() == orientation)
@@ -90,7 +92,7 @@ vector<Node *> Node::getChildren()
 
 int Node::getRelativeOrientation()
 {
-    return orientation;
+    return this->orientation;
 }
 
 void Node::allNullESq()

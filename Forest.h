@@ -57,11 +57,7 @@ private:
      * Necessary for determining which cell a given x, y coordinate falls in.
     */
     bool inRangeY(double y, int r);
-    /**
-     * Helper function intended to help access a cell at index r, c in the forest, as the forest
-     * is allocated as a single 1D array.
-     **/
-    int index(int row, int col);
+
     /**
      * Obtains the cartesian y coordinate of a given row r.
      **/
@@ -165,6 +161,12 @@ public:
     void appendOutboxesToFile(ofstream file, double cutoff, Function *F);
     void appendInboxesToFile(ofstream file, double cutoff, Function *F);
     void draw(sf::RenderWindow*);
+    QuadTree** getForest();
+        /**
+     * Helper function intended to help access a cell at index r, c in the forest, as the forest
+     * is allocated as a single 1D array.
+     **/
+    int index(int row, int col);
 
     
 };

@@ -23,7 +23,8 @@ int main() {
     window.setVerticalSyncEnabled(true);
     Forest *forest=new Forest(2,2,-10,-10,10,10);
     //int row, int col, double minCoordY, double minCoordX, double maxCoordY, double maxCoordX
-
+                cout << "OO"<<forest->getForest()[forest->index(0, 0)]->getRoot()->getRekt()->getY() << endl;
+                forest->getForest()[0,0]->getRoot()->createChildren();
     while (window.isOpen())
     {
         sf::Event event;
@@ -42,7 +43,11 @@ int main() {
         // background color
         window.clear(sf::Color::White);
         //window.draw(*rect);
+                        cout << "2"<<forest->getForest()[forest->index(0, 0)]->getRoot()->getRekt()->getY() << endl;
+
         forest->draw(&window);
+                        cout << "O3O"<<forest->getForest()[forest->index(0, 0)]->getRoot()->getRekt()->getY() << endl;
+
         window.display();
     }
     /*

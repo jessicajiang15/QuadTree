@@ -21,20 +21,20 @@ Forest::Forest(int rows, int cols, double minCoordY, double minCoordX, double ma
             // cout << "initial x" << Forest::getCoordX(c) << endl;
             //cout << "initial y" << Forest::getCoordY(r) << endl;
             Rectangle *temp = new Rectangle(Forest::getCoordX(c), Forest::getCoordY(r), width, height);
-            if(r==0&&c==0)
-            {
-            cout<<"no"<<temp->getX()<<endl;
-            cout<<"no"<<temp->getY()<<endl;
-            }
-
+            
             forest[index(r, c)] = new QuadTree(temp, minCoordX, maxCoordX, minCoordY, maxCoordY);
+            cout<<"R: "<<r<<endl;
+            cout<<"C: "<<c<<endl;
+            cout<<"This is what forest[0,0] is: "<<forest[index(0, 0)]->getRoot()->getRekt()->getY()<<endl;
+
         }
     }
+        cout<<"end"<<forest[index(0, 0)]->getRoot()->getRekt()->getY()<<endl;
 }
 
 int Forest::index(int row, int col)
 {
-    return row * col + col;
+    return row * this->cols + col;
 }
 
 QuadTree *Forest::get(int r, int c)
@@ -241,15 +241,19 @@ void Forest::appendInboxesToFile(ofstream file, double cutoff, Function *F)
 
 void Forest::draw(sf::RenderWindow *window)
 {
+                    cout << forest[index(0, 0)]->getRoot()->getRekt()->getY() << endl;
+
     for (int r = 0; r < rows; r++)
     {
         for (int c = 0; c < cols; c++)
         {
-
-                //cout << forest[index(r, c)]->getRoot()->getRekt()->getX() << endl;
-                //cout << forest[index(r, c)]->getRoot()->getRekt()->getY() << endl;
                 forest[index(r, c)]->draw(window);
             
         }
     }
+}
+
+QuadTree** Forest::getForest()
+{
+    return forest;
 }

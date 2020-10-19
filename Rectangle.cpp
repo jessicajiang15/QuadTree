@@ -91,4 +91,5 @@ void Rectangle::createSfRectFromCartesian(double minX, double maxX, double minY,
     rect->setSize(sf::Vector2f(width*GraphicsMechanics::getXScale(minX, maxX),height*GraphicsMechanics::getYScale(minY, maxY)));
     rect->setFillColor(sf::Color(100, 250, 50));
     rect->setOutlineColor(sf::Color(0, 0, 0));
+    rect->setOutlineThickness(3);
 }
