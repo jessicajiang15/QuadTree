@@ -34,10 +34,6 @@ Square.h
 math.h
 /Users/Jessica/git/QuadTree/math.h
 
-/Users/Jessica/git/QuadTree/QuadTree.cpp
-QuadTree.h
-/Users/Jessica/git/QuadTree/QuadTree.h
-
 /Users/Jessica/git/QuadTree/QuadTree.h
 Node.h
 /Users/Jessica/git/QuadTree/Node.h
@@ -65,14 +61,6 @@ GraphicsMechanics.h
 /Users/Jessica/git/QuadTree/Square.h
 Rectangle.h
 /Users/Jessica/git/QuadTree/Rectangle.h
-
-/Users/Jessica/git/QuadTree/main.cpp
-Forest.h
-/Users/Jessica/git/QuadTree/Forest.h
-GraphicsMechanics.h
-/Users/Jessica/git/QuadTree/GraphicsMechanics.h
-Game.h
-/Users/Jessica/git/QuadTree/Game.h
 
 /Users/Jessica/git/QuadTree/twoVects.h
 vector

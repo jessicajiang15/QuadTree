@@ -84,8 +84,8 @@ void Rectangle::createSfRectFromCartesian(double minX, double maxX, double minY,
 {
     Point *temp=GraphicsMechanics::convertFromCartesian(minX, maxX, minY, maxY, point);
     rect=new sf::RectangleShape();
-    std::cout<<temp->getX()<<std::endl;
-    std::cout<<temp->getY()<<std::endl;
+    //std::cout<<temp->getX()<<std::endl;
+    //std::cout<<temp->getY()<<std::endl;
     rect->setPosition(temp->getX(),temp->getY());
     
     rect->setSize(sf::Vector2f(width*GraphicsMechanics::getXScale(minX, maxX),height*GraphicsMechanics::getYScale(minY, maxY)));

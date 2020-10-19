@@ -4,7 +4,7 @@
 QuadTree::QuadTree(Rectangle *s, double minX, double maxX, double minY, double maxY)
 {
     this->root = new Node(s);
-    root->getRekt()->createSfRectFromCartesian(minX, maxY,minY,maxY);
+    root->getRekt()->createSfRectFromCartesian(minX, maxX,minY,maxY);
 }
 QuadTree::QuadTree()
 {
@@ -256,4 +256,5 @@ void QuadTree::drawRoot(Node *n, sf::RenderWindow* window)
         drawRoot(children[2],window);
         drawRoot(children[3],window);
     }
+
 }

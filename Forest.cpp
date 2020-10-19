@@ -2,21 +2,32 @@
 
 Forest::Forest(int rows, int cols, double minCoordY, double minCoordX, double maxCoordY, double maxCoordX)
 {
-    forest = new QuadTree*[rows * cols];
+    forest = new QuadTree *[rows * cols];
     this->rows = rows;
     this->cols = cols;
     this->minCoordX = minCoordX;
     this->minCoordY = minCoordY;
     this->maxCoordX = maxCoordX;
     this->maxCoordY = maxCoordY;
-    double width = (maxCoordX - minCoordX) / cols;
-    double height = (maxCoordY - minCoordY) / rows;
+    this->width = (maxCoordX - minCoordX) / cols;
+    this->height = (maxCoordY - minCoordY) / rows;
     for (int r = 0; r < rows; r++)
     {
         for (int c = 0; c < cols; c++)
         {
+            //cout << "c" << c << endl;
+            //cout << "r" << r << endl;
+
+            // cout << "initial x" << Forest::getCoordX(c) << endl;
+            //cout << "initial y" << Forest::getCoordY(r) << endl;
             Rectangle *temp = new Rectangle(Forest::getCoordX(c), Forest::getCoordY(r), width, height);
-            forest[index(r, c)] = new QuadTree(temp,minCoordX, maxCoordX, minCoordY, minCoordX);
+            if(r==0&&c==0)
+            {
+            cout<<"no"<<temp->getX()<<endl;
+            cout<<"no"<<temp->getY()<<endl;
+            }
+
+            forest[index(r, c)] = new QuadTree(temp, minCoordX, maxCoordX, minCoordY, maxCoordY);
         }
     }
 }
@@ -41,14 +52,20 @@ Point *Forest::getXYCoord(int r, int c)
 
 double Forest::getCoordX(int c)
 {
-    return c * width + this->minCoordX;
+    //cout<<"B: "<<c * width + this->minCoordX<<endl;
+    //cout<<"width: "<<width<<endl;
+    //cout<<"min coord"<<minCoordX<<endl;
+    //cout<<"c "<<c<<endl;
+    return (double)c * width + this->minCoordX;
 }
 
 //double check!
 double Forest::getCoordY(int r)
 {
     int totalHeight = maxCoordY - minCoordY;
-    return (totalHeight - r) * height + this->minCoordY;
+    if(r==0)
+    cout<<"yoi: " <<(totalHeight - r * height) + minCoordY<<endl;
+    return ((totalHeight - r * height)) + minCoordY;
 }
 
 /**
@@ -120,7 +137,7 @@ int Forest::binarySearchX(double x, int lower, int upper)
     {
     case 1:
     {
-        return binarySearchX(x, mid+1, upper);
+        return binarySearchX(x, mid + 1, upper);
     }
     case 0:
     {
@@ -128,7 +145,7 @@ int Forest::binarySearchX(double x, int lower, int upper)
     }
     case -1:
     {
-        return binarySearchX(x, lower-1, mid);
+        return binarySearchX(x, lower - 1, mid);
     }
     }
     return 0;
@@ -172,66 +189,67 @@ twoVects *Forest::getAllBoxes(Function *F, double cutoff)
     return temp;
 }
 
-
- bool Forest::add(QuadTree *t, int r, int c)
- {
-     if(r>=rows||r<0||c>=cols||c<0||forest[index(r,c)]!=nullptr)
-     {
-         return false;
-     }
-     forest[index(r,c)]=t;
-     return true;
- }
-
-    void Forest::appendOutboxesToFile(ofstream file, double cutoff, Function *F)
+bool Forest::add(QuadTree *t, int r, int c)
+{
+    if (r >= rows || r < 0 || c >= cols || c < 0 || forest[index(r, c)] != nullptr)
     {
-        file<<"{";
-        twoVects *temp=getAllBoxes(F, cutoff);
-        
-        for(int i=0;i<temp->v1.size();i++)
-        {
-            if(i==temp->v1.size()-1)
-            {
-                file<<temp->v1[i];
-            }
-            else
-            {
-                file<<temp->v1[i]->toStringCoord()+", ";
-            }
-            
-        }   
-        file<<"}";
-        delete temp;
+        return false;
     }
+    forest[index(r, c)] = t;
+    return true;
+}
 
-    void Forest::appendInboxesToFile(ofstream file, double cutoff, Function *F)
-    {
-        file<<"{";
-        twoVects *temp=getAllBoxes(F, cutoff);
-        
-        for(int i=0;i<temp->v2.size();i++)
-        {
-            if(i==temp->v2.size()-1)
-            {
-                file<<temp->v2[i];
-            }
-            else
-            {
-                file<<temp->v2[i]->toStringCoord()+", ";
-            }
-            
-        }   
-        file<<"}";
-        delete temp;
-    }
+void Forest::appendOutboxesToFile(ofstream file, double cutoff, Function *F)
+{
+    file << "{";
+    twoVects *temp = getAllBoxes(F, cutoff);
 
-    void Forest::draw(sf::RenderWindow* window)
+    for (int i = 0; i < temp->v1.size(); i++)
     {
-        for(int r=0;r<rows;r++)
+        if (i == temp->v1.size() - 1)
         {
-            for(int c=0;c<cols;c++)
-            {
-                forest[index(r,c)]->draw(window);
-            }
+            file << temp->v1[i];
+        }
+        else
+        {
+            file << temp->v1[i]->toStringCoord() + ", ";
         }
     }
+    file << "}";
+    delete temp;
+}
+
+void Forest::appendInboxesToFile(ofstream file, double cutoff, Function *F)
+{
+    file << "{";
+    twoVects *temp = getAllBoxes(F, cutoff);
+
+    for (int i = 0; i < temp->v2.size(); i++)
+    {
+        if (i == temp->v2.size() - 1)
+        {
+            file << temp->v2[i];
+        }
+        else
+        {
+            file << temp->v2[i]->toStringCoord() + ", ";
+        }
+    }
+    file << "}";
+    delete temp;
+}
+
+void Forest::draw(sf::RenderWindow *window)
+{
+    for (int r = 0; r < rows; r++)
+    {
+        for (int c = 0; c < cols; c++)
+        {
+
+                //cout << forest[index(r, c)]->getRoot()->getRekt()->getX() << endl;
+                //cout << forest[index(r, c)]->getRoot()->getRekt()->getY() << endl;
+                forest[index(r, c)]->draw(window);
+            
+        }
+    }
+}
