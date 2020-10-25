@@ -4,7 +4,7 @@
 QuadTree::QuadTree(Rectangle *s, double minX, double maxX, double minY, double maxY)
 {
     this->root = new Node(s);
-    root->getRekt()->createSfRectFromCartesian(minX, maxX,minY,maxY);
+    root->getRekt()->createSfRectFromCartesian(minX, maxX, minY, maxY);
 }
 QuadTree::QuadTree()
 {
@@ -103,7 +103,6 @@ vector<Node *> QuadTree::asVector(Node *n)
     return temp;
 }
 
-
 int QuadTree::thisSize()
 {
     return QuadTree::size(this->getRoot());
@@ -121,15 +120,14 @@ void QuadTree::setRoot(Rectangle *s)
 
 void QuadTree::divide(double minX, double maxX, double minY, double maxY, Function *F, Node *n, double tol, int maximumLevel)
 {
-    if(abs(n->getRekt()->integrate(F)-n->getRekt()->approx(F))>tol&&n->getLevel()<=maximumLevel)
+    if (abs(n->getRekt()->integrate(F) - n->getRekt()->approx(F)) > tol && n->getLevel() <= maximumLevel)
     {
         n->createChildren();
-        vector<Node*> children=n->getChildren();
-        divide(minX, maxX, minY,maxY, F, children[0], tol, maximumLevel);
-        divide(minX, maxX, minY,maxY, F, children[1], tol,maximumLevel);
-        divide(minX, maxX, minY,maxY, F, children[2], tol,maximumLevel);
-        divide(minX, maxX, minY,maxY, F, children[3], tol,maximumLevel);
-
+        vector<Node *> children = n->getChildren();
+        divide(minX, maxX, minY, maxY, F, children[0], tol, maximumLevel);
+        divide(minX, maxX, minY, maxY, F, children[1], tol, maximumLevel);
+        divide(minX, maxX, minY, maxY, F, children[2], tol, maximumLevel);
+        divide(minX, maxX, minY, maxY, F, children[3], tol, maximumLevel);
     }
     else
     {
@@ -140,7 +138,7 @@ void QuadTree::divide(double minX, double maxX, double minY, double maxY, Functi
 
 void QuadTree::divideTree(double minX, double maxX, double minY, double maxY, Function *F, double tol, int maximumLevel)
 {
-    QuadTree::divide(minX, maxX, minY,maxY, F,this->root,tol, maximumLevel);
+    QuadTree::divide(minX, maxX, minY, maxY, F, this->root, tol, maximumLevel);
 }
 
 vector<Rectangle *> QuadTree::getOutBoxes(Node *n, Function *F, double cutoff)
@@ -197,11 +195,11 @@ vector<Rectangle *> QuadTree::getInBoxes(Node *n, Function *F, double cutoff)
 }
 
 //first box is outbox second is in box
- twoVects *QuadTree::getAllBoxes(Node *n, Function *F, double cutoff)
+twoVects *QuadTree::getAllBoxes(Node *n, Function *F, double cutoff)
 {
     vector<Rectangle *> temp1;
     vector<Rectangle *> temp2;
-    twoVects *temp=new twoVects(temp1, temp2);
+    twoVects *temp = new twoVects(temp1, temp2);
 
     if (n->isLeaf())
     {
@@ -224,11 +222,11 @@ vector<Rectangle *> QuadTree::getInBoxes(Node *n, Function *F, double cutoff)
         return temp;
     }
     vector<Node *> children = n->getChildren();
-    twoVects* r1 = getAllBoxes(children[0], F, cutoff);
-    twoVects* r2 = getAllBoxes(children[1], F, cutoff);
-    twoVects* r3 = getAllBoxes(children[2], F, cutoff);
-    twoVects* r4 = getAllBoxes(children[3], F, cutoff);
-    
+    twoVects *r1 = getAllBoxes(children[0], F, cutoff);
+    twoVects *r2 = getAllBoxes(children[1], F, cutoff);
+    twoVects *r3 = getAllBoxes(children[2], F, cutoff);
+    twoVects *r4 = getAllBoxes(children[3], F, cutoff);
+
     temp->append(r1);
     temp->append(r2);
     temp->append(r3);
@@ -237,24 +235,47 @@ vector<Rectangle *> QuadTree::getInBoxes(Node *n, Function *F, double cutoff)
     return temp;
 }
 
-void QuadTree::draw(sf::RenderWindow* window)
+void QuadTree::draw(sf::RenderWindow *window)
 {
     QuadTree::drawRoot(root, window);
 }
 
-void QuadTree::drawRoot(Node *n, sf::RenderWindow* window)
+void QuadTree::drawRoot(Node *n, sf::RenderWindow *window)
 {
-    if(n->isLeaf())
+    if (n->isLeaf())
     {
         n->getRekt()->draw(window);
+        return;
     }
     else
     {
         vector<Node *> children = n->getChildren();
-        drawRoot(children[0],window);
-        drawRoot(children[1],window);
-        drawRoot(children[2],window);
-        drawRoot(children[3],window);
+        drawRoot(children[0], window);
+        drawRoot(children[1], window);
+        drawRoot(children[2], window);
+        drawRoot(children[3], window);
     }
+}
 
+void QuadTree::divideTreeNTimes(double minX, double maxX, double minY, double maxY, Node *n, int level)
+{
+    if (level == 0)
+    {
+        n->getRekt()->createSfRectFromCartesian(minX, maxX, minY, maxY);
+        return;
+    }
+    else
+    {
+        n->createChildren();
+        vector<Node*> temp=n->getChildren();
+        temp[0]->getRekt()->createSfRectFromCartesian(minX, maxX, minY, maxY);
+        temp[1]->getRekt()->createSfRectFromCartesian(minX, maxX, minY, maxY);
+        temp[2]->getRekt()->createSfRectFromCartesian(minX, maxX, minY, maxY);
+        temp[3]->getRekt()->createSfRectFromCartesian(minX, maxX, minY, maxY);
+        vector<Node *> children = n->getChildren();
+        divideTreeNTimes(minX, maxX, minY, maxY, children[0], level - 1);
+        divideTreeNTimes(minX, maxX, minY, maxY, children[1], level - 1);
+        divideTreeNTimes(minX, maxX, minY, maxY, children[2], level - 1);
+        divideTreeNTimes(minX, maxX, minY, maxY, children[3], level - 1);
+    }
 }

@@ -18,11 +18,6 @@ private:
     Node *ne;
     Node *se;
     Node *sw;
-    /**
-     * A list of all of the siblings of this node.
-     * To be honest, I'm not sure if this will be needed... But we will see.
-     * */
-    vector<Node*> siblings;
 /**
  * Parent of this node.
  * I'm also not sure if information about the parent needs to be stored, since it doesn't look
@@ -45,6 +40,7 @@ private:
     void allNullESq();
     //should i have x y values for nodes until the tree is finalized, and then initialize the square?
     Point *temp;
+    bool hasChildren;
     /**
      * The current layer that the node is at.
      * */
@@ -55,9 +51,9 @@ public:
  * Different constructors that take in different parameters depending on how you want to initialize
  * the node.
  * */
-    Node(double x, double y, Node *parent, vector<Node *> siblings, int orientation);
-    Node(double x, double y, Node *parent, vector<Node *> siblings, double width, double height, int orientation, int level);
-    Node(double x, double y, Node *parent, vector<Node *> siblings, Rectangle *s, int orientation);
+    Node(double x, double y, Node *parent, int orientation);
+    Node(double x, double y, Node *parent, double width, double height, int orientation, int level);
+    Node(double x, double y, Node *parent, Rectangle *s, int orientation);
     Node(Rectangle *s);
     /**
      * Destructor
@@ -79,10 +75,6 @@ public:
      * Returns the parent of this node.
      * */
     Node *getParent();
-     /**
-     * Returns a list of all of the siblings.
-     * */
-    vector<Node *> getSiblings();
     /**
      * Subdivides the current node into 4, initializing the children and making square a nullptr
      * */

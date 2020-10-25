@@ -167,6 +167,8 @@ public:
      * is allocated as a single 1D array.
      **/
     int index(int row, int col);
+    //void divideTreeNTimes(double minX, double maxX, double minY, double maxY, Node *n, int level);
+    void divideNthTimes(double minX, double maxX, double minY, double maxY, int level);
 
     
 };

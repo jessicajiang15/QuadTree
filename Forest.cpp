@@ -241,8 +241,6 @@ void Forest::appendInboxesToFile(ofstream file, double cutoff, Function *F)
 
 void Forest::draw(sf::RenderWindow *window)
 {
-                    cout << forest[index(0, 0)]->getRoot()->getRekt()->getY() << endl;
-
     for (int r = 0; r < rows; r++)
     {
         for (int c = 0; c < cols; c++)
@@ -257,3 +255,15 @@ QuadTree** Forest::getForest()
 {
     return forest;
 }
+
+
+    void Forest::divideNthTimes(double minX, double maxX, double minY, double maxY, int level)
+       {
+        for(int r=0;r<rows;r++)
+        {
+            for(int c=0;c<cols;c++)
+            {
+                forest[index(r, c)]->divideTreeNTimes(minX, maxX, minY, maxY, forest[index(r, c)]->getRoot(),level);
+            }
+        }
+    }

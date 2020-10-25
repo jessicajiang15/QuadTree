@@ -82,14 +82,14 @@ std::string Rectangle::toStringCoord()
 
 void Rectangle::createSfRectFromCartesian(double minX, double maxX, double minY, double maxY)
 {
-    Point *temp=GraphicsMechanics::convertFromCartesian(minX, maxX, minY, maxY, point);
+    Point *temp=GraphicsMechanics::convertFromCartesian(minX, maxX, minY, maxY, this->point);
     rect=new sf::RectangleShape();
-    //std::cout<<temp->getX()<<std::endl;
-    //std::cout<<temp->getY()<<std::endl;
+    std::cout<<"screen x: "<<temp->getX()<<std::endl;
+    std::cout<<"screen y: "<<temp->getY()<<std::endl;
     rect->setPosition(temp->getX(),temp->getY());
     
     rect->setSize(sf::Vector2f(width*GraphicsMechanics::getXScale(minX, maxX),height*GraphicsMechanics::getYScale(minY, maxY)));
     rect->setFillColor(sf::Color(100, 250, 50));
     rect->setOutlineColor(sf::Color(0, 0, 0));
-    rect->setOutlineThickness(3);
+    rect->setOutlineThickness(1);
 }

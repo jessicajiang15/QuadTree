@@ -8,76 +8,42 @@ Node::Node(Rectangle *s)
     level = 0;
 }
 
-Node::Node(double x, double y, Node *parent, vector<Node *> siblings, double width, double height, int orientation, int level)
+Node::Node(double x, double y, Node *parent, double width, double height, int orientation, int level)
 {
     Rectangle *temp = new Rectangle(x, y, width, height);
     this->square = temp;
-    this->siblings = siblings;
     this->orientation=orientation;
-    for (int i = 0; i < siblings.size(); i++)
-    {
-        if (siblings[i]->getRelativeOrientation() == orientation)
-        {
-            continue;
-        }
-        switch (siblings[i]->getRelativeOrientation())
-        {
-        case 1:
-        {
-            nw = siblings[i];
-            break;
-        }
-        case 2:
-        {
-            ne = siblings[i];
-            break;
-        }
-        case 3:
-        {
-            se = siblings[i];
-            break;
-        }
-        case 4:
-        {
-            sw = siblings[i];
-            break;
-        }
-        }
-    }
+    cout<<"orientation: "<<orientation<<endl;
     this->level = level;
+    cout<<"Rectangle x: "<<this->getRekt()->getX()<<endl;
+    cout<<"Rectangle y: "<<this->getRekt()->getY()<<endl;
+    this->hasChildren=false;
+
 }
 
 bool Node::isLeaf()
 {
-    return sw == nullptr;
+    return !hasChildren;
 }
 
 Node *Node::getParent()
 {
     return p;
 }
-vector<Node *> Node::getSiblings()
-{
-    return siblings;
-}
+
 void Node::createChildren()
 {
-    vector<Node *> temp;
-    temp.push_back(this->nw);
-    temp.push_back(this->ne);
-    temp.push_back(this->se);
-    temp.push_back(this->sw);
-
     //double x, double y, Node *parent, vector<Node *> siblings, double width, double height
     double width = square->getWidth();
     double height = square->getHeight();
     double y = square->getY();
     double x = square->getX();
-    this->nw = new Node(x, y, this, temp, width / 2, height / 2, 1, this->level + 1);
-    this->ne = new Node(x + width / 2, y, this, temp, width / 2, height / 2, 2, this->level + 1);
-    this->se = new Node(x + height / 2, y + height / 2, this, temp, width / 2, height / 2, 3, this->level + 1);
-    this->sw = new Node(x, y + height / 2, this, temp, width / 2, height / 2, 4, this->level + 1);
+    this->nw = new Node(x, y, this, width / 2, height / 2, 1, this->level + 1);
+    this->ne = new Node(x + width / 2, y, this, width / 2, height / 2, 2, this->level + 1);
+    this->se = new Node(x + width / 2, y - height / 2, this, width / 2, height / 2, 3, this->level + 1);
+    this->sw = new Node(x, y - height / 2, this, width / 2, height / 2, 4, this->level + 1);
     this->square = nullptr;
+    hasChildren=true;
 }
 
 vector<Node *> Node::getChildren()
@@ -92,6 +58,7 @@ vector<Node *> Node::getChildren()
 
 int Node::getRelativeOrientation()
 {
+    cout<<"HELLO"<<this->orientation<<endl;
     return this->orientation;
 }
 

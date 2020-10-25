@@ -1,30 +1,21 @@
 #include "Forest.h"
 #include "GraphicsMechanics.h"
 
-int main() {
-
+int main()
+{
 
     sf::ContextSettings settings;
     settings.antialiasingLevel = 8;
 
-    sf::RenderWindow window(sf::VideoMode(GraphicsMechanics::WINDOW_WIDTH,GraphicsMechanics::WINDOW_HEIGHT), "QuadTree", sf::Style::Default, settings);
-    /*
-    Rectangle *test=new Rectangle(new Point(-5,-4),5,5);
-    sf::RectangleShape *rect;
-    rect=new sf::RectangleShape();
-    rect->setPosition(0,0);
-    rect->setSize(sf::Vector2f(50,50));
-    rect->setFillColor(sf::Color(100, 250, 50));
-    rect->setOutlineColor(sf::Color(0, 0, 0));
-    test->createSfRectFromCartesian(-10, 10, -10, 10);
-    */
-    // run the program as long as the window is open
-    //window.setFramerateLimit(60);
+    sf::RenderWindow window(sf::VideoMode(GraphicsMechanics::WINDOW_WIDTH, GraphicsMechanics::WINDOW_HEIGHT), "QuadTree", sf::Style::Default, settings);
     window.setVerticalSyncEnabled(true);
-    Forest *forest=new Forest(2,2,-10,-10,10,10);
+    Forest *forest = new Forest(50, 50, -10, -10, 10, 10);
+
     //int row, int col, double minCoordY, double minCoordX, double maxCoordY, double maxCoordX
-                cout << "OO"<<forest->getForest()[forest->index(0, 0)]->getRoot()->getRekt()->getY() << endl;
-                forest->getForest()[0,0]->getRoot()->createChildren();
+    forest->divideNthTimes(-10,10,-10,10,2);
+
+
+    
     while (window.isOpen())
     {
         sf::Event event;
@@ -43,10 +34,10 @@ int main() {
         // background color
         window.clear(sf::Color::White);
         //window.draw(*rect);
-                        cout << "2"<<forest->getForest()[forest->index(0, 0)]->getRoot()->getRekt()->getY() << endl;
+        // cout << "2"<<forest->getForest()[forest->index(0, 0)]->getRoot()->getRekt()->getY() << endl;
 
         forest->draw(&window);
-                        cout << "O3O"<<forest->getForest()[forest->index(0, 0)]->getRoot()->getRekt()->getY() << endl;
+        // cout << "O3O"<<forest->getForest()[forest->index(0, 0)]->getRoot()->getRekt()->getY() << endl;
 
         window.display();
     }

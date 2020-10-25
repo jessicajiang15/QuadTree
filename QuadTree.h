@@ -122,6 +122,8 @@ public:
 
     void draw(sf::RenderWindow*);
     void drawRoot(Node*, sf::RenderWindow*);
+        void divideTreeNTimes(double minX, double maxX, double minY, double maxY, Node *n, int level);
+
 
 };
 
