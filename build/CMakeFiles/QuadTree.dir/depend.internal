@@ -89,6 +89,10 @@ CMakeFiles/QuadTree.dir/Forest.cpp.o
 CMakeFiles/QuadTree.dir/Function.cpp.o
  /Users/Jessica/git/QuadTree/Function.cpp
  /Users/Jessica/git/QuadTree/Function.h
+CMakeFiles/QuadTree.dir/Gaussian.cpp.o
+ /Users/Jessica/git/QuadTree/Function.h
+ /Users/Jessica/git/QuadTree/Gaussian.cpp
+ /Users/Jessica/git/QuadTree/Gaussian.h
 CMakeFiles/QuadTree.dir/GraphicsMechanics.cpp.o
  /Users/Jessica/git/QuadTree/GraphicsMechanics.cpp
  /Users/Jessica/git/QuadTree/GraphicsMechanics.h
@@ -501,6 +505,7 @@ CMakeFiles/QuadTree.dir/Square.cpp.o
 CMakeFiles/QuadTree.dir/main.cpp.o
  /Users/Jessica/git/QuadTree/Forest.h
  /Users/Jessica/git/QuadTree/Function.h
+ /Users/Jessica/git/QuadTree/Gaussian.h
  /Users/Jessica/git/QuadTree/GraphicsMechanics.h
  /Users/Jessica/git/QuadTree/Node.h
  /Users/Jessica/git/QuadTree/Point.h

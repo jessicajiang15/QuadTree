@@ -84,7 +84,7 @@ public:
     /**
      * Constructor that creates a new forest from the parameters.
      **/
-    Forest(int row, int col, double minCoordY, double minCoordX, double maxCoordY, double maxCoordX);
+    Forest(int row, int col, double minCoordX,double maxCoordX, double minCoordY, double maxCoordY);
     /**
      * Retrieves the QuadTree at the given array indicies
      **/
@@ -169,7 +169,7 @@ public:
     int index(int row, int col);
     //void divideTreeNTimes(double minX, double maxX, double minY, double maxY, Node *n, int level);
     void divideNthTimes(double minX, double maxX, double minY, double maxY, int level);
-
+    void divideComp(double tol, Function *F, int level);
     
 };
 #endif

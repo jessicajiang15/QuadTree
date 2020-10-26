@@ -89,6 +89,10 @@ CMakeFiles/QuadTree.dir/Forest.cpp.o: /usr/local/include/SFML/Window/WindowStyle
 CMakeFiles/QuadTree.dir/Function.cpp.o: ../Function.cpp
 CMakeFiles/QuadTree.dir/Function.cpp.o: ../Function.h
 
+CMakeFiles/QuadTree.dir/Gaussian.cpp.o: ../Function.h
+CMakeFiles/QuadTree.dir/Gaussian.cpp.o: ../Gaussian.cpp
+CMakeFiles/QuadTree.dir/Gaussian.cpp.o: ../Gaussian.h
+
 CMakeFiles/QuadTree.dir/GraphicsMechanics.cpp.o: ../GraphicsMechanics.cpp
 CMakeFiles/QuadTree.dir/GraphicsMechanics.cpp.o: ../GraphicsMechanics.h
 CMakeFiles/QuadTree.dir/GraphicsMechanics.cpp.o: ../Point.h
@@ -500,6 +504,7 @@ CMakeFiles/QuadTree.dir/Square.cpp.o: /usr/local/include/SFML/Window/WindowStyle
 
 CMakeFiles/QuadTree.dir/main.cpp.o: ../Forest.h
 CMakeFiles/QuadTree.dir/main.cpp.o: ../Function.h
+CMakeFiles/QuadTree.dir/main.cpp.o: ../Gaussian.h
 CMakeFiles/QuadTree.dir/main.cpp.o: ../GraphicsMechanics.h
 CMakeFiles/QuadTree.dir/main.cpp.o: ../Node.h
 CMakeFiles/QuadTree.dir/main.cpp.o: ../Point.h

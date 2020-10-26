@@ -1,5 +1,6 @@
 #include "Forest.h"
 #include "GraphicsMechanics.h"
+#include "Gaussian.h"
 
 int main()
 {
@@ -9,12 +10,11 @@ int main()
 
     sf::RenderWindow window(sf::VideoMode(GraphicsMechanics::WINDOW_WIDTH, GraphicsMechanics::WINDOW_HEIGHT), "QuadTree", sf::Style::Default, settings);
     window.setVerticalSyncEnabled(true);
-    Forest *forest = new Forest(50, 50, -10, -10, 10, 10);
+    Forest *forest = new Forest(10, 10, -8, 8, -4, 4);
 
     //int row, int col, double minCoordY, double minCoordX, double maxCoordY, double maxCoordX
-    forest->divideNthTimes(-10,10,-10,10,2);
-
-
+    Gaussian *gaussian=new Gaussian(1, 1,1,1,1);
+    forest->divideComp(1,gaussian,5);
     
     while (window.isOpen())
     {

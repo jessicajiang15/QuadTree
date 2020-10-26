@@ -94,3 +94,32 @@ int Node::getLevel()
 {
     return level;
 }
+
+vector<Node*> Node::createFakeChildren()
+{
+    double width = square->getWidth();
+    double height = square->getHeight();
+    double y = square->getY();
+    double x = square->getX();
+    vector<Node*> temp;
+    Node *nwt = new Node(x, y, this, width / 2, height / 2, 1, this->level + 1);
+    Node *net = new Node(x + width / 2, y, this, width / 2, height / 2, 2, this->level + 1);
+    Node *set = new Node(x + width / 2, y - height / 2, this, width / 2, height / 2, 3, this->level + 1);
+    Node *swt = new Node(x, y - height / 2, this, width / 2, height / 2, 4, this->level + 1);
+    temp.push_back(nwt);
+    temp.push_back(net);
+    temp.push_back(set);
+    temp.push_back(swt);
+    return temp;
+}
+
+//    void createChildren(vector<Node*> children);
+void Node::createChildren(vector<Node*> children)
+{
+    this->nw=children[0];
+    this->ne=children[1];
+    this->se=children[2];
+    this->sw=children[3];
+    hasChildren=true;
+    this->square=nullptr;
+}

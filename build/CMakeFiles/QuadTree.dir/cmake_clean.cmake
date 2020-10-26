@@ -1,6 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/QuadTree.dir/Forest.cpp.o"
   "CMakeFiles/QuadTree.dir/Function.cpp.o"
+  "CMakeFiles/QuadTree.dir/Gaussian.cpp.o"
   "CMakeFiles/QuadTree.dir/GraphicsMechanics.cpp.o"
   "CMakeFiles/QuadTree.dir/Node.cpp.o"
   "CMakeFiles/QuadTree.dir/Point.cpp.o"

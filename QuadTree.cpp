@@ -279,3 +279,21 @@ void QuadTree::divideTreeNTimes(double minX, double maxX, double minY, double ma
         divideTreeNTimes(minX, maxX, minY, maxY, children[3], level - 1);
     }
 }
+
+    void QuadTree::divideCompMid(double minX, double maxX, double minY, double maxY, Node *n, Function *F, double tol, int maximumLevel)
+    {
+        vector<Node*> fakeChildren=n->createFakeChildren();
+        if (abs(fakeChildren[0]->getRekt()->approx(F)-n->getRekt()->approx(F))>tol)
+    {
+        n->createChildren(fakeChildren);
+        divide(minX, maxX, minY, maxY, F, fakeChildren[0], tol, maximumLevel);
+        divide(minX, maxX, minY, maxY, F, fakeChildren[1], tol, maximumLevel);
+        divide(minX, maxX, minY, maxY, F, fakeChildren[2], tol, maximumLevel);
+        divide(minX, maxX, minY, maxY, F, fakeChildren[3], tol, maximumLevel);
+    }
+    else
+    {
+        n->getRekt()->createSfRectFromCartesian(minX, maxX, minY, maxY);
+        return;
+    }
+    }

@@ -101,5 +101,7 @@ public:
     Rectangle* getRekt();
 
     int getLevel();
+    vector<Node*> createFakeChildren();
+    void createChildren(vector<Node*> children);
 };
 #endif

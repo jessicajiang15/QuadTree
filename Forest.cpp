@@ -1,6 +1,6 @@
 #include "Forest.h"
 
-Forest::Forest(int rows, int cols, double minCoordY, double minCoordX, double maxCoordY, double maxCoordX)
+Forest::Forest(int rows, int cols, double minCoordX,double maxCoordX, double minCoordY, double maxCoordY)
 {
     forest = new QuadTree *[rows * cols];
     this->rows = rows;
@@ -264,6 +264,17 @@ QuadTree** Forest::getForest()
             for(int c=0;c<cols;c++)
             {
                 forest[index(r, c)]->divideTreeNTimes(minX, maxX, minY, maxY, forest[index(r, c)]->getRoot(),level);
+            }
+        }
+    }
+
+    void Forest::divideComp(double tol, Function *F, int level)
+    {
+        for(int r=0;r<rows;r++)
+        {
+            for(int c=0;c<cols;c++)
+            {
+                forest[index(r, c)]->divideCompMid(minCoordX, maxCoordX, minCoordY, maxCoordY, forest[index(r, c)]->getRoot(),F, tol, level);
             }
         }
     }

@@ -6,6 +6,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_CXX
   "/Users/Jessica/git/QuadTree/Forest.cpp" "/Users/Jessica/git/QuadTree/build/CMakeFiles/QuadTree.dir/Forest.cpp.o"
   "/Users/Jessica/git/QuadTree/Function.cpp" "/Users/Jessica/git/QuadTree/build/CMakeFiles/QuadTree.dir/Function.cpp.o"
+  "/Users/Jessica/git/QuadTree/Gaussian.cpp" "/Users/Jessica/git/QuadTree/build/CMakeFiles/QuadTree.dir/Gaussian.cpp.o"
   "/Users/Jessica/git/QuadTree/GraphicsMechanics.cpp" "/Users/Jessica/git/QuadTree/build/CMakeFiles/QuadTree.dir/GraphicsMechanics.cpp.o"
   "/Users/Jessica/git/QuadTree/Node.cpp" "/Users/Jessica/git/QuadTree/build/CMakeFiles/QuadTree.dir/Node.cpp.o"
   "/Users/Jessica/git/QuadTree/Point.cpp" "/Users/Jessica/git/QuadTree/build/CMakeFiles/QuadTree.dir/Point.cpp.o"

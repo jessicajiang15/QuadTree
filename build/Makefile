@@ -199,6 +199,33 @@ Function.cpp.s:
 	$(MAKE) -f CMakeFiles/QuadTree.dir/build.make CMakeFiles/QuadTree.dir/Function.cpp.s
 .PHONY : Function.cpp.s
 
+Gaussian.o: Gaussian.cpp.o
+
+.PHONY : Gaussian.o
+
+# target to build an object file
+Gaussian.cpp.o:
+	$(MAKE) -f CMakeFiles/QuadTree.dir/build.make CMakeFiles/QuadTree.dir/Gaussian.cpp.o
+.PHONY : Gaussian.cpp.o
+
+Gaussian.i: Gaussian.cpp.i
+
+.PHONY : Gaussian.i
+
+# target to preprocess a source file
+Gaussian.cpp.i:
+	$(MAKE) -f CMakeFiles/QuadTree.dir/build.make CMakeFiles/QuadTree.dir/Gaussian.cpp.i
+.PHONY : Gaussian.cpp.i
+
+Gaussian.s: Gaussian.cpp.s
+
+.PHONY : Gaussian.s
+
+# target to generate assembly for a file
+Gaussian.cpp.s:
+	$(MAKE) -f CMakeFiles/QuadTree.dir/build.make CMakeFiles/QuadTree.dir/Gaussian.cpp.s
+.PHONY : Gaussian.cpp.s
+
 GraphicsMechanics.o: GraphicsMechanics.cpp.o
 
 .PHONY : GraphicsMechanics.o
@@ -432,6 +459,9 @@ help:
 	@echo "... Function.o"
 	@echo "... Function.i"
 	@echo "... Function.s"
+	@echo "... Gaussian.o"
+	@echo "... Gaussian.i"
+	@echo "... Gaussian.s"
 	@echo "... GraphicsMechanics.o"
 	@echo "... GraphicsMechanics.i"
 	@echo "... GraphicsMechanics.s"
