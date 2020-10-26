@@ -10,11 +10,11 @@ int main()
 
     sf::RenderWindow window(sf::VideoMode(GraphicsMechanics::WINDOW_WIDTH, GraphicsMechanics::WINDOW_HEIGHT), "QuadTree", sf::Style::Default, settings);
     window.setVerticalSyncEnabled(true);
-    Forest *forest = new Forest(10, 10, -8, 8, -4, 4);
+    Forest *forest = new Forest(20, 20, -8, 8, -4, 4);
 
     //int row, int col, double minCoordY, double minCoordX, double maxCoordY, double maxCoordX
-    Gaussian *gaussian=new Gaussian(1, 1,1,1,1);
-    forest->divideComp(1,gaussian,5);
+   Gaussian *gaussian=new Gaussian(1, 1,1,1,1);
+    forest->divideComp(0.001,gaussian,3);
     
     while (window.isOpen())
     {

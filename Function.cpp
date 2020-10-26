@@ -15,6 +15,11 @@ Function::Function(std::string function)
         }
     }
 }
+
+Function::Function()
+{
+    
+}
 double Function::integrate(double xi, double xf, double yi, double yf)
 {
     return 0;

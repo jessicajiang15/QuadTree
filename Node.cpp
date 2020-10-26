@@ -6,6 +6,7 @@ Node::Node(Rectangle *s)
     this->square = s;
     Node::allNullESq();
     level = 0;
+        this->hasChildren=false;
 }
 
 Node::Node(double x, double y, Node *parent, double width, double height, int orientation, int level)
