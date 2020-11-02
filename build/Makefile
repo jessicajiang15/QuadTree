@@ -145,6 +145,33 @@ QuadTree/fast:
 	$(MAKE) -f CMakeFiles/QuadTree.dir/build.make CMakeFiles/QuadTree.dir/build
 .PHONY : QuadTree/fast
 
+CompTwoFunc.o: CompTwoFunc.cpp.o
+
+.PHONY : CompTwoFunc.o
+
+# target to build an object file
+CompTwoFunc.cpp.o:
+	$(MAKE) -f CMakeFiles/QuadTree.dir/build.make CMakeFiles/QuadTree.dir/CompTwoFunc.cpp.o
+.PHONY : CompTwoFunc.cpp.o
+
+CompTwoFunc.i: CompTwoFunc.cpp.i
+
+.PHONY : CompTwoFunc.i
+
+# target to preprocess a source file
+CompTwoFunc.cpp.i:
+	$(MAKE) -f CMakeFiles/QuadTree.dir/build.make CMakeFiles/QuadTree.dir/CompTwoFunc.cpp.i
+.PHONY : CompTwoFunc.cpp.i
+
+CompTwoFunc.s: CompTwoFunc.cpp.s
+
+.PHONY : CompTwoFunc.s
+
+# target to generate assembly for a file
+CompTwoFunc.cpp.s:
+	$(MAKE) -f CMakeFiles/QuadTree.dir/build.make CMakeFiles/QuadTree.dir/CompTwoFunc.cpp.s
+.PHONY : CompTwoFunc.cpp.s
+
 Forest.o: Forest.cpp.o
 
 .PHONY : Forest.o
@@ -453,6 +480,9 @@ help:
 	@echo "... package_source"
 	@echo "... package"
 	@echo "... QuadTree"
+	@echo "... CompTwoFunc.o"
+	@echo "... CompTwoFunc.i"
+	@echo "... CompTwoFunc.s"
 	@echo "... Forest.o"
 	@echo "... Forest.i"
 	@echo "... Forest.s"

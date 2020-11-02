@@ -183,6 +183,7 @@ twoVects *Forest::getAllBoxes(Function *F, double cutoff)
         for (int c = 0; c < cols; c++)
         {
             twoVects *t = this->forest[index(r, c)]->getAllBoxes(this->forest[index(r, c)]->getRoot(), F, cutoff);
+            //std::cout<<"temp size: "<<t->v1.size()<<endl;
             temp->append(t);
         }
     }
@@ -204,6 +205,7 @@ void Forest::appendOutboxesToFile(ofstream *file, double cutoff, Function *F)
     *file << "{";
     twoVects *temp = getAllBoxes(F, cutoff);
 
+
     for (int i = 0; i < temp->v1.size(); i++)
     {
         if (i == temp->v1.size() - 1)
@@ -212,6 +214,8 @@ void Forest::appendOutboxesToFile(ofstream *file, double cutoff, Function *F)
         }
         else
         {
+            //std::cout<<"hello"<<std::endl;
+            //std::cout<<temp->v1[i]->toStringCoord()<<std::endl;
             *file << temp->v1[i]->toStringCoord() + ", ";
         }
     }
@@ -223,6 +227,8 @@ void Forest::appendInboxesToFile(ofstream *file, double cutoff, Function *F)
 {
     *file << "{";
     twoVects *temp = getAllBoxes(F, cutoff);
+    std::cout<<"v1 size: "<<temp->v1.size()<<std::endl;
+        std::cout<<"v2 size: "<<temp->v2.size()<<std::endl;
 
     for (int i = 0; i < temp->v2.size(); i++)
     {
@@ -277,4 +283,50 @@ QuadTree** Forest::getForest()
                 forest[index(r, c)]->divideCompMid(minCoordX, maxCoordX, minCoordY, maxCoordY, forest[index(r, c)]->getRoot(),F, tol, level);
             }
         }
+    }
+    //v2 inboxes
+    //v1 outboxes
+    //file2 outboxes
+    //file inboxes
+    /**
+     * first file is inboxes
+     * second file is outboxes
+     **/
+    void Forest::appendAllBoxesToTwoFiles(ofstream *file, ofstream *file2, double cutoff, Function *F)
+    {
+        *file << "{";
+    twoVects *temp = getAllBoxes(F, cutoff);
+    std::cout<<"v1: "<<temp->v1.size()<<endl;
+        std::cout<<"v2: "<<temp->v2.size()<<endl;
+
+    for (int i = 0; i < temp->v2.size(); i++)
+    {
+        if (i == temp->v2.size() - 1)
+        {
+            *file << temp->v2[i]->toStringCoord();
+        }
+        else
+        {
+            *file << temp->v2[i]->toStringCoord() + ", ";
+        }
+    }
+    *file << "}";
+
+    *file2 << "{";
+
+    for (int i = 0; i < temp->v1.size(); i++)
+    {
+        if (i == temp->v1.size() - 1)
+        {
+            *file2 << temp->v1[i]->toStringCoord();
+        }
+        else
+        {
+            //std::cout<<"hello"<<std::endl;
+            //std::cout<<temp->v1[i]->toStringCoord()<<std::endl;
+            *file2 << temp->v1[i]->toStringCoord() + ", ";
+        }
+    }
+    *file2 << "}";
+    delete temp;
     }

@@ -4,6 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "/Users/Jessica/git/QuadTree/CompTwoFunc.cpp" "/Users/Jessica/git/QuadTree/build/CMakeFiles/QuadTree.dir/CompTwoFunc.cpp.o"
   "/Users/Jessica/git/QuadTree/Forest.cpp" "/Users/Jessica/git/QuadTree/build/CMakeFiles/QuadTree.dir/Forest.cpp.o"
   "/Users/Jessica/git/QuadTree/Function.cpp" "/Users/Jessica/git/QuadTree/build/CMakeFiles/QuadTree.dir/Function.cpp.o"
   "/Users/Jessica/git/QuadTree/Gaussian.cpp" "/Users/Jessica/git/QuadTree/build/CMakeFiles/QuadTree.dir/Gaussian.cpp.o"

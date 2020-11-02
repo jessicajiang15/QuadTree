@@ -31,8 +31,7 @@ double Function::value(double x, double y)
     return 0;
 }
 
-
-    double Function::derivative(double x, double y)
+   double Function::derivative(double x, double y)
     {
         return 0;
     }

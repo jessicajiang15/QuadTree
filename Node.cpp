@@ -59,7 +59,6 @@ vector<Node *> Node::getChildren()
 
 int Node::getRelativeOrientation()
 {
-    cout<<"HELLO"<<this->orientation<<endl;
     return this->orientation;
 }
 

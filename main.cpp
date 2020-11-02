@@ -1,11 +1,14 @@
 #include "Forest.h"
 #include "GraphicsMechanics.h"
 #include "Gaussian.h"
+#include "CompTwoFunc.h"
 
 int main()
 {
     ofstream file;
+    ofstream file2;
     file.open("example.txt");
+    file2.open("example2.txt");
     sf::ContextSettings settings;
     settings.antialiasingLevel = 8;
 
@@ -14,9 +17,15 @@ int main()
     Forest *forest = new Forest(20, 20, -8, 8, -4, 4);
 
     //int row, int col, double minCoordY, double minCoordX, double maxCoordY, double maxCoordX
-   Gaussian *gaussian=new Gaussian(1, 1,1,1,1);
+    //Gaussian *gaussian=new Gaussian(-1,1,1,1,1);
+    Gaussian *final=new Gaussian(0.5,0.25,-M_PI/2);
+    Gaussian *initial=new Gaussian(0,0,0.5,1);
+    CompTwoFunc *gaussian=new CompTwoFunc(initial, final);
     forest->divideComp(0.001,gaussian,3);
-    forest->appendInboxesToFile(&file,0.1,gaussian);
+   //forest->appendInboxesToFile(&file,0.1,gaussian);
+    //forest->appendOutboxesToFile(&file2,0.1,gaussian);
+    forest->appendAllBoxesToTwoFiles(&file, &file2,0.1,gaussian);
+
     while (window.isOpen())
     {
         sf::Event event;
@@ -45,6 +54,7 @@ int main()
 
     }
     file.close();
+    file2.close();
     /*
     ofstream file;
     file.open("example.txt");

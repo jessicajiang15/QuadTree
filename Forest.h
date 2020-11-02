@@ -171,6 +171,9 @@ public:
     //void divideTreeNTimes(double minX, double maxX, double minY, double maxY, Node *n, int level);
     void divideNthTimes(double minX, double maxX, double minY, double maxY, int level);
     void divideComp(double tol, Function *F, int level);
+    void appendAllBoxesToTwoFiles(ofstream *file, ofstream *file2, double cutoff, Function *F);
+
+
     
 };
 #endif

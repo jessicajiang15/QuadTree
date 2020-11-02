@@ -77,8 +77,6 @@ void Rectangle::draw(sf::RenderWindow *window)
 }
 std::string Rectangle::toStringCoord()
 {
-    std::cout<<"hi"<<std::endl;
-    std::cout<<"("+std::to_string(getCenterX())+", "+std::to_string(getCenterY())+")"<<std::endl;
     return "("+std::to_string(getCenterX())+", "+std::to_string(getCenterY())+")";
 }
 
