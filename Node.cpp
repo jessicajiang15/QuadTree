@@ -14,10 +14,10 @@ Node::Node(double x, double y, Node *parent, double width, double height, int or
     Rectangle *temp = new Rectangle(x, y, width, height);
     this->square = temp;
     this->orientation=orientation;
-    cout<<"orientation: "<<orientation<<endl;
+    //cout<<"orientation: "<<orientation<<endl;
     this->level = level;
-    cout<<"Rectangle x: "<<this->getRekt()->getX()<<endl;
-    cout<<"Rectangle y: "<<this->getRekt()->getY()<<endl;
+    //cout<<"Rectangle x: "<<this->getRekt()->getX()<<endl;
+    //cout<<"Rectangle y: "<<this->getRekt()->getY()<<endl;
     this->hasChildren=false;
 
 }

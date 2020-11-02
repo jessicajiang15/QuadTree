@@ -185,8 +185,7 @@ vector<Rectangle *> QuadTree::getInBoxes(Node *n, Function *F, double cutoff)
     vector<Node *> children = n->getChildren();
     vector<Rectangle *> r1 = getInBoxes(children[0], F, cutoff);
     vector<Rectangle *> r2 = getInBoxes(children[1], F, cutoff);
-    vector<Rectangle *> r
-    3 = getInBoxes(children[2], F, cutoff);
+    vector<Rectangle *> r3 = getInBoxes(children[2], F, cutoff);
     vector<Rectangle *> r4 = getInBoxes(children[3], F, cutoff);
     temp.insert(temp.end(), r1.begin(), r1.end());
     temp.insert(temp.end(), r2.begin(), r2.end());

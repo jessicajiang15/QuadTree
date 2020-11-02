@@ -16,7 +16,7 @@ int main()
     //int row, int col, double minCoordY, double minCoordX, double maxCoordY, double maxCoordX
    Gaussian *gaussian=new Gaussian(1, 1,1,1,1);
     forest->divideComp(0.001,gaussian,3);
-    forest->appendOutboxesToFile(&file,0.1,gaussian);
+    forest->appendInboxesToFile(&file,0.1,gaussian);
     while (window.isOpen())
     {
         sf::Event event;

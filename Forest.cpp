@@ -23,9 +23,9 @@ Forest::Forest(int rows, int cols, double minCoordX,double maxCoordX, double min
             Rectangle *temp = new Rectangle(Forest::getCoordX(c), Forest::getCoordY(r), width, height);
             
             forest[index(r, c)] = new QuadTree(temp, minCoordX, maxCoordX, minCoordY, maxCoordY);
-            cout<<"R: "<<r<<endl;
-            cout<<"C: "<<c<<endl;
-            cout<<"This is what forest[0,0] is: "<<forest[index(0, 0)]->getRoot()->getRekt()->getY()<<endl;
+            //cout<<"R: "<<r<<endl;
+            //cout<<"C: "<<c<<endl;
+            //cout<<"This is what forest[0,0] is: "<<forest[index(0, 0)]->getRoot()->getRekt()->getY()<<endl;
 
         }
     }

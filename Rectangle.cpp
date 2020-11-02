@@ -77,6 +77,7 @@ void Rectangle::draw(sf::RenderWindow *window)
 }
 std::string Rectangle::toStringCoord()
 {
+    //std::cout<<"("+std::to_string(getCenterX())+", "+std::to_string(getCenterY())+")"<<std::endl;
     return "("+std::to_string(getCenterX())+", "+std::to_string(getCenterY())+")";
 }
 
@@ -84,8 +85,8 @@ void Rectangle::createSfRectFromCartesian(double minX, double maxX, double minY,
 {
     Point *temp=GraphicsMechanics::convertFromCartesian(minX, maxX, minY, maxY, this->point);
     rect=new sf::RectangleShape();
-    std::cout<<"screen x: "<<temp->getX()<<std::endl;
-    std::cout<<"screen y: "<<temp->getY()<<std::endl;
+    //std::cout<<"screen x: "<<temp->getX()<<std::endl;
+    //std::cout<<"screen y: "<<temp->getY()<<std::endl;
     rect->setPosition(temp->getX(),temp->getY());
     
     rect->setSize(sf::Vector2f(width*GraphicsMechanics::getXScale(minX, maxX),height*GraphicsMechanics::getYScale(minY, maxY)));
