@@ -29,7 +29,7 @@ Forest::Forest(int rows, int cols, double minCoordX,double maxCoordX, double min
 
         }
     }
-        cout<<"end"<<forest[index(0, 0)]->getRoot()->getRekt()->getY()<<endl;
+        //cout<<"end"<<forest[index(0, 0)]->getRoot()->getRekt()->getY()<<endl;
 }
 
 int Forest::index(int row, int col)
@@ -63,8 +63,8 @@ double Forest::getCoordX(int c)
 double Forest::getCoordY(int r)
 {
     int totalHeight = maxCoordY - minCoordY;
-    if(r==0)
-    cout<<"yoi: " <<(totalHeight - r * height) + minCoordY<<endl;
+    //if(r==0)
+    //cout<<"yoi: " <<(totalHeight - r * height) + minCoordY<<endl;
     return ((totalHeight - r * height)) + minCoordY;
 }
 

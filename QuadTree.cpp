@@ -203,7 +203,7 @@ twoVects *QuadTree::getAllBoxes(Node *n, Function *F, double cutoff)
 
     if (n->isLeaf())
     {
-        double integral = n->integrate(F);
+        double integral = n->getRekt()->approx(F);
         if (integral != -1)
         {
             if (integral < -scaleCutoff(cutoff,n->getLevel()))
