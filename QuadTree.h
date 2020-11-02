@@ -13,6 +13,8 @@ private:
  * The root of the tree.
  * */
     Node *root;
+    double scaleCutoff(double cutoff, int level);
+
 
 public:
 /**

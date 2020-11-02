@@ -199,43 +199,43 @@ bool Forest::add(QuadTree *t, int r, int c)
     return true;
 }
 
-void Forest::appendOutboxesToFile(ofstream file, double cutoff, Function *F)
+void Forest::appendOutboxesToFile(ofstream *file, double cutoff, Function *F)
 {
-    file << "{";
+    *file << "{";
     twoVects *temp = getAllBoxes(F, cutoff);
 
     for (int i = 0; i < temp->v1.size(); i++)
     {
         if (i == temp->v1.size() - 1)
         {
-            file << temp->v1[i];
+            *file << temp->v1[i];
         }
         else
         {
-            file << temp->v1[i]->toStringCoord() + ", ";
+            *file << temp->v1[i]->toStringCoord() + ", ";
         }
     }
-    file << "}";
+    *file << "}";
     delete temp;
 }
 
-void Forest::appendInboxesToFile(ofstream file, double cutoff, Function *F)
+void Forest::appendInboxesToFile(ofstream *file, double cutoff, Function *F)
 {
-    file << "{";
+    *file << "{";
     twoVects *temp = getAllBoxes(F, cutoff);
 
     for (int i = 0; i < temp->v2.size(); i++)
     {
         if (i == temp->v2.size() - 1)
         {
-            file << temp->v2[i];
+            *file << temp->v2[i];
         }
         else
         {
-            file << temp->v2[i]->toStringCoord() + ", ";
+            *file << temp->v2[i]->toStringCoord() + ", ";
         }
     }
-    file << "}";
+    *file << "}";
     delete temp;
 }
 

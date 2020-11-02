@@ -67,6 +67,7 @@ private:
      **/
     double getCoordX(int c);
      int maximumLevel;
+    double scaleCutoff(double cutoff, int level);
 
 public:
 /**
@@ -158,8 +159,8 @@ public:
      * @return a twoVects object containing vectors of inboxes and outboxes
      **/
     twoVects *getAllBoxes(Function *F, double cutoff);
-    void appendOutboxesToFile(ofstream file, double cutoff, Function *F);
-    void appendInboxesToFile(ofstream file, double cutoff, Function *F);
+    void appendOutboxesToFile(ofstream *file, double cutoff, Function *F);
+    void appendInboxesToFile(ofstream *file, double cutoff, Function *F);
     void draw(sf::RenderWindow*);
     QuadTree** getForest();
         /**

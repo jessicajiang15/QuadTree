@@ -149,7 +149,7 @@ vector<Rectangle *> QuadTree::getOutBoxes(Node *n, Function *F, double cutoff)
         double integral = n->integrate(F);
         if (integral != -1)
         {
-            if (integral > cutoff)
+            if (integral > scaleCutoff(cutoff,n->getLevel()))
             {
                 temp.push_back(n->getRekt());
                 return temp;
@@ -175,7 +175,7 @@ vector<Rectangle *> QuadTree::getInBoxes(Node *n, Function *F, double cutoff)
         double integral = n->integrate(F);
         if (integral != -1)
         {
-            if (integral < -cutoff)
+            if (integral < -scaleCutoff(cutoff,n->getLevel()))
             {
                 temp.push_back(n->getRekt());
                 return temp;
@@ -185,7 +185,8 @@ vector<Rectangle *> QuadTree::getInBoxes(Node *n, Function *F, double cutoff)
     vector<Node *> children = n->getChildren();
     vector<Rectangle *> r1 = getInBoxes(children[0], F, cutoff);
     vector<Rectangle *> r2 = getInBoxes(children[1], F, cutoff);
-    vector<Rectangle *> r3 = getInBoxes(children[2], F, cutoff);
+    vector<Rectangle *> r
+    3 = getInBoxes(children[2], F, cutoff);
     vector<Rectangle *> r4 = getInBoxes(children[3], F, cutoff);
     temp.insert(temp.end(), r1.begin(), r1.end());
     temp.insert(temp.end(), r2.begin(), r2.end());
@@ -206,7 +207,7 @@ twoVects *QuadTree::getAllBoxes(Node *n, Function *F, double cutoff)
         double integral = n->integrate(F);
         if (integral != -1)
         {
-            if (integral < -cutoff)
+            if (integral < -scaleCutoff(cutoff,n->getLevel()))
             {
                 //inboxes
                 temp2.push_back(n->getRekt());
@@ -297,3 +298,9 @@ void QuadTree::divideTreeNTimes(double minX, double maxX, double minY, double ma
         return;
     }
     }
+
+
+double QuadTree::scaleCutoff(double cutoff, int level)
+{
+    return cutoff/pow(4,level);
+}
