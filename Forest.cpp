@@ -202,7 +202,7 @@ bool Forest::add(QuadTree *t, int r, int c)
 
 void Forest::appendOutboxesToFile(ofstream *file, double cutoff, Function *F)
 {
-    *file << "{";
+   // *file << "{";
     twoVects *temp = getAllBoxes(F, cutoff);
 
 
@@ -217,15 +217,16 @@ void Forest::appendOutboxesToFile(ofstream *file, double cutoff, Function *F)
             //std::cout<<"hello"<<std::endl;
             //std::cout<<temp->v1[i]->toStringCoord()<<std::endl;
             *file << temp->v1[i]->toStringCoord() + ", ";
+            *file<<"\n";
         }
     }
-    *file << "}";
+   // *file << "}";
     delete temp;
 }
 
 void Forest::appendInboxesToFile(ofstream *file, double cutoff, Function *F)
 {
-    *file << "{";
+    //*file << "{";
     twoVects *temp = getAllBoxes(F, cutoff);
     std::cout<<"v1 size: "<<temp->v1.size()<<std::endl;
         std::cout<<"v2 size: "<<temp->v2.size()<<std::endl;
@@ -238,10 +239,11 @@ void Forest::appendInboxesToFile(ofstream *file, double cutoff, Function *F)
         }
         else
         {
-            *file << temp->v2[i]->toStringCoord() + ", ";
+            *file << temp->v2[i]->toStringCoord();
+            *file<<"\n";
         }
     }
-    *file << "}";
+    //*file << "}";
     delete temp;
 }
 
@@ -294,7 +296,7 @@ QuadTree** Forest::getForest()
      **/
     void Forest::appendAllBoxesToTwoFiles(ofstream *file, ofstream *file2, double cutoff, Function *F)
     {
-        *file << "{";
+       // *file << "{";
     twoVects *temp = getAllBoxes(F, cutoff);
     std::cout<<"v1: "<<temp->v1.size()<<endl;
         std::cout<<"v2: "<<temp->v2.size()<<endl;
@@ -307,12 +309,13 @@ QuadTree** Forest::getForest()
         }
         else
         {
-            *file << temp->v2[i]->toStringCoord() + ", ";
+            *file << temp->v2[i]->toStringCoord();
+            *file<<"\n";
         }
     }
-    *file << "}";
+    //*file << "}";
 
-    *file2 << "{";
+    //*file2 << "{";
 
     for (int i = 0; i < temp->v1.size(); i++)
     {
@@ -324,9 +327,10 @@ QuadTree** Forest::getForest()
         {
             //std::cout<<"hello"<<std::endl;
             //std::cout<<temp->v1[i]->toStringCoord()<<std::endl;
-            *file2 << temp->v1[i]->toStringCoord() + ", ";
+            *file2 << temp->v1[i]->toStringCoord();
+            *file2<<"\n";
         }
     }
-    *file2 << "}";
+    //*file2 << "}";
     delete temp;
     }

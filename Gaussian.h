@@ -21,7 +21,7 @@ class Gaussian : public Function
 
     public:
     Gaussian(double a, double b, double c, double d, double e);
-    Gaussian(double x1, double y2, double rho, int type);
+    Gaussian(double a, double x1, double y2, double rho, int type);
     Gaussian(double rho, double p, double theta);
     double value(double x, double y) override;
 

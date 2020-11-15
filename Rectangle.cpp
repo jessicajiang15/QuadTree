@@ -77,7 +77,7 @@ void Rectangle::draw(sf::RenderWindow *window)
 }
 std::string Rectangle::toStringCoord()
 {
-    return "("+std::to_string(getCenterX())+", "+std::to_string(getCenterY())+")";
+    return std::to_string(getCenterX())+"\t"+std::to_string(getCenterY());
 }
 
 void Rectangle::createSfRectFromCartesian(double minX, double maxX, double minY, double maxY)
