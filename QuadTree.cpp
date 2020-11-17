@@ -199,11 +199,13 @@ twoVects *QuadTree::getAllBoxes(Node *n, Function *F, double cutoff)
 {
     vector<Rectangle *> temp1;
     vector<Rectangle *> temp2;
+    vector<double> temp3;
     twoVects *temp = new twoVects(temp1, temp2);
 
     if (n->isLeaf())
     {
         double integral = n->getRekt()->approx(F);
+        temp3.push_back(integral);
         if (integral != -1)
         {
             if (integral < -scaleCutoff(cutoff,n->getLevel()))
@@ -302,4 +304,31 @@ void QuadTree::divideTreeNTimes(double minX, double maxX, double minY, double ma
 double QuadTree::scaleCutoff(double cutoff, int level)
 {
     return cutoff/pow(4,level);
+}
+
+vector<double> QuadTree::getDifArray(Node *n, Function *F, double cutoff)
+{
+    vector<double> temp;
+    if(n->isLeaf())
+    {
+        double integral=n->getRekt()->approx(F);
+        cout<<integral<<endl;
+        if(abs(integral)>abs(scaleCutoff(cutoff,n->getLevel())))
+        temp.push_back(integral);
+        return temp;
+    }
+    else
+    {
+        vector<Node*> children=n->getChildren();
+        vector<double> r1=getDifArray(children[0],F, cutoff);
+        vector<double> r2=getDifArray(children[1],F, cutoff);
+        vector<double> r3=getDifArray(children[2],F, cutoff);
+        vector<double> r4=getDifArray(children[3],F, cutoff);
+    temp.insert(temp.end(), r1.begin(), r1.end());
+    temp.insert(temp.end(), r2.begin(), r2.end());
+    temp.insert(temp.end(), r3.begin(), r3.end());
+    temp.insert(temp.end(), r4.begin(), r4.end());
+    }
+    return temp;
+    
 }

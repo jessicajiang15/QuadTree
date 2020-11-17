@@ -16,6 +16,7 @@ CMakeFiles/QuadTree.dir/Forest.cpp.o
  /Users/Jessica/git/QuadTree/Rectangle.h
  /Users/Jessica/git/QuadTree/Square.h
  /Users/Jessica/git/QuadTree/twoVects.h
+ /Users/Jessica/git/QuadTree/twoVectsDoub.h
  /usr/local/include/SFML/Config.hpp
  /usr/local/include/SFML/Graphics.hpp
  /usr/local/include/SFML/Graphics/BlendMode.hpp
@@ -270,6 +271,7 @@ CMakeFiles/QuadTree.dir/QuadTree.cpp.o
  /Users/Jessica/git/QuadTree/Rectangle.h
  /Users/Jessica/git/QuadTree/Square.h
  /Users/Jessica/git/QuadTree/twoVects.h
+ /Users/Jessica/git/QuadTree/twoVectsDoub.h
  /usr/local/include/SFML/Config.hpp
  /usr/local/include/SFML/Graphics.hpp
  /usr/local/include/SFML/Graphics/BlendMode.hpp
@@ -519,6 +521,7 @@ CMakeFiles/QuadTree.dir/main.cpp.o
  /Users/Jessica/git/QuadTree/Square.h
  /Users/Jessica/git/QuadTree/main.cpp
  /Users/Jessica/git/QuadTree/twoVects.h
+ /Users/Jessica/git/QuadTree/twoVectsDoub.h
  /usr/local/include/SFML/Config.hpp
  /usr/local/include/SFML/Graphics.hpp
  /usr/local/include/SFML/Graphics/BlendMode.hpp
@@ -674,3 +677,6 @@ CMakeFiles/QuadTree.dir/twoVects.cpp.o
  /usr/local/include/SFML/Window/Window.hpp
  /usr/local/include/SFML/Window/WindowHandle.hpp
  /usr/local/include/SFML/Window/WindowStyle.hpp
+CMakeFiles/QuadTree.dir/twoVectsDoub.cpp.o
+ /Users/Jessica/git/QuadTree/twoVectsDoub.cpp
+ /Users/Jessica/git/QuadTree/twoVectsDoub.h

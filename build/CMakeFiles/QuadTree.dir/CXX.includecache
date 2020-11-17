@@ -6,6 +6,16 @@
 
 #IncludeRegexTransform: 
 
+/Users/Jessica/git/QuadTree/Forest.cpp
+Forest.h
+/Users/Jessica/git/QuadTree/Forest.h
+
+/Users/Jessica/git/QuadTree/Forest.h
+QuadTree.h
+/Users/Jessica/git/QuadTree/QuadTree.h
+fstream
+-
+
 /Users/Jessica/git/QuadTree/Function.h
 string
 -
@@ -20,13 +30,25 @@ iostream
 Point.h
 /Users/Jessica/git/QuadTree/Point.h
 
+/Users/Jessica/git/QuadTree/Node.h
+Square.h
+/Users/Jessica/git/QuadTree/Square.h
+
 /Users/Jessica/git/QuadTree/Point.h
 math.h
 /Users/Jessica/git/QuadTree/math.h
 
-/Users/Jessica/git/QuadTree/Rectangle.cpp
-Square.h
-/Users/Jessica/git/QuadTree/Square.h
+/Users/Jessica/git/QuadTree/QuadTree.h
+Node.h
+/Users/Jessica/git/QuadTree/Node.h
+unordered_map
+-
+twoVects.h
+/Users/Jessica/git/QuadTree/twoVects.h
+math.h
+-
+twoVectsDoub.h
+/Users/Jessica/git/QuadTree/twoVectsDoub.h
 
 /Users/Jessica/git/QuadTree/Rectangle.h
 Point.h
@@ -45,6 +67,16 @@ GraphicsMechanics.h
 /Users/Jessica/git/QuadTree/Square.h
 Rectangle.h
 /Users/Jessica/git/QuadTree/Rectangle.h
+
+/Users/Jessica/git/QuadTree/twoVects.h
+vector
+-
+Rectangle.h
+/Users/Jessica/git/QuadTree/Rectangle.h
+
+/Users/Jessica/git/QuadTree/twoVectsDoub.h
+vector
+-
 
 /usr/local/include/SFML/Config.hpp
 TargetConditionals.h

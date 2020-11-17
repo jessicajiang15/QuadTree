@@ -177,7 +177,9 @@ twoVects *Forest::getAllBoxes(Function *F, double cutoff)
 {
     vector<Rectangle *> v1;
     vector<Rectangle *> v2;
+   // vector<double> v3;
     twoVects *temp = new twoVects(v1, v2);
+    //temp->v3=v3;
     for (int r = 0; r < rows; r++)
     {
         for (int c = 0; c < cols; c++)
@@ -185,6 +187,7 @@ twoVects *Forest::getAllBoxes(Function *F, double cutoff)
             twoVects *t = this->forest[index(r, c)]->getAllBoxes(this->forest[index(r, c)]->getRoot(), F, cutoff);
             //std::cout<<"temp size: "<<t->v1.size()<<endl;
             temp->append(t);
+   // temp->v3.insert(t->v3.end(), t->v3.begin(), t->v3.end());
         }
     }
     return temp;
@@ -299,7 +302,7 @@ QuadTree** Forest::getForest()
        // *file << "{";
     twoVects *temp = getAllBoxes(F, cutoff);
     std::cout<<"v1: "<<temp->v1.size()<<endl;
-        std::cout<<"v2: "<<temp->v2.size()<<endl;
+    std::cout<<"v2: "<<temp->v2.size()<<endl;
 
     for (int i = 0; i < temp->v2.size(); i++)
     {
@@ -333,4 +336,69 @@ QuadTree** Forest::getForest()
     }
     //*file2 << "}";
     delete temp;
+    }
+
+ vector<double> Forest::getDifArray(Function *F, double cutoff)
+ {
+     vector<double> temp;
+     for(int r=0;r<rows;r++)
+     {
+         for(int c=0;c<cols;c++)
+         {
+             vector<double> temp2;
+             temp2=forest[index(r, c)]->getDifArray(forest[index(r, c)]->getRoot(),F, cutoff);
+             temp.insert(temp.end(), temp2.begin(), temp2.end());
+         }
+     }
+     return temp;
+ }
+
+
+    void Forest::appendDiffarrayToFile(ofstream *file, Function *F, double cutoff)
+    {
+        vector<double> difArray=getDifArray(F, cutoff);
+        for(int i=0;i<difArray.size();i++)
+        {
+            *file<<difArray[i];
+            *file<<"\n";
+        }
+    }
+
+    twoVectsDoub *Forest::getSupplyDemandAmt(Function *F, double cutoff)
+    {
+        vector<double> temp=getDifArray(F, cutoff);
+        //d1 supply, d2 demand
+        vector<double> d1;
+        vector<double> d2;
+        for(int i=0;i<temp.size();i++)
+        {
+            if(temp[i]>0)
+            {
+                d1.push_back(temp[i]);
+            }
+            else
+            {
+                d2.push_back(temp[i]);
+            }
+            
+        }
+        twoVectsDoub *temp1=new twoVectsDoub(d1, d2);
+        return temp1;
+    }
+
+        void Forest::appendSuppDemandAmt(ofstream *file, ofstream *file2, Function *F, double cutoff)
+    {
+        twoVectsDoub *temp=getSupplyDemandAmt(F, cutoff);
+                    cout<<"size temp: "<<temp->v1.size()<<endl;
+            cout<<"size temp: "<<temp->v2.size()<<endl;
+        for(int i=0;i<temp->v1.size();i++)
+        {
+            *file<<temp->v1[i];
+            *file<<"\n";
+        }
+        for(int i=0;i<temp->v2.size();i++)
+        {
+            *file2<<temp->v2[i];
+            *file2<<"\n";
+        }
     }

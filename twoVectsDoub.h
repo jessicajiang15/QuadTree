@@ -1,7 +1,6 @@
-#ifndef _TWOVECTS_H
-#define _TWOVECTS_H 1
+#ifndef _TWOVECTSDOUB_H
+#define _TWOVECTSDOUB_H 1
 #include <vector>
-#include "Rectangle.h"
 //twovects
 
 /**
@@ -9,47 +8,47 @@
  * and inboxes in one function so that the for loop+tree traversal does not need
  * to run twice for each of inboxes and outboxes.
  **/
-class twoVects{
+class twoVectsDoub{
 
     public:
     /**
      * Constructor.
      **/
-    twoVects(std::vector<Rectangle*> v1, std::vector<Rectangle*> v2);
+    twoVectsDoub(std::vector<double> v1, std::vector<double> v2);
     /**
      * The first vector.
      **/
     //outboxes
 
-    std::vector<Rectangle*> v1;
+    std::vector<double> v1;
     /**
      * The second vector.
      **/
     //inboxes
-    std::vector<Rectangle*> v2;
+    std::vector<double> v2;
 
     //std::vector<double> v3;
     /**
      * Append to the first vector.
      **/
-    void appendToV1(std::vector<Rectangle*> t);
+    void appendToV1(std::vector<double> t);
     /**
      * Append to the second vector.
      **/
-    void appendToV2(std::vector<Rectangle*> t);
+    void appendToV2(std::vector<double> t);
     /**
      * Setter
      **/
-    void setV1(std::vector<Rectangle*> t);
+    void setV1(std::vector<double> t);
     /**
      * Setter
      **/
-    void setV2(std::vector<Rectangle*> t);
+    void setV2(std::vector<double> t);
     /**
      * Append one twoVects object to another. Appends v1 from other to this->v1, and appends
      * v2 from other to this->v2.
      **/
-    void append(twoVects* other);
+    void append(twoVectsDoub* other);
 
 
 

@@ -4,6 +4,7 @@
 #include <unordered_map>
 #include "twoVects.h"
 #include <math.h>
+#include "twoVectsDoub.h"
 
 class QuadTree
 {
@@ -126,6 +127,9 @@ public:
     void drawRoot(Node*, sf::RenderWindow*);
         void divideTreeNTimes(double minX, double maxX, double minY, double maxY, Node *n, int level);
     void divideCompMid(double minX, double maxX, double minY, double maxY, Node *n, Function *F, double tol, int maximumLevel);
+    vector<double> getDifArray(Node *n, Function *F, double cutoff);
+    twoVectsDoub getSupplyDemandAmt(Function *F, double cutoff);
+
 };
 
 #endif

@@ -7,8 +7,14 @@ int main()
 {
     ofstream inboxes;
     ofstream outboxes;
-    inboxes.open("inboxes.txt");
-    outboxes.open("outboxes.txt");
+    ofstream difArray;
+    ofstream supply;
+    ofstream demand;
+    inboxes.open("inboxes.csv");
+    outboxes.open("outboxes.csv");
+    difArray.open("difArray.csv");
+    supply.open("supply.csv");
+    demand.open("demand.csv");
     sf::ContextSettings settings;
     settings.antialiasingLevel = 8;
 
@@ -26,8 +32,9 @@ int main()
     forest->divideComp(0.001,gaussian,3);
    //forest->appendInboxesToFile(&file,0.1,gaussian);
     //forest->appendOutboxesToFile(&file2,0.1,gaussian);
-    forest->appendAllBoxesToTwoFiles(&inboxes, &outboxes,0.1,gaussian);
-
+    forest->appendAllBoxesToTwoFiles(&inboxes, &outboxes,0.0001,gaussian);
+    forest->appendDiffarrayToFile(&difArray, gaussian, 0.0001);
+    forest->appendSuppDemandAmt(&supply, &demand, gaussian, 0.0001);
     while (window.isOpen())
     {
         sf::Event event;

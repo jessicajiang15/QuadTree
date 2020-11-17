@@ -15,6 +15,7 @@ CMakeFiles/QuadTree.dir/Forest.cpp.o: ../QuadTree.h
 CMakeFiles/QuadTree.dir/Forest.cpp.o: ../Rectangle.h
 CMakeFiles/QuadTree.dir/Forest.cpp.o: ../Square.h
 CMakeFiles/QuadTree.dir/Forest.cpp.o: ../twoVects.h
+CMakeFiles/QuadTree.dir/Forest.cpp.o: ../twoVectsDoub.h
 CMakeFiles/QuadTree.dir/Forest.cpp.o: /usr/local/include/SFML/Config.hpp
 CMakeFiles/QuadTree.dir/Forest.cpp.o: /usr/local/include/SFML/Graphics.hpp
 CMakeFiles/QuadTree.dir/Forest.cpp.o: /usr/local/include/SFML/Graphics/BlendMode.hpp
@@ -269,6 +270,7 @@ CMakeFiles/QuadTree.dir/QuadTree.cpp.o: ../QuadTree.h
 CMakeFiles/QuadTree.dir/QuadTree.cpp.o: ../Rectangle.h
 CMakeFiles/QuadTree.dir/QuadTree.cpp.o: ../Square.h
 CMakeFiles/QuadTree.dir/QuadTree.cpp.o: ../twoVects.h
+CMakeFiles/QuadTree.dir/QuadTree.cpp.o: ../twoVectsDoub.h
 CMakeFiles/QuadTree.dir/QuadTree.cpp.o: /usr/local/include/SFML/Config.hpp
 CMakeFiles/QuadTree.dir/QuadTree.cpp.o: /usr/local/include/SFML/Graphics.hpp
 CMakeFiles/QuadTree.dir/QuadTree.cpp.o: /usr/local/include/SFML/Graphics/BlendMode.hpp
@@ -518,6 +520,7 @@ CMakeFiles/QuadTree.dir/main.cpp.o: ../Rectangle.h
 CMakeFiles/QuadTree.dir/main.cpp.o: ../Square.h
 CMakeFiles/QuadTree.dir/main.cpp.o: ../main.cpp
 CMakeFiles/QuadTree.dir/main.cpp.o: ../twoVects.h
+CMakeFiles/QuadTree.dir/main.cpp.o: ../twoVectsDoub.h
 CMakeFiles/QuadTree.dir/main.cpp.o: /usr/local/include/SFML/Config.hpp
 CMakeFiles/QuadTree.dir/main.cpp.o: /usr/local/include/SFML/Graphics.hpp
 CMakeFiles/QuadTree.dir/main.cpp.o: /usr/local/include/SFML/Graphics/BlendMode.hpp
@@ -673,4 +676,7 @@ CMakeFiles/QuadTree.dir/twoVects.cpp.o: /usr/local/include/SFML/Window/VideoMode
 CMakeFiles/QuadTree.dir/twoVects.cpp.o: /usr/local/include/SFML/Window/Window.hpp
 CMakeFiles/QuadTree.dir/twoVects.cpp.o: /usr/local/include/SFML/Window/WindowHandle.hpp
 CMakeFiles/QuadTree.dir/twoVects.cpp.o: /usr/local/include/SFML/Window/WindowStyle.hpp
+
+CMakeFiles/QuadTree.dir/twoVectsDoub.cpp.o: ../twoVectsDoub.cpp
+CMakeFiles/QuadTree.dir/twoVectsDoub.cpp.o: ../twoVectsDoub.h
 

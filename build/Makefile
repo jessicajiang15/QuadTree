@@ -469,6 +469,33 @@ twoVects.cpp.s:
 	$(MAKE) -f CMakeFiles/QuadTree.dir/build.make CMakeFiles/QuadTree.dir/twoVects.cpp.s
 .PHONY : twoVects.cpp.s
 
+twoVectsDoub.o: twoVectsDoub.cpp.o
+
+.PHONY : twoVectsDoub.o
+
+# target to build an object file
+twoVectsDoub.cpp.o:
+	$(MAKE) -f CMakeFiles/QuadTree.dir/build.make CMakeFiles/QuadTree.dir/twoVectsDoub.cpp.o
+.PHONY : twoVectsDoub.cpp.o
+
+twoVectsDoub.i: twoVectsDoub.cpp.i
+
+.PHONY : twoVectsDoub.i
+
+# target to preprocess a source file
+twoVectsDoub.cpp.i:
+	$(MAKE) -f CMakeFiles/QuadTree.dir/build.make CMakeFiles/QuadTree.dir/twoVectsDoub.cpp.i
+.PHONY : twoVectsDoub.cpp.i
+
+twoVectsDoub.s: twoVectsDoub.cpp.s
+
+.PHONY : twoVectsDoub.s
+
+# target to generate assembly for a file
+twoVectsDoub.cpp.s:
+	$(MAKE) -f CMakeFiles/QuadTree.dir/build.make CMakeFiles/QuadTree.dir/twoVectsDoub.cpp.s
+.PHONY : twoVectsDoub.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -516,6 +543,9 @@ help:
 	@echo "... twoVects.o"
 	@echo "... twoVects.i"
 	@echo "... twoVects.s"
+	@echo "... twoVectsDoub.o"
+	@echo "... twoVectsDoub.i"
+	@echo "... twoVectsDoub.s"
 .PHONY : help
 
 

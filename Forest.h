@@ -172,7 +172,10 @@ public:
     void divideNthTimes(double minX, double maxX, double minY, double maxY, int level);
     void divideComp(double tol, Function *F, int level);
     void appendAllBoxesToTwoFiles(ofstream *file, ofstream *file2, double cutoff, Function *F);
-
+    void appendDiffarrayToFile(ofstream *file, Function *F, double cutoff);
+    vector<double> getDifArray(Function *F, double cutoff);
+    twoVectsDoub *getSupplyDemandAmt(Function *F, double cutoff);
+    void appendSuppDemandAmt(ofstream *file, ofstream *file2, Function *F, double cutoff);
 
     
 };

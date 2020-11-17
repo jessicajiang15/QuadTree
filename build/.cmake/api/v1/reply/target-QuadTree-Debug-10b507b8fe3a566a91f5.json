@@ -70,7 +70,8 @@
 				8,
 				9,
 				10,
-				11
+				11,
+				12
 			]
 		}
 	],
@@ -138,7 +139,8 @@
 				8,
 				9,
 				10,
-				11
+				11,
+				12
 			]
 		}
 	],
@@ -214,6 +216,12 @@
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
 			"path" : "CompTwoFunc.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "twoVectsDoub.cpp",
 			"sourceGroupIndex" : 0
 		}
 	],
