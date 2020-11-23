@@ -63,5 +63,10 @@
   "directory": "/Users/Jessica/git/QuadTree/build",
   "command": "/usr/bin/clang++   -isystem /usr/local/include  -O0 -ggdb -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk   -std=gnu++11 -o CMakeFiles/QuadTree.dir/twoVectsDoub.cpp.o -c /Users/Jessica/git/QuadTree/twoVectsDoub.cpp",
   "file": "/Users/Jessica/git/QuadTree/twoVectsDoub.cpp"
+},
+{
+  "directory": "/Users/Jessica/git/QuadTree/build",
+  "command": "/usr/bin/clang++   -isystem /usr/local/include  -O0 -ggdb -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk   -std=gnu++11 -o CMakeFiles/QuadTree.dir/tripleVect.cpp.o -c /Users/Jessica/git/QuadTree/tripleVect.cpp",
+  "file": "/Users/Jessica/git/QuadTree/tripleVect.cpp"
 }
 ]

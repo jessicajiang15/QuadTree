@@ -17,6 +17,7 @@ class Gaussian : public Function
     double aa;
     double cc;
     double bb;
+    double normConst;
     int type;
 
     public:
@@ -24,6 +25,7 @@ class Gaussian : public Function
     Gaussian(double a, double x1, double y2, double rho, int type);
     Gaussian(double rho, double p, double theta);
     double value(double x, double y) override;
-
+    void normalize(double normConst) override;
+    double getNormConst();
 };
 #endif

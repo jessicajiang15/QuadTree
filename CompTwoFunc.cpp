@@ -9,5 +9,5 @@
 
     double CompTwoFunc::value(double x, double y)
     {
-        return initial->value(x, y)-final->value(x, y);
+        return (initial->value(x, y)-final->value(x, y));
     }

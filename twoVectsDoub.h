@@ -15,19 +15,11 @@ class twoVectsDoub{
      * Constructor.
      **/
     twoVectsDoub(std::vector<double> v1, std::vector<double> v2);
-    /**
-     * The first vector.
-     **/
-    //outboxes
-
+    //supply
     std::vector<double> v1;
-    /**
-     * The second vector.
-     **/
-    //inboxes
-    std::vector<double> v2;
 
-    //std::vector<double> v3;
+    //demand
+    std::vector<double> v2;
     /**
      * Append to the first vector.
      **/

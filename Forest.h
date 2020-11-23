@@ -4,6 +4,7 @@
 #include <fstream>
 
 
+
 class Forest
 {
 private:
@@ -176,7 +177,11 @@ public:
     vector<double> getDifArray(Function *F, double cutoff);
     twoVectsDoub *getSupplyDemandAmt(Function *F, double cutoff);
     void appendSuppDemandAmt(ofstream *file, ofstream *file2, Function *F, double cutoff);
+    void appendAllFiles(ofstream *outxboes, ofstream *inboxes, ofstream *supply, ofstream *demand, Function *F, double cutoff);
+    void appendEverythingToTwoFiles(ofstream *outbox, ofstream *inbox, Function *F, double cutoff);
+    tripleVect *getAllRelevantVects(Function *F, double cutoff);
+    void normalize(Function *F);
+    //    tripleVect *Forest::getAllRelevantVects(Function *F, double cutoff)
 
-    
 };
 #endif

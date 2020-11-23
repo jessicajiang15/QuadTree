@@ -10,6 +10,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/QuadTree.dir/Rectangle.cpp.o"
   "CMakeFiles/QuadTree.dir/Square.cpp.o"
   "CMakeFiles/QuadTree.dir/main.cpp.o"
+  "CMakeFiles/QuadTree.dir/tripleVect.cpp.o"
   "CMakeFiles/QuadTree.dir/twoVects.cpp.o"
   "CMakeFiles/QuadTree.dir/twoVectsDoub.cpp.o"
   "QuadTree"

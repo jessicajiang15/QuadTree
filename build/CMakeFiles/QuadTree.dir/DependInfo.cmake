@@ -15,6 +15,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/Users/Jessica/git/QuadTree/Rectangle.cpp" "/Users/Jessica/git/QuadTree/build/CMakeFiles/QuadTree.dir/Rectangle.cpp.o"
   "/Users/Jessica/git/QuadTree/Square.cpp" "/Users/Jessica/git/QuadTree/build/CMakeFiles/QuadTree.dir/Square.cpp.o"
   "/Users/Jessica/git/QuadTree/main.cpp" "/Users/Jessica/git/QuadTree/build/CMakeFiles/QuadTree.dir/main.cpp.o"
+  "/Users/Jessica/git/QuadTree/tripleVect.cpp" "/Users/Jessica/git/QuadTree/build/CMakeFiles/QuadTree.dir/tripleVect.cpp.o"
   "/Users/Jessica/git/QuadTree/twoVects.cpp" "/Users/Jessica/git/QuadTree/build/CMakeFiles/QuadTree.dir/twoVects.cpp.o"
   "/Users/Jessica/git/QuadTree/twoVectsDoub.cpp" "/Users/Jessica/git/QuadTree/build/CMakeFiles/QuadTree.dir/twoVectsDoub.cpp.o"
   )

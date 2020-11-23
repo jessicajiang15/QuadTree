@@ -15,15 +15,14 @@ class twoVects{
     /**
      * Constructor.
      **/
-    twoVects(std::vector<Rectangle*> v1, std::vector<Rectangle*> v2);
+     twoVects(std::vector<Rectangle*> v1, std::vector<Rectangle*> v2);
     /**
-     * The first vector.
+     * The first vector. Stores the outboxes
      **/
     //outboxes
-
     std::vector<Rectangle*> v1;
     /**
-     * The second vector.
+     * The second vector. Stores the inboxes
      **/
     //inboxes
     std::vector<Rectangle*> v2;

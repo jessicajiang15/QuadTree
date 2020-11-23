@@ -175,21 +175,27 @@ int Forest::binarySearchY(double y, int lower, int upper)
 
 twoVects *Forest::getAllBoxes(Function *F, double cutoff)
 {
+    //inboxes
     vector<Rectangle *> v1;
     vector<Rectangle *> v2;
    // vector<double> v3;
+   //vector<double> difArray=getDifArray(F, cutoff);
     twoVects *temp = new twoVects(v1, v2);
+
     //temp->v3=v3;
+    
     for (int r = 0; r < rows; r++)
     {
         for (int c = 0; c < cols; c++)
         {
-            twoVects *t = this->forest[index(r, c)]->getAllBoxes(this->forest[index(r, c)]->getRoot(), F, cutoff);
+            QuadTree *te=this->forest[index(r, c)];
+            twoVects *t = te->getAllBoxes(te->getRoot(), F, cutoff);
             //std::cout<<"temp size: "<<t->v1.size()<<endl;
             temp->append(t);
    // temp->v3.insert(t->v3.end(), t->v3.begin(), t->v3.end());
         }
     }
+    
     return temp;
 }
 
@@ -346,7 +352,8 @@ QuadTree** Forest::getForest()
          for(int c=0;c<cols;c++)
          {
              vector<double> temp2;
-             temp2=forest[index(r, c)]->getDifArray(forest[index(r, c)]->getRoot(),F, cutoff);
+             QuadTree *te=forest[index(r, c)];
+             temp2=te->getDifArray(te->getRoot(),F, cutoff);
              temp.insert(temp.end(), temp2.begin(), temp2.end());
          }
      }
@@ -376,7 +383,7 @@ QuadTree** Forest::getForest()
             {
                 d1.push_back(temp[i]);
             }
-            else
+            else if(temp[i]<0)
             {
                 d2.push_back(temp[i]);
             }
@@ -386,6 +393,9 @@ QuadTree** Forest::getForest()
         return temp1;
     }
 
+/**
+ * first file is supply, second is demand
+ * */
         void Forest::appendSuppDemandAmt(ofstream *file, ofstream *file2, Function *F, double cutoff)
     {
         twoVectsDoub *temp=getSupplyDemandAmt(F, cutoff);
@@ -401,4 +411,67 @@ QuadTree** Forest::getForest()
             *file2<<temp->v2[i];
             *file2<<"\n";
         }
+    }
+
+void Forest::appendAllFiles(ofstream *outboxes, ofstream *inboxes, ofstream *supply, ofstream *demand, Function *F, double cutoff)
+{
+    appendSuppDemandAmt(supply, demand, F,cutoff);
+    appendAllBoxesToTwoFiles(inboxes, outboxes, cutoff, F);
+}
+
+void Forest::appendEverythingToTwoFiles(ofstream *outbox, ofstream *inbox, Function *F, double cutoff)
+{
+    tripleVect *temp=getAllRelevantVects(F, cutoff);
+    vector<Rectangle*> inboxes=temp->rect->v1;
+        vector<Rectangle*> outboxes=temp->rect->v2;
+    vector<double> supply=temp->doub->v1;
+    vector<double> demand=temp->doub->v2;
+    int i=0;
+    for(int i=0;i<inboxes.size();i++)
+    {
+        *inbox<<inboxes[i];
+        *inbox<<",";
+        *inbox<<supply[i];
+    }
+    for(int i=0;i<outboxes.size();i++)
+    {
+        *outbox<<outboxes[i];
+        *outbox<<",";
+        *outbox<<demand[i];
+    }
+    
+}
+
+    tripleVect *Forest::getAllRelevantVects(Function *F, double cutoff)
+    {
+        vector<Rectangle*> t1;
+        vector<Rectangle*> t2;
+        vector<double> t3;
+        vector<double> t4;
+        twoVects *temp1=new twoVects(t1, t2);
+        twoVectsDoub *temp2=new twoVectsDoub(t3, t4);
+        tripleVect *temp=new tripleVect(temp1, temp2);
+        for(int r=0;r<rows;r++)
+        {
+            for(int c=0;c<cols;c++)
+            {
+                QuadTree *a=forest[index(r, c)];
+                tripleVect *t=a->getAllRelevantVects(a->getRoot(), F, cutoff);
+                temp->append(t);
+            }
+        }
+        return temp;
+    }
+
+    void Forest::normalize(Function *F)
+    {
+        double value=0;
+        for(int r=0;r<rows;r++)
+        {
+            for(int c=0;c<cols;c++)
+            {
+                value+=forest[index(r, c)]->normalize(forest[index(r, c)]->getRoot(),F);
+            }
+        }
+        F->normalize(1/value);
     }

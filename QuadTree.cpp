@@ -199,26 +199,21 @@ twoVects *QuadTree::getAllBoxes(Node *n, Function *F, double cutoff)
 {
     vector<Rectangle *> temp1;
     vector<Rectangle *> temp2;
-    vector<double> temp3;
     twoVects *temp = new twoVects(temp1, temp2);
 
     if (n->isLeaf())
     {
         double integral = n->getRekt()->approx(F);
-        temp3.push_back(integral);
-        if (integral != -1)
-        {
             if (integral < -scaleCutoff(cutoff,n->getLevel()))
             {
                 //inboxes
                 temp2.push_back(n->getRekt());
             }
-            else
+            else if(integral>scaleCutoff(cutoff,n->getLevel()))
             {
                 //outboxes
                 temp1.push_back(n->getRekt());
             }
-        }
         temp->setV1(temp1);
         temp->setV2(temp2);
         return temp;
@@ -312,7 +307,6 @@ vector<double> QuadTree::getDifArray(Node *n, Function *F, double cutoff)
     if(n->isLeaf())
     {
         double integral=n->getRekt()->approx(F);
-        cout<<integral<<endl;
         if(abs(integral)>abs(scaleCutoff(cutoff,n->getLevel())))
         temp.push_back(integral);
         return temp;
@@ -332,3 +326,84 @@ vector<double> QuadTree::getDifArray(Node *n, Function *F, double cutoff)
     return temp;
     
 }
+    tripleVect *QuadTree::getAllRelevantVects(Node *n, Function *F, double cutoff)
+    {
+    vector<Rectangle *> temp1;
+    vector<Rectangle *> temp2;
+
+    vector<double> supply;
+    vector<double> demand;
+    twoVects *t1 = new twoVects(temp1, temp2);
+    twoVectsDoub *t2=new twoVectsDoub(supply, demand);
+    tripleVect *temp=new tripleVect(t1, t2);
+/*
+supply>0
+demand<0
+ if(temp[i]>0)
+            {
+                supply
+                d1.push_back(temp[i]);
+            }
+            else if(temp[i]<0)
+            {
+                demand
+                d2.push_back(temp[i]);
+            }
+*/
+    if (n->isLeaf())
+    {
+        double integral = n->getRekt()->approx(F);
+            if (integral < -scaleCutoff(cutoff,n->getLevel()))
+            {
+                //inboxes
+                t1->v2.push_back(n->getRekt());
+                //demand
+                t2->v2.push_back(integral);
+            }
+            else if(integral>scaleCutoff(cutoff,n->getLevel()))
+            {
+                //outboxes
+                t1->v1.push_back(n->getRekt());
+                //supply
+                t2->v1.push_back(integral);
+            }
+        temp->setDoub(t2);
+        temp->setRect(t1);
+        return temp;
+    }
+    vector<Node *> children = n->getChildren();
+    tripleVect *r1 = getAllRelevantVects(children[0], F, cutoff);
+    tripleVect *r2 = getAllRelevantVects(children[1], F, cutoff);
+    tripleVect *r3 = getAllRelevantVects(children[2], F, cutoff);
+    tripleVect *r4 = getAllRelevantVects(children[3], F, cutoff);
+
+    temp->append(r1);
+    temp->append(r2);
+    temp->append(r3);
+    temp->append(r4);
+
+    return temp;
+    }
+
+    double QuadTree::normalize(Node *n, Function *F)
+    {
+        double temp=0;
+        if(n->isLeaf())
+        {
+            temp+=n->getRekt()->approx(F);
+        }
+        else
+        {
+            vector<Node*> children=n->getChildren();
+            double t1=normalize(children[0], F);
+            double t2=normalize(children[0], F);
+            double t3=normalize(children[0], F);
+            double t4=normalize(children[0], F);
+            temp+=t1;
+            temp+=t2;
+            temp+=t3;
+            temp+=t4;
+        }
+        return temp;
+        
+    }

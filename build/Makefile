@@ -442,6 +442,33 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles/QuadTree.dir/build.make CMakeFiles/QuadTree.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+tripleVect.o: tripleVect.cpp.o
+
+.PHONY : tripleVect.o
+
+# target to build an object file
+tripleVect.cpp.o:
+	$(MAKE) -f CMakeFiles/QuadTree.dir/build.make CMakeFiles/QuadTree.dir/tripleVect.cpp.o
+.PHONY : tripleVect.cpp.o
+
+tripleVect.i: tripleVect.cpp.i
+
+.PHONY : tripleVect.i
+
+# target to preprocess a source file
+tripleVect.cpp.i:
+	$(MAKE) -f CMakeFiles/QuadTree.dir/build.make CMakeFiles/QuadTree.dir/tripleVect.cpp.i
+.PHONY : tripleVect.cpp.i
+
+tripleVect.s: tripleVect.cpp.s
+
+.PHONY : tripleVect.s
+
+# target to generate assembly for a file
+tripleVect.cpp.s:
+	$(MAKE) -f CMakeFiles/QuadTree.dir/build.make CMakeFiles/QuadTree.dir/tripleVect.cpp.s
+.PHONY : tripleVect.cpp.s
+
 twoVects.o: twoVects.cpp.o
 
 .PHONY : twoVects.o
@@ -540,6 +567,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... tripleVect.o"
+	@echo "... tripleVect.i"
+	@echo "... tripleVect.s"
 	@echo "... twoVects.o"
 	@echo "... twoVects.i"
 	@echo "... twoVects.s"
