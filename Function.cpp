@@ -36,3 +36,9 @@ double Function::value(double x, double y)
         return 0;
     }
 
+
+
+void Function::normalize(double normConst)
+{
+    
+}

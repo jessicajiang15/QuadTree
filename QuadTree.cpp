@@ -280,13 +280,13 @@ void QuadTree::divideTreeNTimes(double minX, double maxX, double minY, double ma
     void QuadTree::divideCompMid(double minX, double maxX, double minY, double maxY, Node *n, Function *F, double tol, int maximumLevel)
     {
         vector<Node*> fakeChildren=n->createFakeChildren();
-        if (abs(fakeChildren[0]->getRekt()->approx(F)-n->getRekt()->approx(F))>tol)
+        if (abs(fakeChildren[0]->getRekt()->approx(F)-n->getRekt()->approx(F))>tol&&n->getLevel()<maximumLevel)
     {
         n->createChildren(fakeChildren);
-        divide(minX, maxX, minY, maxY, F, fakeChildren[0], tol, maximumLevel);
-        divide(minX, maxX, minY, maxY, F, fakeChildren[1], tol, maximumLevel);
-        divide(minX, maxX, minY, maxY, F, fakeChildren[2], tol, maximumLevel);
-        divide(minX, maxX, minY, maxY, F, fakeChildren[3], tol, maximumLevel);
+        divideCompMid(minX, maxX, minY, maxY, fakeChildren[0], F, tol, maximumLevel);
+        divideCompMid(minX, maxX, minY, maxY, fakeChildren[1], F, tol, maximumLevel);
+        divideCompMid(minX, maxX, minY, maxY, fakeChildren[2], F, tol, maximumLevel);
+        divideCompMid(minX, maxX, minY, maxY, fakeChildren[3], F, tol, maximumLevel);
     }
     else
     {
@@ -336,20 +336,6 @@ vector<double> QuadTree::getDifArray(Node *n, Function *F, double cutoff)
     twoVects *t1 = new twoVects(temp1, temp2);
     twoVectsDoub *t2=new twoVectsDoub(supply, demand);
     tripleVect *temp=new tripleVect(t1, t2);
-/*
-supply>0
-demand<0
- if(temp[i]>0)
-            {
-                supply
-                d1.push_back(temp[i]);
-            }
-            else if(temp[i]<0)
-            {
-                demand
-                d2.push_back(temp[i]);
-            }
-*/
     if (n->isLeaf())
     {
         double integral = n->getRekt()->approx(F);
@@ -406,4 +392,68 @@ demand<0
         }
         return temp;
         
+    }
+
+    void QuadTree::divideCompMidAcc(double minX, double maxX, double minY, double maxY, Node *n, Function *F, double tol, int maximumLevel, int accuracy)
+    {
+         vector<Node*> fakeChildren=n->createFakeChildren();
+        if (abs(fakeChildren[0]->getRekt()->getAccurateApprox(F, accuracy)-n->getRekt()->getAccurateApprox(F, accuracy))>tol)
+    {
+        n->createChildren(fakeChildren);
+        divideCompMid(minX, maxX, minY, maxY, fakeChildren[0], F, tol, maximumLevel);
+        divideCompMid(minX, maxX, minY, maxY, fakeChildren[1], F, tol, maximumLevel);
+        divideCompMid(minX, maxX, minY, maxY, fakeChildren[2], F, tol, maximumLevel);
+        divideCompMid(minX, maxX, minY, maxY, fakeChildren[3], F, tol, maximumLevel);
+    }
+    else
+    {
+        n->getRekt()->createSfRectFromCartesian(minX, maxX, minY, maxY);
+        return;
+    }
+    }
+
+
+    tripleVect *QuadTree::getAllRelevantVectsAcc(Node *n, Function *F, double cutoff, int accuracy)
+    {
+    vector<Rectangle *> temp1;
+    vector<Rectangle *> temp2;
+
+    vector<double> supply;
+    vector<double> demand;
+    twoVects *t1 = new twoVects(temp1, temp2);
+    twoVectsDoub *t2=new twoVectsDoub(supply, demand);
+    tripleVect *temp=new tripleVect(t1, t2);
+    if (n->isLeaf())
+    {
+        double integral = n->getRekt()->getAccurateApprox(F, accuracy);
+            if (integral < -scaleCutoff(cutoff,n->getLevel()))
+            {
+                //inboxes
+                t1->v2.push_back(n->getRekt());
+                //demand
+                t2->v2.push_back(integral);
+            }
+            else if(integral>scaleCutoff(cutoff,n->getLevel()))
+            {
+                //outboxes
+                t1->v1.push_back(n->getRekt());
+                //supply
+                t2->v1.push_back(integral);
+            }
+        temp->setDoub(t2);
+        temp->setRect(t1);
+        return temp;
+    }
+    vector<Node *> children = n->getChildren();
+    tripleVect *r1 = getAllRelevantVects(children[0], F, cutoff);
+    tripleVect *r2 = getAllRelevantVects(children[1], F, cutoff);
+    tripleVect *r3 = getAllRelevantVects(children[2], F, cutoff);
+    tripleVect *r4 = getAllRelevantVects(children[3], F, cutoff);
+
+    temp->append(r1);
+    temp->append(r2);
+    temp->append(r3);
+    temp->append(r4);
+
+    return temp;
     }

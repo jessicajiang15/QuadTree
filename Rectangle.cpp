@@ -77,7 +77,7 @@ void Rectangle::draw(sf::RenderWindow *window)
 }
 std::string Rectangle::toStringCoord()
 {
-    return std::to_string(getCenterX())+","+std::to_string(getCenterY());
+    return std::to_string(getCenterX())+"\t"+std::to_string(getCenterY());
 }
 
 void Rectangle::createSfRectFromCartesian(double minX, double maxX, double minY, double maxY)
@@ -92,4 +92,25 @@ void Rectangle::createSfRectFromCartesian(double minX, double maxX, double minY,
     rect->setFillColor(sf::Color(100, 250, 50));
     rect->setOutlineColor(sf::Color(0, 0, 0));
     rect->setOutlineThickness(1);
+}
+
+double Rectangle::getAccurateApprox(Function *F, int accuracy)
+{
+    if(accuracy==0)
+    {
+        return approx(F);
+    }
+    double intervalX=width/accuracy;
+    double intervalY=height/accuracy;
+    double total=0;
+    for(int r=0;r<accuracy;r++)
+    {
+        for(int c=0;c<accuracy;c++)
+        {
+            double temp=intervalX*intervalY*F->value(c*intervalX+point->getX()+intervalX/2, point->getY()-r*intervalY-intervalY/2);
+            total+=temp;
+        }
+    }
+    std::cout<<approx(F)-total<<std::endl;
+    return total;
 }

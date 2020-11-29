@@ -126,12 +126,15 @@ public:
 
     void draw(sf::RenderWindow*);
     void drawRoot(Node*, sf::RenderWindow*);
-        void divideTreeNTimes(double minX, double maxX, double minY, double maxY, Node *n, int level);
+    void divideTreeNTimes(double minX, double maxX, double minY, double maxY, Node *n, int level);
     void divideCompMid(double minX, double maxX, double minY, double maxY, Node *n, Function *F, double tol, int maximumLevel);
     vector<double> getDifArray(Node *n, Function *F, double cutoff);
     twoVectsDoub getSupplyDemandAmt(Function *F, double cutoff);
     tripleVect *getAllRelevantVects(Node *n, Function *F, double cutoff);
     double normalize(Node *n, Function *F);
+    void divideCompMidAcc(double minX, double maxX, double minY, double maxY, Node *n, Function *F, double tol, int maximumLevel, int accuracy);
+    tripleVect* getAllRelevantVectsAcc(Node *n, Function *F, double cutoff, int accuracy);
+
 };
 
 #endif

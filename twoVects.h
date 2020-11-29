@@ -19,12 +19,12 @@ class twoVects{
     /**
      * The first vector. Stores the outboxes
      **/
-    //outboxes
+    //outboxes. All the boxes where sand needs to be moved OUT.
     std::vector<Rectangle*> v1;
     /**
      * The second vector. Stores the inboxes
      **/
-    //inboxes
+    //inboxes. All the boxes where sand needs to be moved IN.
     std::vector<Rectangle*> v2;
 
     //std::vector<double> v3;

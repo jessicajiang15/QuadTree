@@ -89,6 +89,7 @@ class Rectangle
     //draws the rectangle
     void draw(sf::RenderWindow *window);
     void createSfRectFromCartesian(double minX, double maxX, double minY, double maxY);
+    double getAccurateApprox(Function *F, int accuracy);
 
 
 };

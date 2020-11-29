@@ -23,7 +23,7 @@ class Gaussian : public Function
     public:
     Gaussian(double a, double b, double c, double d, double e);
     Gaussian(double a, double x1, double y2, double rho, int type);
-    Gaussian(double rho, double p, double theta);
+    Gaussian(double a,double rho, double p, double theta);
     double value(double x, double y) override;
     void normalize(double normConst) override;
     double getNormConst();

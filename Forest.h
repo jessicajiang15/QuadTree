@@ -68,7 +68,6 @@ private:
      **/
     double getCoordX(int c);
      int maximumLevel;
-    double scaleCutoff(double cutoff, int level);
 
 public:
 /**
@@ -181,7 +180,11 @@ public:
     void appendEverythingToTwoFiles(ofstream *outbox, ofstream *inbox, Function *F, double cutoff);
     tripleVect *getAllRelevantVects(Function *F, double cutoff);
     void normalize(Function *F);
-    //    tripleVect *Forest::getAllRelevantVects(Function *F, double cutoff)
+    void divideCompAcc(double tol, Function *F, int level, int accuracy);
+    void appendEverythingToTwoFilesAcc(ofstream *outbox, ofstream *inbox, Function *F, double cutoff, int accuracy);
+    tripleVect* getAllRelevantVectsAcc(Function *F, double cutoff, int accuracy);
+
+
 
 };
 #endif

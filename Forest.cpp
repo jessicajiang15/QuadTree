@@ -422,22 +422,49 @@ void Forest::appendAllFiles(ofstream *outboxes, ofstream *inboxes, ofstream *sup
 void Forest::appendEverythingToTwoFiles(ofstream *outbox, ofstream *inbox, Function *F, double cutoff)
 {
     tripleVect *temp=getAllRelevantVects(F, cutoff);
-    vector<Rectangle*> inboxes=temp->rect->v1;
-        vector<Rectangle*> outboxes=temp->rect->v2;
+    vector<Rectangle*> outboxes=temp->rect->v1;
+    vector<Rectangle*> inboxes=temp->rect->v2;
     vector<double> supply=temp->doub->v1;
     vector<double> demand=temp->doub->v2;
     int i=0;
     for(int i=0;i<inboxes.size();i++)
     {
-        *inbox<<inboxes[i];
-        *inbox<<",";
-        *inbox<<supply[i];
+        *inbox<<inboxes[i]->toStringCoord();
+        *inbox<<"\t";
+        *inbox<<demand[i];
+        *inbox<<"\n";
     }
     for(int i=0;i<outboxes.size();i++)
     {
-        *outbox<<outboxes[i];
-        *outbox<<",";
-        *outbox<<demand[i];
+        *outbox<<outboxes[i]->toStringCoord();
+        *outbox<<"\t";
+        *outbox<<supply[i];
+        *outbox<<"\n";
+    }
+    
+}
+
+void Forest::appendEverythingToTwoFilesAcc(ofstream *outbox, ofstream *inbox, Function *F, double cutoff, int accuracy)
+{
+    tripleVect *temp=getAllRelevantVectsAcc(F, cutoff, accuracy);
+    vector<Rectangle*> outboxes=temp->rect->v1;
+    vector<Rectangle*> inboxes=temp->rect->v2;
+    vector<double> supply=temp->doub->v1;
+    vector<double> demand=temp->doub->v2;
+    int i=0;
+    for(int i=0;i<inboxes.size();i++)
+    {
+        *inbox<<inboxes[i]->toStringCoord();
+        *inbox<<"\t";
+        *inbox<<demand[i];
+        *inbox<<"\n";
+    }
+    for(int i=0;i<outboxes.size();i++)
+    {
+        *outbox<<outboxes[i]->toStringCoord();
+        *outbox<<"\t";
+        *outbox<<supply[i];
+        *outbox<<"\n";
     }
     
 }
@@ -474,4 +501,38 @@ void Forest::appendEverythingToTwoFiles(ofstream *outbox, ofstream *inbox, Funct
             }
         }
         F->normalize(1/value);
+    }
+
+    void Forest::divideCompAcc(double tol, Function *F, int level, int accuracy)
+    {
+        for(int r=0;r<rows;r++)
+        {
+            for(int c=0;c<cols;c++)
+            {
+                forest[index(r, c)]->divideCompMidAcc(minCoordX, maxCoordX, minCoordY, maxCoordY, forest[index(r, c)]->getRoot(),F, tol, level, accuracy);
+            }
+        }
+    }
+
+
+
+    tripleVect* Forest::getAllRelevantVectsAcc(Function *F, double cutoff, int accuracy)
+    {
+         vector<Rectangle*> t1;
+        vector<Rectangle*> t2;
+        vector<double> t3;
+        vector<double> t4;
+        twoVects *temp1=new twoVects(t1, t2);
+        twoVectsDoub *temp2=new twoVectsDoub(t3, t4);
+        tripleVect *temp=new tripleVect(temp1, temp2);
+        for(int r=0;r<rows;r++)
+        {
+            for(int c=0;c<cols;c++)
+            {
+                QuadTree *a=forest[index(r, c)];
+                tripleVect *t=a->getAllRelevantVectsAcc(a->getRoot(), F, cutoff, accuracy);
+                temp->append(t);
+            }
+        }
+        return temp;
     }

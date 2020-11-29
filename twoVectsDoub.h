@@ -15,10 +15,10 @@ class twoVectsDoub{
      * Constructor.
      **/
     twoVectsDoub(std::vector<double> v1, std::vector<double> v2);
-    //supply
+    //supply. Supply is positive and corresponds to outboxes.
     std::vector<double> v1;
 
-    //demand
+    //demand. Demand is negative and corresponds to inboxes.
     std::vector<double> v2;
     /**
      * Append to the first vector.

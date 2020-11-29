@@ -1,9 +1,10 @@
 #include "Gaussian.h"
 
 
-Gaussian::Gaussian(double rho, double p, double theta)
+Gaussian::Gaussian(double a, double rho, double p, double theta)
 {
     type=2;
+    this->a=a;
     this->aa=(pow(cos(theta),2)/pow(p,2))+(pow(p, 2)*pow(sin(theta),2)/pow(rho,2));
     this->bb=2*sin(theta)*cos(theta)*(1/pow(p,2)-pow(p,2)/pow(rho,2));
     this->cc=(pow(sin(theta),2)/pow(p,2))+(pow(p, 2)*pow(cos(theta),2)/pow(rho,2));
@@ -41,7 +42,7 @@ double Gaussian::value(double x, double y)
 {
     if(type==2)
     {
-        return normConst*a*exp(-(aa*pow(x, 2)+bb*x*y+cc*pow(y,2)));
+        return a*normConst*exp(-(aa*pow(x, 2)+bb*x*y+cc*pow(y,2)));
     }
     return this->normConst*this->a*exp(-pow(x-b,2)/(2*pow(c,2))-pow(y-d,2)/(2*pow(e,2)));
 }

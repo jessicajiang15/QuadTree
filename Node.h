@@ -103,5 +103,6 @@ public:
     int getLevel();
     vector<Node*> createFakeChildren();
     void createChildren(vector<Node*> children);
+    void enhancedIntegrate(Function *F, double tol);
 };
 #endif
