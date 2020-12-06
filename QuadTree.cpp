@@ -339,7 +339,7 @@ vector<double> QuadTree::getDifArray(Node *n, Function *F, double cutoff)
     if (n->isLeaf())
     {
         double integral = n->getRekt()->approx(F);
-            if (integral < -scaleCutoff(cutoff,n->getLevel()))
+            if (integral < -abs(scaleCutoff(cutoff,n->getLevel())))
             {
                 //inboxes
                 t1->v2.push_back(n->getRekt());
@@ -425,9 +425,10 @@ vector<double> QuadTree::getDifArray(Node *n, Function *F, double cutoff)
     tripleVect *temp=new tripleVect(t1, t2);
     if (n->isLeaf())
     {
-        double integral = n->getRekt()->getAccurateApprox(F, accuracy);
-            if (integral < -scaleCutoff(cutoff,n->getLevel()))
+            double integral = n->getRekt()->getAccurateApprox(F, accuracy);
+            if (integral < -(scaleCutoff(cutoff,n->getLevel())))
             {
+                cout<<"inbox: "<<integral<<endl;
                 //inboxes
                 t1->v2.push_back(n->getRekt());
                 //demand
@@ -435,6 +436,7 @@ vector<double> QuadTree::getDifArray(Node *n, Function *F, double cutoff)
             }
             else if(integral>scaleCutoff(cutoff,n->getLevel()))
             {
+                cout<<"outbox: "<<integral<<endl;
                 //outboxes
                 t1->v1.push_back(n->getRekt());
                 //supply
@@ -445,15 +447,15 @@ vector<double> QuadTree::getDifArray(Node *n, Function *F, double cutoff)
         return temp;
     }
     vector<Node *> children = n->getChildren();
-    tripleVect *r1 = getAllRelevantVects(children[0], F, cutoff);
-    tripleVect *r2 = getAllRelevantVects(children[1], F, cutoff);
-    tripleVect *r3 = getAllRelevantVects(children[2], F, cutoff);
-    tripleVect *r4 = getAllRelevantVects(children[3], F, cutoff);
+    tripleVect *r1 = getAllRelevantVectsAcc(children[0], F, cutoff, accuracy);
+    tripleVect *r2 = getAllRelevantVectsAcc(children[1], F, cutoff, accuracy);
+    tripleVect *r3 = getAllRelevantVectsAcc(children[2], F, cutoff, accuracy);
+    tripleVect *r4 = getAllRelevantVectsAcc(children[3], F, cutoff, accuracy);
 
     temp->append(r1);
     temp->append(r2);
     temp->append(r3);
     temp->append(r4);
-
     return temp;
+
     }

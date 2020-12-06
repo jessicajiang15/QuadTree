@@ -69,14 +69,14 @@ int main()
     Forest *normForest=new Forest(100,100,MIN_X, MAX_X, MIN_Y,MAX_Y);
     Gaussian *final=new Gaussian(AFIN,RHO,P,THETA);
     Gaussian *initial=new Gaussian(AINIT,X1,Y1,RHO,1);
-    CompTwoFunc *gaussian=new CompTwoFunc(initial, final);
-
-    /**
+        /**
      * Normalize our initial and final functions with the normForest, which splits
      * the function into an 100x100 grid and calculates the midpoint riemann sum.
      * */
     normForest->normalize(final);
     normForest->normalize(initial);
+    CompTwoFunc *gaussian=new CompTwoFunc(initial, final);
+
     //cout<<final->getNormConst()<<endl;
     //cout<<initial->getNormConst()<<endl;
     //if anything in this program is taking too long, feel free to use these commented out lines of code
@@ -85,7 +85,10 @@ int main()
     //auto end = std::chrono::high_resolution_clock::now(); 
     //cout<<"time: "<<std::chrono::duration_cast<std::chrono::microseconds>(end - start).count()<<endl;
     forest->divideCompAcc(TOL,gaussian,MAX_LEVEL, ACC);
+        //forest->divideComp(TOL,gaussian,MAX_LEVEL);
     forest->appendEverythingToTwoFilesAcc(&outData,&inData, gaussian, CUTOFF, ACC);
+
+    //this while loop basically keeps the graphics up and running.
     while (window.isOpen())
     {
         sf::Event event;
@@ -103,16 +106,15 @@ int main()
 
         // background color
         window.clear(sf::Color::White);
-        //window.draw(*rect);
-        // cout << "2"<<forest->getForest()[forest->index(0, 0)]->getRoot()->getRekt()->getY() << endl;
 
+        //displays the forest on the screen
         forest->draw(&window);
-        // cout << "O3O"<<forest->getForest()[forest->index(0, 0)]->getRoot()->getRekt()->getY() << endl;
 
         window.display();
 
 
     }
+    //closes the files after writing to them.
     inData.close();
     outData.close();
 }

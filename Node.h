@@ -2,7 +2,8 @@
 #define _NODE_H 1
 #include "Square.h"
 using namespace std;
-//Placeholder
+//A node inside the QuadTree. Contains information about the children of this Node, the area that it represents
+//on the grid (via the rectangle).
 class Node
 {
 private:
@@ -38,8 +39,8 @@ private:
      * Initializes everything to be a nullptr except the Rectangle object
      * */
     void allNullESq();
-    //should i have x y values for nodes until the tree is finalized, and then initialize the square?
     Point *temp;
+    //Is this node a leaf, or not?
     bool hasChildren;
     /**
      * The current layer that the node is at.
@@ -99,10 +100,24 @@ public:
      * Getter for the rectangle in this node.
      * */
     Rectangle* getRekt();
-
+    /**
+     * Returns at what level we are in the tree. Here, the level refers to the depth of the node.
+     * If it is the root, it is at level 0, If the node has 1 parent, it is at level 1, and so on.
+     * This is important because we need to scale the cutoff to match with the depth so that
+     * we don't throw out all of the precise boxes.
+     * */
     int getLevel();
+    /**
+     * Creates the hypothetical children this node would have, but doesn't actually create children for it.
+     * It is important because we want to compare the integral of the hypothetical children to the current
+     * integral to determine if we want to divide this node or not.
+     * */
     vector<Node*> createFakeChildren();
+    /**
+     * Divides the current node into 4 and gives it 4 children. It also removes its status as a leaf.
+     * Assigns its NE, NW, SE, SW children from null to those in the vector.
+     * @param children its to-be children.
+     * */
     void createChildren(vector<Node*> children);
-    void enhancedIntegrate(Function *F, double tol);
 };
 #endif

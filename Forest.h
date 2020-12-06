@@ -3,8 +3,6 @@
 #include "QuadTree.h"
 #include <fstream>
 
-
-
 class Forest
 {
 private:
@@ -63,14 +61,14 @@ private:
      * Obtains the cartesian y coordinate of a given row r.
      **/
     double getCoordY(int r);
-        /**
+    /**
      * Obtains the cartesian x coordinate of a given col c.
      **/
     double getCoordX(int c);
-     int maximumLevel;
+    int maximumLevel;
 
 public:
-/**
+    /**
  * Destructor.
  **/
     virtual ~Forest()
@@ -85,7 +83,7 @@ public:
     /**
      * Constructor that creates a new forest from the parameters.
      **/
-    Forest(int row, int col, double minCoordX,double maxCoordX, double minCoordY, double maxCoordY);
+    Forest(int row, int col, double minCoordX, double maxCoordX, double minCoordY, double maxCoordY);
     /**
      * Retrieves the QuadTree at the given array indicies
      **/
@@ -161,30 +159,125 @@ public:
     twoVects *getAllBoxes(Function *F, double cutoff);
     void appendOutboxesToFile(ofstream *file, double cutoff, Function *F);
     void appendInboxesToFile(ofstream *file, double cutoff, Function *F);
-    void draw(sf::RenderWindow*);
-    QuadTree** getForest();
-        /**
+    void draw(sf::RenderWindow *);
+    QuadTree **getForest();
+    /**
      * Helper function intended to help access a cell at index r, c in the forest, as the forest
      * is allocated as a single 1D array.
      **/
     int index(int row, int col);
     //void divideTreeNTimes(double minX, double maxX, double minY, double maxY, Node *n, int level);
     void divideNthTimes(double minX, double maxX, double minY, double maxY, int level);
+    /**
+     * Divides the tree using the less accurate approx() in Rectangle and the volume comparison method
+     * @param tol the maximum allowed difference between the sum of the midpoint riemann rectangular prism 
+     * volumes of the subdivided rectangles and the mid point riemann rectangular prism volume
+     * @param F the function we are dividing the grid based on
+     * @param level the maximum level that we are dividing to
+     * */
     void divideComp(double tol, Function *F, int level);
+    /**
+     * Appends both inboxes and outboxes to two files. Note that this method is currently unused, but if
+     * for some reason you ONLY want the inboxes and outboxes, then inboxes -> file1 outboxes->file2
+     * @param file the inboxes file
+     * @param file the outboxes file
+     * @param cutoff the minimum allowed amount of sand for the box to be kept
+     * @param F the function we are dividing the forest over
+     * */
     void appendAllBoxesToTwoFiles(ofstream *file, ofstream *file2, double cutoff, Function *F);
+    /**
+     * Appends the diffaray to a single file, which is an appended list of both supply and demand. 
+     * Note that this method is currently unused
+     * @param file the inboxes file
+     * @param file the outboxes file
+     * @param cutoff the minimum allowed amount of sand for the box to be kept
+     * @param F the function we are dividing the forest over
+     * */
     void appendDiffarrayToFile(ofstream *file, Function *F, double cutoff);
+    /**
+     * Obtains the "difference array", which contains a list of the amount of sand in each cell.
+     * This method is currently unused.
+     * @param F the function we are dividing over
+     * @param cutoff the minimum allowed amount of sand for us to keep the box
+     * */
     vector<double> getDifArray(Function *F, double cutoff);
+    /**
+     * Obtains a twoVectsDoub object where v1 is the supply amount and v2 is the demand amount.
+     * @param F the function that we are considering
+     * @param cutoff the minimum amount of sand that a box needs for us to keep it
+     * */
     twoVectsDoub *getSupplyDemandAmt(Function *F, double cutoff);
+    /**
+     * Appends the supply and demand amounts to two different file. Appends supply->file and demand->file2
+     * Note that this method is currently unused.
+     * @param file the inboxes file
+     * @param file the outboxes file
+     * @param cutoff the minimum allowed amount of sand for the box to be kept
+     * @param F the function we are dividing the forest over
+     * */
     void appendSuppDemandAmt(ofstream *file, ofstream *file2, Function *F, double cutoff);
+    /**
+     * Appends inboxes, outboxes supply, and demand into their corresponding separate files.
+     * Note that this method is unused in favor of a method that combines outboxes and supply,
+     * demand and inboxes. 
+     * */
     void appendAllFiles(ofstream *outxboes, ofstream *inboxes, ofstream *supply, ofstream *demand, Function *F, double cutoff);
+    /**
+     * Appends inboxes and demand to inbox, outboxes and supply to outbox.
+     * Note that this method is currently unused because it uses the less accurate approx method.
+     * However, it is kept here in case we need to revert back.
+     * @param file the inboxes file
+     * @param file the outboxes file
+     * @param cutoff the minimum allowed amount of sand for the box to be kept
+     * @param F the function we are dividing the forest over
+     * */
     void appendEverythingToTwoFiles(ofstream *outbox, ofstream *inbox, Function *F, double cutoff);
+    /**
+     * Obtains lists of inboxes, outboxes, supply, and demand, and places them into a tripleVect object,
+     * which stores 4 vectors. This method obtains everything in a single iteration.
+     * Currently unused, as it uses the less accurate approx.
+     * @param cutoff the minimum allowed amount of sand for the box to be kept
+     * @param F the function we are dividing the forest over
+     * @return a tripleVect object containing a twoVects and twoVectsDoub object, where v1 corresponds to
+     * supply and outboxes, and v2 corresponds to inboxes and demand
+     * */
     tripleVect *getAllRelevantVects(Function *F, double cutoff);
+    /**
+     * Normalizes the function using this forest grid by setting the normConst of the parameter F
+     * @param the function to be normalized
+     * */
     void normalize(Function *F);
+    /**
+     * Divides the tree using the more accurate getAccurateApprox() in Rectangle and the volume comparison 
+     * method.
+     * @param tol the maximum allowed difference between the sum of the midpoint riemann rectangular prism 
+     * volumes of the subdivided rectangles and the mid point riemann rectangular prism volume
+     * @param F the function we are dividing the grid based on
+     * @param level the maximum level that we are dividing to
+     * @param accuracy the accuracy of the integral that we are using for comparison. 
+     * TODO: delete the accuracy parameter
+     * */
     void divideCompAcc(double tol, Function *F, int level, int accuracy);
+    /**
+     * Appends inboxes and demand to inbox, outboxes and supply to outbox.
+     * This method uses the more accurate getAccurateApprox method to obtain the supply and demand amounts.
+     * @param file the inboxes file
+     * @param file the outboxes file
+     * @param cutoff the minimum allowed amount of sand for the box to be kept
+     * @param F the function we are dividing the forest over
+     * @param accuracy the accuracy of the integral we use to get the supply and demand amounts.
+     * */
     void appendEverythingToTwoFilesAcc(ofstream *outbox, ofstream *inbox, Function *F, double cutoff, int accuracy);
-    tripleVect* getAllRelevantVectsAcc(Function *F, double cutoff, int accuracy);
-
-
-
+    /**
+     * Obtains lists of inboxes, outboxes, supply, and demand, and places them into a tripleVect object,
+     * which stores 4 vectors. This method obtains everything in a single iteration.
+     * This uses the more accurate getAccurateApprox method
+     * @param cutoff the minimum allowed amount of sand for the box to be kept
+     * @param F the function we are dividing the forest over
+     * @return a tripleVect object containing a twoVects and twoVectsDoub object, where v1 corresponds to
+     * supply and outboxes, and v2 corresponds to inboxes and demand
+     * @param accuracy the accuracy of the integral used to obtain supply and demand amounts.
+     * */
+    tripleVect *getAllRelevantVectsAcc(Function *F, double cutoff, int accuracy);
 };
 #endif

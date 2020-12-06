@@ -7,6 +7,8 @@
 #include "twoVectsDoub.h"
 #include "tripleVect.h"
 
+//A class representing a tree where each node has 4 children. Each node represents a single cell in the
+//adaptive grid.
 class QuadTree
 {
 
@@ -123,17 +125,59 @@ public:
      * @param tol the maximum tolerable error between the estimated integral and the actual integral
      * */
     void divideTree(double minX, double maxX, double minY, double maxY, Function *F, double tol, int maximumLevel);
-
+    /**
+     * Draws the QuadTree out onto the screen. Unimportant graphics- related method.
+     * */
     void draw(sf::RenderWindow*);
+    /**
+     * Draws the grid that stems from the Node passed in as a parameter. Main utility is 
+     * @param Node* the node at where we want to start drawing the tree.
+     * */
     void drawRoot(Node*, sf::RenderWindow*);
+    /** method that has the main purpose of debugging. It a tree, starting from node n, level times.
+     * @param minX maxX minY maxY parameters that define the boundaries of the forest that the QuadTree
+     * lies in. This determines the width and height of each "cell", which in turn helps us create the
+     * graphics rectangle needed to draw out the tree.
+     * **/
     void divideTreeNTimes(double minX, double maxX, double minY, double maxY, Node *n, int level);
+    /**
+     * Divides the current tree by the criteria that the difference between the midpoint approximation on 
+     * the node n and the sum of the riemann approximations of all its children is greater than tol.
+     * @param tol gives how precisely you want your tree to be divided. It determines the maximum allowed
+     * difference between the midpoint riemann sum of the current node and the sum of the midpoint sums of
+     * its children, if it were to be divided further.
+     * @param maximumLevel gives the maximum level that we want our tree to be divided to to avoid potential infinite
+     * loops.
+     * @param F is the function we are dividing our tree based on.
+     * @param n is the node we are starting the division from.
+     * */
     void divideCompMid(double minX, double maxX, double minY, double maxY, Node *n, Function *F, double tol, int maximumLevel);
+    /**
+     * Gives the array of the values of the integral apprximation of all the cells in this QuadTree,
+     * where supply and demand can be extracted from this array.
+     * It is currently unused in favor of directly obtaining supply and demand after looping through
+     * the tree to get inboxes and outboxes. 
+     * */
     vector<double> getDifArray(Node *n, Function *F, double cutoff);
-    twoVectsDoub getSupplyDemandAmt(Function *F, double cutoff);
+    //currently unused in favor of the accurate version. Originally returned outboxes, inboxes, supply, demand
+    //in lists stored in a tripleVects object.
     tripleVect *getAllRelevantVects(Node *n, Function *F, double cutoff);
+    /**
+     * returns the total integral of the cell represented by this QuadTree. 
+     * Currently is using the inaccurate midPoint riemann sum for each cell.
+     * */
     double normalize(Node *n, Function *F);
+    /**
+     * Same as divideCompMid, but instead uses the more accurate getAccurateApprox to calcualte the criteria
+     * for division.
+     * */
     void divideCompMidAcc(double minX, double maxX, double minY, double maxY, Node *n, Function *F, double tol, int maximumLevel, int accuracy);
+    /**
+     * Same as getAllRelevantVects, but uses the more accurate integral approximation.
+     * */
     tripleVect* getAllRelevantVectsAcc(Node *n, Function *F, double cutoff, int accuracy);
+    //unused
+    twoVectsDoub getSupplyDemandAmt(Function *F, double cutoff);
 
 };
 

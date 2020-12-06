@@ -4,7 +4,7 @@
 //twovects
 
 /**
- * A class that stores two vectors. Specifically created to be able to return outboxes
+ * A class that stores two vectors of type double. Specifically created to be able to return outboxes
  * and inboxes in one function so that the for loop+tree traversal does not need
  * to run twice for each of inboxes and outboxes.
  **/
@@ -37,7 +37,7 @@ class twoVectsDoub{
      **/
     void setV2(std::vector<double> t);
     /**
-     * Append one twoVects object to another. Appends v1 from other to this->v1, and appends
+     * Append one twoVectsDoub object to another. Appends v1 from other to this->v1, and appends
      * v2 from other to this->v2.
      **/
     void append(twoVectsDoub* other);
