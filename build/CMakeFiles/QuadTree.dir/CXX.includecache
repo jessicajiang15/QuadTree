@@ -10,6 +10,10 @@
 Function.h
 /Users/Jessica/git/QuadTree/Function.h
 
+/Users/Jessica/git/QuadTree/Forest.cpp
+Forest.h
+/Users/Jessica/git/QuadTree/Forest.h
+
 /Users/Jessica/git/QuadTree/Forest.h
 QuadTree.h
 /Users/Jessica/git/QuadTree/QuadTree.h
@@ -71,6 +75,8 @@ SFML/Graphics.hpp
 -
 GraphicsMechanics.h
 /Users/Jessica/git/QuadTree/GraphicsMechanics.h
+string.h
+/Users/Jessica/git/QuadTree/string.h
 
 /Users/Jessica/git/QuadTree/Square.h
 Rectangle.h

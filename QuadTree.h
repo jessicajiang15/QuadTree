@@ -175,10 +175,10 @@ public:
     /**
      * Same as getAllRelevantVects, but uses the more accurate integral approximation.
      * */
-    tripleVect* getAllRelevantVectsAcc(Node *n, Function *F, double cutoff, int accuracy);
+    tripleVect* getAllRelevantVectsAcc(Node *n, Function *F, double cutoff, int accuracy, int cutoffAcc);
     //unused
     twoVectsDoub getSupplyDemandAmt(Function *F, double cutoff);
-
+    double normalizeAcc(Node *n, Function *F, int accuracy);
 };
 
 #endif

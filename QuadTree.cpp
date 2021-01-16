@@ -280,7 +280,7 @@ void QuadTree::divideTreeNTimes(double minX, double maxX, double minY, double ma
     void QuadTree::divideCompMid(double minX, double maxX, double minY, double maxY, Node *n, Function *F, double tol, int maximumLevel)
     {
         vector<Node*> fakeChildren=n->createFakeChildren();
-        if (abs(fakeChildren[0]->getRekt()->approx(F)-n->getRekt()->approx(F))>tol&&n->getLevel()<maximumLevel)
+        if (abs(abs(fakeChildren[0]->getRekt()->approx(F))-abs(n->getRekt()->approx(F)))>tol&&n->getLevel()<maximumLevel)
     {
         n->createChildren(fakeChildren);
         divideCompMid(minX, maxX, minY, maxY, fakeChildren[0], F, tol, maximumLevel);
@@ -343,6 +343,7 @@ vector<double> QuadTree::getDifArray(Node *n, Function *F, double cutoff)
             {
                 //inboxes
                 t1->v2.push_back(n->getRekt());
+                n->getRekt()->setColor("inbox");
                 //demand
                 t2->v2.push_back(integral);
             }
@@ -351,6 +352,7 @@ vector<double> QuadTree::getDifArray(Node *n, Function *F, double cutoff)
                 //outboxes
                 t1->v1.push_back(n->getRekt());
                 //supply
+                n->getRekt()->setColor("outbox");
                 t2->v1.push_back(integral);
             }
         temp->setDoub(t2);
@@ -397,7 +399,7 @@ vector<double> QuadTree::getDifArray(Node *n, Function *F, double cutoff)
     void QuadTree::divideCompMidAcc(double minX, double maxX, double minY, double maxY, Node *n, Function *F, double tol, int maximumLevel, int accuracy)
     {
          vector<Node*> fakeChildren=n->createFakeChildren();
-        if (abs(fakeChildren[0]->getRekt()->getAccurateApprox(F, accuracy)-n->getRekt()->getAccurateApprox(F, accuracy))>tol)
+        if (abs(fakeChildren[0]->getRekt()->approx(F)-n->getRekt()->approx(F))>tol)
     {
         n->createChildren(fakeChildren);
         divideCompMid(minX, maxX, minY, maxY, fakeChildren[0], F, tol, maximumLevel);
@@ -413,7 +415,7 @@ vector<double> QuadTree::getDifArray(Node *n, Function *F, double cutoff)
     }
 
 
-    tripleVect *QuadTree::getAllRelevantVectsAcc(Node *n, Function *F, double cutoff, int accuracy)
+    tripleVect *QuadTree::getAllRelevantVectsAcc(Node *n, Function *F, double cutoff, int accuracy, int cutoffAcc)
     {
     vector<Rectangle *> temp1;
     vector<Rectangle *> temp2;
@@ -425,21 +427,25 @@ vector<double> QuadTree::getDifArray(Node *n, Function *F, double cutoff)
     tripleVect *temp=new tripleVect(t1, t2);
     if (n->isLeaf())
     {
-            double integral = n->getRekt()->getAccurateApprox(F, accuracy);
+            double integral = n->getRekt()->getAccurateApprox(F, cutoffAcc);
             if (integral < -(scaleCutoff(cutoff,n->getLevel())))
             {
-                cout<<"inbox: "<<integral<<endl;
+                integral = n->getRekt()->getAccurateApprox(F, accuracy);
+               // cout<<"inbox: "<<integral<<endl;
                 //inboxes
                 t1->v2.push_back(n->getRekt());
                 //demand
+                n->getRekt()->setColor("inbox");
                 t2->v2.push_back(integral);
             }
             else if(integral>scaleCutoff(cutoff,n->getLevel()))
             {
-                cout<<"outbox: "<<integral<<endl;
+                integral = n->getRekt()->getAccurateApprox(F, accuracy);
+               // cout<<"outbox: "<<integral<<endl;
                 //outboxes
                 t1->v1.push_back(n->getRekt());
                 //supply
+                n->getRekt()->setColor("outbox");
                 t2->v1.push_back(integral);
             }
         temp->setDoub(t2);
@@ -447,10 +453,10 @@ vector<double> QuadTree::getDifArray(Node *n, Function *F, double cutoff)
         return temp;
     }
     vector<Node *> children = n->getChildren();
-    tripleVect *r1 = getAllRelevantVectsAcc(children[0], F, cutoff, accuracy);
-    tripleVect *r2 = getAllRelevantVectsAcc(children[1], F, cutoff, accuracy);
-    tripleVect *r3 = getAllRelevantVectsAcc(children[2], F, cutoff, accuracy);
-    tripleVect *r4 = getAllRelevantVectsAcc(children[3], F, cutoff, accuracy);
+    tripleVect *r1 = getAllRelevantVectsAcc(children[0], F, cutoff, accuracy, cutoffAcc);
+    tripleVect *r2 = getAllRelevantVectsAcc(children[1], F, cutoff, accuracy, cutoffAcc);
+    tripleVect *r3 = getAllRelevantVectsAcc(children[2], F, cutoff, accuracy, cutoffAcc);
+    tripleVect *r4 = getAllRelevantVectsAcc(children[3], F, cutoff, accuracy, cutoffAcc);
 
     temp->append(r1);
     temp->append(r2);
@@ -459,3 +465,26 @@ vector<double> QuadTree::getDifArray(Node *n, Function *F, double cutoff)
     return temp;
 
     }
+
+double QuadTree::normalizeAcc(Node *n, Function *F, int accuracy)
+{
+    double temp=0;
+        if(n->isLeaf())
+        {
+            temp+=n->getRekt()->getAccurateApprox(F, accuracy);
+        }
+        else
+        {
+            vector<Node*> children=n->getChildren();
+            double t1=normalizeAcc(children[0], F, accuracy);
+            double t2=normalizeAcc(children[0], F, accuracy);
+            double t3=normalizeAcc(children[0], F, accuracy);
+            double t4=normalizeAcc(children[0], F, accuracy);
+            temp+=t1;
+            temp+=t2;
+            temp+=t3;
+            temp+=t4;
+        }
+        return temp;
+        
+}

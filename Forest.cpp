@@ -43,14 +43,13 @@ Point *Forest::getXYCoord(int r, int c)
 
 double Forest::getCoordX(int c)
 {
-
     return (double)c * width + this->minCoordX;
 }
 
 //double check!
 double Forest::getCoordY(int r)
 {
-    int totalHeight = maxCoordY - minCoordY;
+    int totalHeight = abs(maxCoordY - minCoordY);
     return ((totalHeight - r * height)) + minCoordY;
 }
 
@@ -413,17 +412,15 @@ void Forest::appendEverythingToTwoFiles(ofstream *outbox, ofstream *inbox, Funct
     }
 }
 
-void Forest::appendEverythingToTwoFilesAcc(ofstream *outbox, ofstream *inbox, Function *F, double cutoff, int accuracy)
+void Forest::appendEverythingToTwoFilesAcc(ofstream *outbox, ofstream *inbox, Function *F, double cutoff, int accuracy, int cutoffAcc)
 {
-    tripleVect *temp = getAllRelevantVectsAcc(F, cutoff, accuracy);
+    setprecision(15);
+    tripleVect *temp = getAllRelevantVectsAcc(F, cutoff, accuracy, cutoffAcc);
     vector<Rectangle *> outboxes = temp->rect->v1;
     vector<Rectangle *> inboxes = temp->rect->v2;
     vector<double> supply = temp->doub->v1;
     vector<double> demand = temp->doub->v2;
-    for (int i = 0; i < demand.size(); i++)
-    {
-        cout << "demand: " << demand[i] << endl;
-    }
+
     int i = 0;
     for (int i = 0; i < inboxes.size(); i++)
     {
@@ -486,7 +483,7 @@ void Forest::divideCompAcc(double tol, Function *F, int level, int accuracy)
     }
 }
 
-tripleVect *Forest::getAllRelevantVectsAcc(Function *F, double cutoff, int accuracy)
+tripleVect *Forest::getAllRelevantVectsAcc(Function *F, double cutoff, int accuracy, int cutoffAcc)
 {
     vector<Rectangle *> t1;
     vector<Rectangle *> t2;
@@ -500,9 +497,21 @@ tripleVect *Forest::getAllRelevantVectsAcc(Function *F, double cutoff, int accur
         for (int c = 0; c < cols; c++)
         {
             QuadTree *a = forest[index(r, c)];
-            tripleVect *t = a->getAllRelevantVectsAcc(a->getRoot(), F, cutoff, accuracy);
+            tripleVect *t = a->getAllRelevantVectsAcc(a->getRoot(), F, cutoff, accuracy, cutoffAcc);
             temp->append(t);
         }
     }
     return temp;
 }
+    void Forest::normalizeAcc(Function *F, int accuracy)
+    {
+    double value = 0;
+    for (int r = 0; r < rows; r++)
+    {
+        for (int c = 0; c < cols; c++)
+        {
+            value += forest[index(r, c)]->normalizeAcc(forest[index(r, c)]->getRoot(), F, accuracy);
+        }
+    }
+    F->normalize(1 / value);
+    }

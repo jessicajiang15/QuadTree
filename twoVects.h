@@ -5,7 +5,7 @@
 //twovects
 
 /**
- * A class that stores two vectors. Specifically created to be able to return outboxes
+ * A class that stores two vectors of type Rectangle. Specifically created to be able to return outboxes
  * and inboxes in one function so that the for loop+tree traversal does not need
  * to run twice for each of inboxes and outboxes.
  **/

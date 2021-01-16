@@ -19,6 +19,7 @@
  * bb=2 * Sin[THETA] * Cos[THETA] *(1/P^2 - P^2/RHO^2)
  * cc=Sin[THETA]^2/P^2+(P^2) (Cos[THETA]^2)/RHO^2
  *  * */
+#define AUTO_NORM true
 #define P 0.25
 #define RHO 0.5
 #define THETA -M_PI/2
@@ -26,15 +27,19 @@
 #define Y1 0
 #define AINIT 1/M_PI
 #define AFIN 1/M_PI
+#define NORM_CONST_INIT 2.000006548
+#define NORM_CONST_FIN 2.000141678
 //determines which inboxes and outboxes to throw out
 #define CUTOFF 0.0001
 //defines the maximum level you will allow the grid to divide to.
 #define MAX_LEVEL 4
 //determines how finely you divide the grid
-#define TOL 0.001
+#define TOL 100
 //determines how accurate the numerical integrals are, overall. 10 means "divide the current box into 10, then
 //calculate the midpoint riemann sum for all 10 mini-boxes and add them up to get my approximation."
-#define ACC 100
+//note that this includes the normalization accuracy.
+#define ACC 1000
+#define CUTOFF_ACC 100
 
 
 int main()
@@ -73,9 +78,23 @@ int main()
      * Normalize our initial and final functions with the normForest, which splits
      * the function into an 100x100 grid and calculates the midpoint riemann sum.
      * */
+    if(AUTO_NORM)
+    {
     normForest->normalize(final);
     normForest->normalize(initial);
+    }
+    else
+    {
+        initial->normalize(NORM_CONST_INIT);
+        final->normalize(NORM_CONST_FIN);
+    }
+    
+
+
+    cout<<final->getNormConst()<<endl;
+    cout<<initial->getNormConst()<<endl;
     CompTwoFunc *gaussian=new CompTwoFunc(initial, final);
+    cout<<gaussian->value(0,0)<<endl;
 
     //cout<<final->getNormConst()<<endl;
     //cout<<initial->getNormConst()<<endl;
@@ -84,10 +103,12 @@ int main()
     //auto start = std::chrono::high_resolution_clock::now(); 
     //auto end = std::chrono::high_resolution_clock::now(); 
     //cout<<"time: "<<std::chrono::duration_cast<std::chrono::microseconds>(end - start).count()<<endl;
-    forest->divideCompAcc(TOL,gaussian,MAX_LEVEL, ACC);
+    forest->divideComp(TOL,gaussian,MAX_LEVEL);
         //forest->divideComp(TOL,gaussian,MAX_LEVEL);
-    forest->appendEverythingToTwoFilesAcc(&outData,&inData, gaussian, CUTOFF, ACC);
-
+    forest->appendEverythingToTwoFilesAcc(&outData,&inData, gaussian, CUTOFF, ACC,CUTOFF_ACC);
+    //beeps when its done
+    printf("%c",7);
+    cout<<"I'm done!"<<endl;
     //this while loop basically keeps the graphics up and running.
     while (window.isOpen())
     {

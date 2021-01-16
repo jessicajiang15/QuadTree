@@ -6,9 +6,9 @@ Point *GraphicsMechanics::convertFromCartesian(double minX, double maxX, double 
     double xScale = WINDOW_WIDTH / intervalX;
     double intervalY = maxY - minY;
     double yScale = WINDOW_HEIGHT / intervalY;
-    double xShiftCart = intervalX / 2;
+    double xShiftCart = -minX;
     double xShiftSf = xShiftCart * xScale;
-    double yShiftCart = intervalY / 2;
+    double yShiftCart = -minY;
     double yShiftSf = yShiftCart * yScale;
     double x = p->getX();
     double y = p->getY();

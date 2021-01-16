@@ -267,7 +267,7 @@ public:
      * @param F the function we are dividing the forest over
      * @param accuracy the accuracy of the integral we use to get the supply and demand amounts.
      * */
-    void appendEverythingToTwoFilesAcc(ofstream *outbox, ofstream *inbox, Function *F, double cutoff, int accuracy);
+    void appendEverythingToTwoFilesAcc(ofstream *outbox, ofstream *inbox, Function *F, double cutoff, int accuracy, int cutoffAcc);
     /**
      * Obtains lists of inboxes, outboxes, supply, and demand, and places them into a tripleVect object,
      * which stores 4 vectors. This method obtains everything in a single iteration.
@@ -278,6 +278,7 @@ public:
      * supply and outboxes, and v2 corresponds to inboxes and demand
      * @param accuracy the accuracy of the integral used to obtain supply and demand amounts.
      * */
-    tripleVect *getAllRelevantVectsAcc(Function *F, double cutoff, int accuracy);
+    tripleVect *getAllRelevantVectsAcc(Function *F, double cutoff, int accuracy, int cutoffAcc);
+    void normalizeAcc(Function *F, int accuracy);
 };
 #endif

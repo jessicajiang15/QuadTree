@@ -6,6 +6,8 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include "GraphicsMechanics.h"
+#include "string.h"
+#include <iomanip>
 
 //rectangle
 
@@ -24,6 +26,9 @@ class Rectangle
      * Height of the rectangle.
      **/
     double height;
+    /**
+     * The SFML rectangle object for graphics.
+     * */
     sf::RectangleShape* rect;
 
     public:
@@ -77,7 +82,8 @@ class Rectangle
     /**
      * Integrates a function F over the region represented by this rectangle.
      * Dummy function– I don't actually know how to incorporate integration
-     * with this code yet. Will be implemented soon.
+     * with this code yet. Will be implemented soon (if ever, currently using
+     * approximation methods).
      * */
     double integrate(Function *F);
     /**
@@ -88,9 +94,20 @@ class Rectangle
     std::string toStringCoord();
     //draws the rectangle
     void draw(sf::RenderWindow *window);
+    /**
+     * Creates a rectangle with the given boundaries. The x values that define the rectangle will lie
+     * between maxX and minX (minX<x<maxX), and the y values that define the rectangle will lie
+     * between minY and maxY, so minY<y<maxY.
+     * Its length will be |maxX-minX| and its width will be |maxY-minY|
+     * */
     void createSfRectFromCartesian(double minX, double maxX, double minY, double maxY);
+    /**
+     * Gives a more accurate approximation of the integral by splitting up this rectangle into an
+     * accuracy x accuracy grid and evaluating the midpoint rectangular prism volume for each
+     * little rectangle, then adding them up.
+     * */
     double getAccurateApprox(Function *F, int accuracy);
-
+    void setColor(std::string s);
 
 };
 #endif

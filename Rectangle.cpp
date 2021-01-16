@@ -51,7 +51,7 @@ double Rectangle::getCenterX()
 
 double Rectangle::getCenterY()
 {
-    return height/2+point->getY();
+    return -height/2+point->getY();
 }
 
 double Rectangle::getHeight()
@@ -90,6 +90,19 @@ void Rectangle::createSfRectFromCartesian(double minX, double maxX, double minY,
     rect->setFillColor(sf::Color(100, 250, 50));
     rect->setOutlineColor(sf::Color(0, 0, 0));
     rect->setOutlineThickness(1);
+}
+
+void Rectangle::setColor(std::string s)
+{
+    if(s.compare("inbox")==0)
+    {
+        rect->setFillColor(sf::Color(169, 179, 255));
+    }
+    if(s.compare("outbox")==0)
+    {
+        rect->setFillColor(sf::Color(255, 169, 169));
+    }
+
 }
 
 double Rectangle::getAccurateApprox(Function *F, int accuracy)
