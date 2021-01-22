@@ -68,5 +68,25 @@
   "directory": "/Users/Jessica/git/QuadTree/build",
   "command": "/usr/bin/clang++   -isystem /usr/local/include  -O0 -ggdb -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk   -std=gnu++11 -o CMakeFiles/QuadTree.dir/tripleVect.cpp.o -c /Users/Jessica/git/QuadTree/tripleVect.cpp",
   "file": "/Users/Jessica/git/QuadTree/tripleVect.cpp"
+},
+{
+  "directory": "/Users/Jessica/git/QuadTree/build",
+  "command": "/usr/bin/clang++   -isystem /usr/local/include  -O0 -ggdb -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk   -std=gnu++11 -o CMakeFiles/QuadTree.dir/LegendrePolynomial.cpp.o -c /Users/Jessica/git/QuadTree/LegendrePolynomial.cpp",
+  "file": "/Users/Jessica/git/QuadTree/LegendrePolynomial.cpp"
+},
+{
+  "directory": "/Users/Jessica/git/QuadTree/build",
+  "command": "/usr/bin/clang++   -isystem /usr/local/include  -O0 -ggdb -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk   -std=gnu++11 -o CMakeFiles/QuadTree.dir/GaussianQuadrature.cpp.o -c /Users/Jessica/git/QuadTree/GaussianQuadrature.cpp",
+  "file": "/Users/Jessica/git/QuadTree/GaussianQuadrature.cpp"
+},
+{
+  "directory": "/Users/Jessica/git/QuadTree/build",
+  "command": "/usr/bin/clang++   -isystem /usr/local/include  -O0 -ggdb -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk   -std=gnu++11 -o CMakeFiles/QuadTree.dir/TestExponentialFunction.cpp.o -c /Users/Jessica/git/QuadTree/TestExponentialFunction.cpp",
+  "file": "/Users/Jessica/git/QuadTree/TestExponentialFunction.cpp"
+},
+{
+  "directory": "/Users/Jessica/git/QuadTree/build",
+  "command": "/usr/bin/clang++   -isystem /usr/local/include  -O0 -ggdb -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk   -std=gnu++11 -o CMakeFiles/QuadTree.dir/OneDFunction.cpp.o -c /Users/Jessica/git/QuadTree/OneDFunction.cpp",
+  "file": "/Users/Jessica/git/QuadTree/OneDFunction.cpp"
 }
 ]

@@ -2,11 +2,12 @@
 #include "GraphicsMechanics.h"
 #include "Gaussian.h"
 #include "CompTwoFunc.h"
+#include "TestExponentialFunction.h"
 #include <chrono>
 /**
  * Parameters of the forest
  * */
-#define MIN_SIZE 20
+#define NBOXES 5
 #define MIN_Y -4
 #define MAX_Y 4
 #define MIN_X -8
@@ -34,13 +35,12 @@
 //defines the maximum level you will allow the grid to divide to.
 #define MAX_LEVEL 4
 //determines how finely you divide the grid
-#define TOL 100
+#define TOL 0.1
 //determines how accurate the numerical integrals are, overall. 10 means "divide the current box into 10, then
 //calculate the midpoint riemann sum for all 10 mini-boxes and add them up to get my approximation."
 //note that this includes the normalization accuracy.
-#define ACC 1000
-#define CUTOFF_ACC 100
-
+#define ACC 10
+#define CUTOFF_ACC 10
 
 int main()
 {
@@ -68,7 +68,9 @@ int main()
      * defined above. If you want to make a change to the constants, change the values after the #define
      * preprocessors.
      * */
-    Forest *forest =new Forest(MIN_SIZE, MIN_SIZE, MIN_X, MAX_X, MIN_Y, MAX_Y);
+    Forest *forest =new Forest(NBOXES, NBOXES, MIN_X, MAX_X, MIN_Y, MAX_Y);
+    double cutoff=forest->getScaledCutOffMinSizeDif(NBOXES,CUTOFF);
+    cout<<"cutoff: "<<cutoff<<endl;
     //normalization should not depend on how precise we define the grid to be, so we create
     //a second forest
     Forest *normForest=new Forest(100,100,MIN_X, MAX_X, MIN_Y,MAX_Y);
@@ -100,14 +102,25 @@ int main()
     //cout<<initial->getNormConst()<<endl;
     //if anything in this program is taking too long, feel free to use these commented out lines of code
     //to figure out how much time a portion of the code is taking.
-    //auto start = std::chrono::high_resolution_clock::now(); 
-    //auto end = std::chrono::high_resolution_clock::now(); 
-    //cout<<"time: "<<std::chrono::duration_cast<std::chrono::microseconds>(end - start).count()<<endl;
+    auto start = std::chrono::high_resolution_clock::now(); 
+    
     forest->divideComp(TOL,gaussian,MAX_LEVEL);
         //forest->divideComp(TOL,gaussian,MAX_LEVEL);
-    forest->appendEverythingToTwoFilesAcc(&outData,&inData, gaussian, CUTOFF, ACC,CUTOFF_ACC);
+    forest->appendEverythingToTwoFilesAcc(&outData,&inData, gaussian, cutoff, ACC,CUTOFF_ACC);
     //beeps when its done
-    printf("%c",7);
+    auto end = std::chrono::high_resolution_clock::now(); 
+    cout<<"time: "<<std::chrono::duration_cast<std::chrono::microseconds>(end - start).count()<<endl;
+    char c=7;
+    cout<<c<<endl;
+
+    GaussianQuadrature *temp=new GaussianQuadrature(10,2e-15);
+    OneDFunction *func=new TestExponentialFunction();
+    double integral=temp->getOneDIntegral(-3,3,func,1000); 
+
+    cout<<std::setprecision(10)<<"INTEGRAL: "<<integral<<endl;
+    cout<<std::setprecision(10)<<"ACTUAL INTEGRAL: "<<(exp(3)-exp(-3))<<endl;
+
+
     cout<<"I'm done!"<<endl;
     //this while loop basically keeps the graphics up and running.
     while (window.isOpen())

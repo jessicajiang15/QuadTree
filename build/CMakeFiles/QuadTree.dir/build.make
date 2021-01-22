@@ -239,6 +239,58 @@ CMakeFiles/QuadTree.dir/tripleVect.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/QuadTree.dir/tripleVect.cpp.s"
 	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Jessica/git/QuadTree/tripleVect.cpp -o CMakeFiles/QuadTree.dir/tripleVect.cpp.s
 
+CMakeFiles/QuadTree.dir/LegendrePolynomial.cpp.o: CMakeFiles/QuadTree.dir/flags.make
+CMakeFiles/QuadTree.dir/LegendrePolynomial.cpp.o: ../LegendrePolynomial.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Jessica/git/QuadTree/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/QuadTree.dir/LegendrePolynomial.cpp.o"
+	/usr/bin/clang++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/QuadTree.dir/LegendrePolynomial.cpp.o -c /Users/Jessica/git/QuadTree/LegendrePolynomial.cpp
+
+CMakeFiles/QuadTree.dir/LegendrePolynomial.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/QuadTree.dir/LegendrePolynomial.cpp.i"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Jessica/git/QuadTree/LegendrePolynomial.cpp > CMakeFiles/QuadTree.dir/LegendrePolynomial.cpp.i
+
+CMakeFiles/QuadTree.dir/LegendrePolynomial.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/QuadTree.dir/LegendrePolynomial.cpp.s"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Jessica/git/QuadTree/LegendrePolynomial.cpp -o CMakeFiles/QuadTree.dir/LegendrePolynomial.cpp.s
+
+CMakeFiles/QuadTree.dir/GaussianQuadrature.cpp.o: CMakeFiles/QuadTree.dir/flags.make
+CMakeFiles/QuadTree.dir/GaussianQuadrature.cpp.o: ../GaussianQuadrature.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Jessica/git/QuadTree/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/QuadTree.dir/GaussianQuadrature.cpp.o"
+	/usr/bin/clang++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/QuadTree.dir/GaussianQuadrature.cpp.o -c /Users/Jessica/git/QuadTree/GaussianQuadrature.cpp
+
+CMakeFiles/QuadTree.dir/GaussianQuadrature.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/QuadTree.dir/GaussianQuadrature.cpp.i"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Jessica/git/QuadTree/GaussianQuadrature.cpp > CMakeFiles/QuadTree.dir/GaussianQuadrature.cpp.i
+
+CMakeFiles/QuadTree.dir/GaussianQuadrature.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/QuadTree.dir/GaussianQuadrature.cpp.s"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Jessica/git/QuadTree/GaussianQuadrature.cpp -o CMakeFiles/QuadTree.dir/GaussianQuadrature.cpp.s
+
+CMakeFiles/QuadTree.dir/TestExponentialFunction.cpp.o: CMakeFiles/QuadTree.dir/flags.make
+CMakeFiles/QuadTree.dir/TestExponentialFunction.cpp.o: ../TestExponentialFunction.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Jessica/git/QuadTree/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/QuadTree.dir/TestExponentialFunction.cpp.o"
+	/usr/bin/clang++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/QuadTree.dir/TestExponentialFunction.cpp.o -c /Users/Jessica/git/QuadTree/TestExponentialFunction.cpp
+
+CMakeFiles/QuadTree.dir/TestExponentialFunction.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/QuadTree.dir/TestExponentialFunction.cpp.i"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Jessica/git/QuadTree/TestExponentialFunction.cpp > CMakeFiles/QuadTree.dir/TestExponentialFunction.cpp.i
+
+CMakeFiles/QuadTree.dir/TestExponentialFunction.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/QuadTree.dir/TestExponentialFunction.cpp.s"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Jessica/git/QuadTree/TestExponentialFunction.cpp -o CMakeFiles/QuadTree.dir/TestExponentialFunction.cpp.s
+
+CMakeFiles/QuadTree.dir/OneDFunction.cpp.o: CMakeFiles/QuadTree.dir/flags.make
+CMakeFiles/QuadTree.dir/OneDFunction.cpp.o: ../OneDFunction.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Jessica/git/QuadTree/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/QuadTree.dir/OneDFunction.cpp.o"
+	/usr/bin/clang++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/QuadTree.dir/OneDFunction.cpp.o -c /Users/Jessica/git/QuadTree/OneDFunction.cpp
+
+CMakeFiles/QuadTree.dir/OneDFunction.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/QuadTree.dir/OneDFunction.cpp.i"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Jessica/git/QuadTree/OneDFunction.cpp > CMakeFiles/QuadTree.dir/OneDFunction.cpp.i
+
+CMakeFiles/QuadTree.dir/OneDFunction.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/QuadTree.dir/OneDFunction.cpp.s"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Jessica/git/QuadTree/OneDFunction.cpp -o CMakeFiles/QuadTree.dir/OneDFunction.cpp.s
+
 # Object files for target QuadTree
 QuadTree_OBJECTS = \
 "CMakeFiles/QuadTree.dir/main.cpp.o" \
@@ -254,7 +306,11 @@ QuadTree_OBJECTS = \
 "CMakeFiles/QuadTree.dir/Gaussian.cpp.o" \
 "CMakeFiles/QuadTree.dir/CompTwoFunc.cpp.o" \
 "CMakeFiles/QuadTree.dir/twoVectsDoub.cpp.o" \
-"CMakeFiles/QuadTree.dir/tripleVect.cpp.o"
+"CMakeFiles/QuadTree.dir/tripleVect.cpp.o" \
+"CMakeFiles/QuadTree.dir/LegendrePolynomial.cpp.o" \
+"CMakeFiles/QuadTree.dir/GaussianQuadrature.cpp.o" \
+"CMakeFiles/QuadTree.dir/TestExponentialFunction.cpp.o" \
+"CMakeFiles/QuadTree.dir/OneDFunction.cpp.o"
 
 # External object files for target QuadTree
 QuadTree_EXTERNAL_OBJECTS =
@@ -273,13 +329,17 @@ QuadTree: CMakeFiles/QuadTree.dir/Gaussian.cpp.o
 QuadTree: CMakeFiles/QuadTree.dir/CompTwoFunc.cpp.o
 QuadTree: CMakeFiles/QuadTree.dir/twoVectsDoub.cpp.o
 QuadTree: CMakeFiles/QuadTree.dir/tripleVect.cpp.o
+QuadTree: CMakeFiles/QuadTree.dir/LegendrePolynomial.cpp.o
+QuadTree: CMakeFiles/QuadTree.dir/GaussianQuadrature.cpp.o
+QuadTree: CMakeFiles/QuadTree.dir/TestExponentialFunction.cpp.o
+QuadTree: CMakeFiles/QuadTree.dir/OneDFunction.cpp.o
 QuadTree: CMakeFiles/QuadTree.dir/build.make
 QuadTree: /usr/local/lib/libsfml-graphics.2.5.1.dylib
 QuadTree: /usr/local/lib/libsfml-audio.2.5.1.dylib
 QuadTree: /usr/local/lib/libsfml-window.2.5.1.dylib
 QuadTree: /usr/local/lib/libsfml-system.2.5.1.dylib
 QuadTree: CMakeFiles/QuadTree.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/Jessica/git/QuadTree/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Linking CXX executable QuadTree"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/Jessica/git/QuadTree/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Linking CXX executable QuadTree"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/QuadTree.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

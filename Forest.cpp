@@ -515,3 +515,20 @@ tripleVect *Forest::getAllRelevantVectsAcc(Function *F, double cutoff, int accur
     }
     F->normalize(1 / value);
     }
+
+double Forest::getScaledCutoff(double cutoff)
+{
+    double area=this->width*this->height;
+    double xInt=this->maxCoordX-this->minCoordX;
+    double yInt=this->maxCoordY-this->minCoordY;
+    double areaComp=(xInt/20)*(yInt/20);
+    //double difx=this->rows-20;
+    //double dify=this->rows-20;
+    return cutoff/pow(areaComp/area,3);
+}
+
+double Forest::getScaledCutOffMinSizeDif(int NBOXES, double cutoff)
+{
+    std::cout<<"THE CUTOFF:"<<(sqrt(abs(NBOXES-20)))<<std::endl;
+    return cutoff/pow(NBOXES/20,2);
+}

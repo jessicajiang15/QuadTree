@@ -253,6 +253,33 @@ Gaussian.cpp.s:
 	$(MAKE) -f CMakeFiles/QuadTree.dir/build.make CMakeFiles/QuadTree.dir/Gaussian.cpp.s
 .PHONY : Gaussian.cpp.s
 
+GaussianQuadrature.o: GaussianQuadrature.cpp.o
+
+.PHONY : GaussianQuadrature.o
+
+# target to build an object file
+GaussianQuadrature.cpp.o:
+	$(MAKE) -f CMakeFiles/QuadTree.dir/build.make CMakeFiles/QuadTree.dir/GaussianQuadrature.cpp.o
+.PHONY : GaussianQuadrature.cpp.o
+
+GaussianQuadrature.i: GaussianQuadrature.cpp.i
+
+.PHONY : GaussianQuadrature.i
+
+# target to preprocess a source file
+GaussianQuadrature.cpp.i:
+	$(MAKE) -f CMakeFiles/QuadTree.dir/build.make CMakeFiles/QuadTree.dir/GaussianQuadrature.cpp.i
+.PHONY : GaussianQuadrature.cpp.i
+
+GaussianQuadrature.s: GaussianQuadrature.cpp.s
+
+.PHONY : GaussianQuadrature.s
+
+# target to generate assembly for a file
+GaussianQuadrature.cpp.s:
+	$(MAKE) -f CMakeFiles/QuadTree.dir/build.make CMakeFiles/QuadTree.dir/GaussianQuadrature.cpp.s
+.PHONY : GaussianQuadrature.cpp.s
+
 GraphicsMechanics.o: GraphicsMechanics.cpp.o
 
 .PHONY : GraphicsMechanics.o
@@ -280,6 +307,33 @@ GraphicsMechanics.cpp.s:
 	$(MAKE) -f CMakeFiles/QuadTree.dir/build.make CMakeFiles/QuadTree.dir/GraphicsMechanics.cpp.s
 .PHONY : GraphicsMechanics.cpp.s
 
+LegendrePolynomial.o: LegendrePolynomial.cpp.o
+
+.PHONY : LegendrePolynomial.o
+
+# target to build an object file
+LegendrePolynomial.cpp.o:
+	$(MAKE) -f CMakeFiles/QuadTree.dir/build.make CMakeFiles/QuadTree.dir/LegendrePolynomial.cpp.o
+.PHONY : LegendrePolynomial.cpp.o
+
+LegendrePolynomial.i: LegendrePolynomial.cpp.i
+
+.PHONY : LegendrePolynomial.i
+
+# target to preprocess a source file
+LegendrePolynomial.cpp.i:
+	$(MAKE) -f CMakeFiles/QuadTree.dir/build.make CMakeFiles/QuadTree.dir/LegendrePolynomial.cpp.i
+.PHONY : LegendrePolynomial.cpp.i
+
+LegendrePolynomial.s: LegendrePolynomial.cpp.s
+
+.PHONY : LegendrePolynomial.s
+
+# target to generate assembly for a file
+LegendrePolynomial.cpp.s:
+	$(MAKE) -f CMakeFiles/QuadTree.dir/build.make CMakeFiles/QuadTree.dir/LegendrePolynomial.cpp.s
+.PHONY : LegendrePolynomial.cpp.s
+
 Node.o: Node.cpp.o
 
 .PHONY : Node.o
@@ -306,6 +360,33 @@ Node.s: Node.cpp.s
 Node.cpp.s:
 	$(MAKE) -f CMakeFiles/QuadTree.dir/build.make CMakeFiles/QuadTree.dir/Node.cpp.s
 .PHONY : Node.cpp.s
+
+OneDFunction.o: OneDFunction.cpp.o
+
+.PHONY : OneDFunction.o
+
+# target to build an object file
+OneDFunction.cpp.o:
+	$(MAKE) -f CMakeFiles/QuadTree.dir/build.make CMakeFiles/QuadTree.dir/OneDFunction.cpp.o
+.PHONY : OneDFunction.cpp.o
+
+OneDFunction.i: OneDFunction.cpp.i
+
+.PHONY : OneDFunction.i
+
+# target to preprocess a source file
+OneDFunction.cpp.i:
+	$(MAKE) -f CMakeFiles/QuadTree.dir/build.make CMakeFiles/QuadTree.dir/OneDFunction.cpp.i
+.PHONY : OneDFunction.cpp.i
+
+OneDFunction.s: OneDFunction.cpp.s
+
+.PHONY : OneDFunction.s
+
+# target to generate assembly for a file
+OneDFunction.cpp.s:
+	$(MAKE) -f CMakeFiles/QuadTree.dir/build.make CMakeFiles/QuadTree.dir/OneDFunction.cpp.s
+.PHONY : OneDFunction.cpp.s
 
 Point.o: Point.cpp.o
 
@@ -414,6 +495,33 @@ Square.s: Square.cpp.s
 Square.cpp.s:
 	$(MAKE) -f CMakeFiles/QuadTree.dir/build.make CMakeFiles/QuadTree.dir/Square.cpp.s
 .PHONY : Square.cpp.s
+
+TestExponentialFunction.o: TestExponentialFunction.cpp.o
+
+.PHONY : TestExponentialFunction.o
+
+# target to build an object file
+TestExponentialFunction.cpp.o:
+	$(MAKE) -f CMakeFiles/QuadTree.dir/build.make CMakeFiles/QuadTree.dir/TestExponentialFunction.cpp.o
+.PHONY : TestExponentialFunction.cpp.o
+
+TestExponentialFunction.i: TestExponentialFunction.cpp.i
+
+.PHONY : TestExponentialFunction.i
+
+# target to preprocess a source file
+TestExponentialFunction.cpp.i:
+	$(MAKE) -f CMakeFiles/QuadTree.dir/build.make CMakeFiles/QuadTree.dir/TestExponentialFunction.cpp.i
+.PHONY : TestExponentialFunction.cpp.i
+
+TestExponentialFunction.s: TestExponentialFunction.cpp.s
+
+.PHONY : TestExponentialFunction.s
+
+# target to generate assembly for a file
+TestExponentialFunction.cpp.s:
+	$(MAKE) -f CMakeFiles/QuadTree.dir/build.make CMakeFiles/QuadTree.dir/TestExponentialFunction.cpp.s
+.PHONY : TestExponentialFunction.cpp.s
 
 main.o: main.cpp.o
 
@@ -546,12 +654,21 @@ help:
 	@echo "... Gaussian.o"
 	@echo "... Gaussian.i"
 	@echo "... Gaussian.s"
+	@echo "... GaussianQuadrature.o"
+	@echo "... GaussianQuadrature.i"
+	@echo "... GaussianQuadrature.s"
 	@echo "... GraphicsMechanics.o"
 	@echo "... GraphicsMechanics.i"
 	@echo "... GraphicsMechanics.s"
+	@echo "... LegendrePolynomial.o"
+	@echo "... LegendrePolynomial.i"
+	@echo "... LegendrePolynomial.s"
 	@echo "... Node.o"
 	@echo "... Node.i"
 	@echo "... Node.s"
+	@echo "... OneDFunction.o"
+	@echo "... OneDFunction.i"
+	@echo "... OneDFunction.s"
 	@echo "... Point.o"
 	@echo "... Point.i"
 	@echo "... Point.s"
@@ -564,6 +681,9 @@ help:
 	@echo "... Square.o"
 	@echo "... Square.i"
 	@echo "... Square.s"
+	@echo "... TestExponentialFunction.o"
+	@echo "... TestExponentialFunction.i"
+	@echo "... TestExponentialFunction.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

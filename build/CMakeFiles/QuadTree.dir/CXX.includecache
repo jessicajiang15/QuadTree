@@ -10,10 +10,6 @@
 Function.h
 /Users/Jessica/git/QuadTree/Function.h
 
-/Users/Jessica/git/QuadTree/Forest.cpp
-Forest.h
-/Users/Jessica/git/QuadTree/Forest.h
-
 /Users/Jessica/git/QuadTree/Forest.h
 QuadTree.h
 /Users/Jessica/git/QuadTree/QuadTree.h
@@ -32,6 +28,16 @@ Function.h
 math.h
 /Users/Jessica/git/QuadTree/math.h
 
+/Users/Jessica/git/QuadTree/GaussianQuadrature.h
+twoVectsDoub.h
+/Users/Jessica/git/QuadTree/twoVectsDoub.h
+LegendrePolynomial.h
+/Users/Jessica/git/QuadTree/LegendrePolynomial.h
+Function.h
+/Users/Jessica/git/QuadTree/Function.h
+OneDFunction.h
+/Users/Jessica/git/QuadTree/OneDFunction.h
+
 /Users/Jessica/git/QuadTree/GraphicsMechanics.h
 SFML/Graphics.hpp
 -
@@ -40,9 +46,21 @@ iostream
 Point.h
 /Users/Jessica/git/QuadTree/Point.h
 
+/Users/Jessica/git/QuadTree/LegendrePolynomial.h
+math.h
+-
+iostream
+-
+vector
+-
+iomanip
+-
+
 /Users/Jessica/git/QuadTree/Node.h
 Square.h
 /Users/Jessica/git/QuadTree/Square.h
+
+/Users/Jessica/git/QuadTree/OneDFunction.h
 
 /Users/Jessica/git/QuadTree/Point.h
 math.h
@@ -77,10 +95,20 @@ GraphicsMechanics.h
 /Users/Jessica/git/QuadTree/GraphicsMechanics.h
 string.h
 /Users/Jessica/git/QuadTree/string.h
+GaussianQuadrature.h
+/Users/Jessica/git/QuadTree/GaussianQuadrature.h
+iomanip
+-
 
 /Users/Jessica/git/QuadTree/Square.h
 Rectangle.h
 /Users/Jessica/git/QuadTree/Rectangle.h
+
+/Users/Jessica/git/QuadTree/TestExponentialFunction.h
+OneDFunction.h
+/Users/Jessica/git/QuadTree/OneDFunction.h
+math.h
+/Users/Jessica/git/QuadTree/math.h
 
 /Users/Jessica/git/QuadTree/main.cpp
 Forest.h
@@ -91,6 +119,8 @@ Gaussian.h
 /Users/Jessica/git/QuadTree/Gaussian.h
 CompTwoFunc.h
 /Users/Jessica/git/QuadTree/CompTwoFunc.h
+TestExponentialFunction.h
+/Users/Jessica/git/QuadTree/TestExponentialFunction.h
 chrono
 -
 

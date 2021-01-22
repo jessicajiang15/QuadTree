@@ -7,6 +7,7 @@
 #include <SFML/Graphics.hpp>
 #include "GraphicsMechanics.h"
 #include "string.h"
+#include "GaussianQuadrature.h"
 #include <iomanip>
 
 //rectangle

@@ -9,8 +9,11 @@ CMakeFiles/QuadTree.dir/Forest.cpp.o
  /Users/Jessica/git/QuadTree/Forest.cpp
  /Users/Jessica/git/QuadTree/Forest.h
  /Users/Jessica/git/QuadTree/Function.h
+ /Users/Jessica/git/QuadTree/GaussianQuadrature.h
  /Users/Jessica/git/QuadTree/GraphicsMechanics.h
+ /Users/Jessica/git/QuadTree/LegendrePolynomial.h
  /Users/Jessica/git/QuadTree/Node.h
+ /Users/Jessica/git/QuadTree/OneDFunction.h
  /Users/Jessica/git/QuadTree/Point.h
  /Users/Jessica/git/QuadTree/QuadTree.h
  /Users/Jessica/git/QuadTree/Rectangle.h
@@ -99,6 +102,13 @@ CMakeFiles/QuadTree.dir/Gaussian.cpp.o
  /Users/Jessica/git/QuadTree/Function.h
  /Users/Jessica/git/QuadTree/Gaussian.cpp
  /Users/Jessica/git/QuadTree/Gaussian.h
+CMakeFiles/QuadTree.dir/GaussianQuadrature.cpp.o
+ /Users/Jessica/git/QuadTree/Function.h
+ /Users/Jessica/git/QuadTree/GaussianQuadrature.cpp
+ /Users/Jessica/git/QuadTree/GaussianQuadrature.h
+ /Users/Jessica/git/QuadTree/LegendrePolynomial.h
+ /Users/Jessica/git/QuadTree/OneDFunction.h
+ /Users/Jessica/git/QuadTree/twoVectsDoub.h
 CMakeFiles/QuadTree.dir/GraphicsMechanics.cpp.o
  /Users/Jessica/git/QuadTree/GraphicsMechanics.cpp
  /Users/Jessica/git/QuadTree/GraphicsMechanics.h
@@ -177,14 +187,21 @@ CMakeFiles/QuadTree.dir/GraphicsMechanics.cpp.o
  /usr/local/include/SFML/Window/Window.hpp
  /usr/local/include/SFML/Window/WindowHandle.hpp
  /usr/local/include/SFML/Window/WindowStyle.hpp
+CMakeFiles/QuadTree.dir/LegendrePolynomial.cpp.o
+ /Users/Jessica/git/QuadTree/LegendrePolynomial.cpp
+ /Users/Jessica/git/QuadTree/LegendrePolynomial.h
 CMakeFiles/QuadTree.dir/Node.cpp.o
  /Users/Jessica/git/QuadTree/Function.h
+ /Users/Jessica/git/QuadTree/GaussianQuadrature.h
  /Users/Jessica/git/QuadTree/GraphicsMechanics.h
+ /Users/Jessica/git/QuadTree/LegendrePolynomial.h
  /Users/Jessica/git/QuadTree/Node.cpp
  /Users/Jessica/git/QuadTree/Node.h
+ /Users/Jessica/git/QuadTree/OneDFunction.h
  /Users/Jessica/git/QuadTree/Point.h
  /Users/Jessica/git/QuadTree/Rectangle.h
  /Users/Jessica/git/QuadTree/Square.h
+ /Users/Jessica/git/QuadTree/twoVectsDoub.h
  /usr/local/include/SFML/Config.hpp
  /usr/local/include/SFML/Graphics.hpp
  /usr/local/include/SFML/Graphics/BlendMode.hpp
@@ -259,13 +276,19 @@ CMakeFiles/QuadTree.dir/Node.cpp.o
  /usr/local/include/SFML/Window/Window.hpp
  /usr/local/include/SFML/Window/WindowHandle.hpp
  /usr/local/include/SFML/Window/WindowStyle.hpp
+CMakeFiles/QuadTree.dir/OneDFunction.cpp.o
+ /Users/Jessica/git/QuadTree/OneDFunction.cpp
+ /Users/Jessica/git/QuadTree/OneDFunction.h
 CMakeFiles/QuadTree.dir/Point.cpp.o
  /Users/Jessica/git/QuadTree/Point.cpp
  /Users/Jessica/git/QuadTree/Point.h
 CMakeFiles/QuadTree.dir/QuadTree.cpp.o
  /Users/Jessica/git/QuadTree/Function.h
+ /Users/Jessica/git/QuadTree/GaussianQuadrature.h
  /Users/Jessica/git/QuadTree/GraphicsMechanics.h
+ /Users/Jessica/git/QuadTree/LegendrePolynomial.h
  /Users/Jessica/git/QuadTree/Node.h
+ /Users/Jessica/git/QuadTree/OneDFunction.h
  /Users/Jessica/git/QuadTree/Point.h
  /Users/Jessica/git/QuadTree/QuadTree.cpp
  /Users/Jessica/git/QuadTree/QuadTree.h
@@ -350,11 +373,15 @@ CMakeFiles/QuadTree.dir/QuadTree.cpp.o
  /usr/local/include/SFML/Window/WindowStyle.hpp
 CMakeFiles/QuadTree.dir/Rectangle.cpp.o
  /Users/Jessica/git/QuadTree/Function.h
+ /Users/Jessica/git/QuadTree/GaussianQuadrature.h
  /Users/Jessica/git/QuadTree/GraphicsMechanics.h
+ /Users/Jessica/git/QuadTree/LegendrePolynomial.h
+ /Users/Jessica/git/QuadTree/OneDFunction.h
  /Users/Jessica/git/QuadTree/Point.h
  /Users/Jessica/git/QuadTree/Rectangle.cpp
  /Users/Jessica/git/QuadTree/Rectangle.h
  /Users/Jessica/git/QuadTree/Square.h
+ /Users/Jessica/git/QuadTree/twoVectsDoub.h
  /usr/local/include/SFML/Config.hpp
  /usr/local/include/SFML/Graphics.hpp
  /usr/local/include/SFML/Graphics/BlendMode.hpp
@@ -431,11 +458,15 @@ CMakeFiles/QuadTree.dir/Rectangle.cpp.o
  /usr/local/include/SFML/Window/WindowStyle.hpp
 CMakeFiles/QuadTree.dir/Square.cpp.o
  /Users/Jessica/git/QuadTree/Function.h
+ /Users/Jessica/git/QuadTree/GaussianQuadrature.h
  /Users/Jessica/git/QuadTree/GraphicsMechanics.h
+ /Users/Jessica/git/QuadTree/LegendrePolynomial.h
+ /Users/Jessica/git/QuadTree/OneDFunction.h
  /Users/Jessica/git/QuadTree/Point.h
  /Users/Jessica/git/QuadTree/Rectangle.h
  /Users/Jessica/git/QuadTree/Square.cpp
  /Users/Jessica/git/QuadTree/Square.h
+ /Users/Jessica/git/QuadTree/twoVectsDoub.h
  /usr/local/include/SFML/Config.hpp
  /usr/local/include/SFML/Graphics.hpp
  /usr/local/include/SFML/Graphics/BlendMode.hpp
@@ -510,17 +541,25 @@ CMakeFiles/QuadTree.dir/Square.cpp.o
  /usr/local/include/SFML/Window/Window.hpp
  /usr/local/include/SFML/Window/WindowHandle.hpp
  /usr/local/include/SFML/Window/WindowStyle.hpp
+CMakeFiles/QuadTree.dir/TestExponentialFunction.cpp.o
+ /Users/Jessica/git/QuadTree/OneDFunction.h
+ /Users/Jessica/git/QuadTree/TestExponentialFunction.cpp
+ /Users/Jessica/git/QuadTree/TestExponentialFunction.h
 CMakeFiles/QuadTree.dir/main.cpp.o
  /Users/Jessica/git/QuadTree/CompTwoFunc.h
  /Users/Jessica/git/QuadTree/Forest.h
  /Users/Jessica/git/QuadTree/Function.h
  /Users/Jessica/git/QuadTree/Gaussian.h
+ /Users/Jessica/git/QuadTree/GaussianQuadrature.h
  /Users/Jessica/git/QuadTree/GraphicsMechanics.h
+ /Users/Jessica/git/QuadTree/LegendrePolynomial.h
  /Users/Jessica/git/QuadTree/Node.h
+ /Users/Jessica/git/QuadTree/OneDFunction.h
  /Users/Jessica/git/QuadTree/Point.h
  /Users/Jessica/git/QuadTree/QuadTree.h
  /Users/Jessica/git/QuadTree/Rectangle.h
  /Users/Jessica/git/QuadTree/Square.h
+ /Users/Jessica/git/QuadTree/TestExponentialFunction.h
  /Users/Jessica/git/QuadTree/main.cpp
  /Users/Jessica/git/QuadTree/tripleVect.h
  /Users/Jessica/git/QuadTree/twoVects.h
@@ -601,7 +640,10 @@ CMakeFiles/QuadTree.dir/main.cpp.o
  /usr/local/include/SFML/Window/WindowStyle.hpp
 CMakeFiles/QuadTree.dir/tripleVect.cpp.o
  /Users/Jessica/git/QuadTree/Function.h
+ /Users/Jessica/git/QuadTree/GaussianQuadrature.h
  /Users/Jessica/git/QuadTree/GraphicsMechanics.h
+ /Users/Jessica/git/QuadTree/LegendrePolynomial.h
+ /Users/Jessica/git/QuadTree/OneDFunction.h
  /Users/Jessica/git/QuadTree/Point.h
  /Users/Jessica/git/QuadTree/Rectangle.h
  /Users/Jessica/git/QuadTree/tripleVect.cpp
@@ -684,11 +726,15 @@ CMakeFiles/QuadTree.dir/tripleVect.cpp.o
  /usr/local/include/SFML/Window/WindowStyle.hpp
 CMakeFiles/QuadTree.dir/twoVects.cpp.o
  /Users/Jessica/git/QuadTree/Function.h
+ /Users/Jessica/git/QuadTree/GaussianQuadrature.h
  /Users/Jessica/git/QuadTree/GraphicsMechanics.h
+ /Users/Jessica/git/QuadTree/LegendrePolynomial.h
+ /Users/Jessica/git/QuadTree/OneDFunction.h
  /Users/Jessica/git/QuadTree/Point.h
  /Users/Jessica/git/QuadTree/Rectangle.h
  /Users/Jessica/git/QuadTree/twoVects.cpp
  /Users/Jessica/git/QuadTree/twoVects.h
+ /Users/Jessica/git/QuadTree/twoVectsDoub.h
  /usr/local/include/SFML/Config.hpp
  /usr/local/include/SFML/Graphics.hpp
  /usr/local/include/SFML/Graphics/BlendMode.hpp

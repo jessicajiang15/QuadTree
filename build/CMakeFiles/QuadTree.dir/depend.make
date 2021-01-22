@@ -8,8 +8,11 @@ CMakeFiles/QuadTree.dir/CompTwoFunc.cpp.o: ../Function.h
 CMakeFiles/QuadTree.dir/Forest.cpp.o: ../Forest.cpp
 CMakeFiles/QuadTree.dir/Forest.cpp.o: ../Forest.h
 CMakeFiles/QuadTree.dir/Forest.cpp.o: ../Function.h
+CMakeFiles/QuadTree.dir/Forest.cpp.o: ../GaussianQuadrature.h
 CMakeFiles/QuadTree.dir/Forest.cpp.o: ../GraphicsMechanics.h
+CMakeFiles/QuadTree.dir/Forest.cpp.o: ../LegendrePolynomial.h
 CMakeFiles/QuadTree.dir/Forest.cpp.o: ../Node.h
+CMakeFiles/QuadTree.dir/Forest.cpp.o: ../OneDFunction.h
 CMakeFiles/QuadTree.dir/Forest.cpp.o: ../Point.h
 CMakeFiles/QuadTree.dir/Forest.cpp.o: ../QuadTree.h
 CMakeFiles/QuadTree.dir/Forest.cpp.o: ../Rectangle.h
@@ -99,6 +102,13 @@ CMakeFiles/QuadTree.dir/Gaussian.cpp.o: ../Function.h
 CMakeFiles/QuadTree.dir/Gaussian.cpp.o: ../Gaussian.cpp
 CMakeFiles/QuadTree.dir/Gaussian.cpp.o: ../Gaussian.h
 
+CMakeFiles/QuadTree.dir/GaussianQuadrature.cpp.o: ../Function.h
+CMakeFiles/QuadTree.dir/GaussianQuadrature.cpp.o: ../GaussianQuadrature.cpp
+CMakeFiles/QuadTree.dir/GaussianQuadrature.cpp.o: ../GaussianQuadrature.h
+CMakeFiles/QuadTree.dir/GaussianQuadrature.cpp.o: ../LegendrePolynomial.h
+CMakeFiles/QuadTree.dir/GaussianQuadrature.cpp.o: ../OneDFunction.h
+CMakeFiles/QuadTree.dir/GaussianQuadrature.cpp.o: ../twoVectsDoub.h
+
 CMakeFiles/QuadTree.dir/GraphicsMechanics.cpp.o: ../GraphicsMechanics.cpp
 CMakeFiles/QuadTree.dir/GraphicsMechanics.cpp.o: ../GraphicsMechanics.h
 CMakeFiles/QuadTree.dir/GraphicsMechanics.cpp.o: ../Point.h
@@ -177,13 +187,20 @@ CMakeFiles/QuadTree.dir/GraphicsMechanics.cpp.o: /usr/local/include/SFML/Window/
 CMakeFiles/QuadTree.dir/GraphicsMechanics.cpp.o: /usr/local/include/SFML/Window/WindowHandle.hpp
 CMakeFiles/QuadTree.dir/GraphicsMechanics.cpp.o: /usr/local/include/SFML/Window/WindowStyle.hpp
 
+CMakeFiles/QuadTree.dir/LegendrePolynomial.cpp.o: ../LegendrePolynomial.cpp
+CMakeFiles/QuadTree.dir/LegendrePolynomial.cpp.o: ../LegendrePolynomial.h
+
 CMakeFiles/QuadTree.dir/Node.cpp.o: ../Function.h
+CMakeFiles/QuadTree.dir/Node.cpp.o: ../GaussianQuadrature.h
 CMakeFiles/QuadTree.dir/Node.cpp.o: ../GraphicsMechanics.h
+CMakeFiles/QuadTree.dir/Node.cpp.o: ../LegendrePolynomial.h
 CMakeFiles/QuadTree.dir/Node.cpp.o: ../Node.cpp
 CMakeFiles/QuadTree.dir/Node.cpp.o: ../Node.h
+CMakeFiles/QuadTree.dir/Node.cpp.o: ../OneDFunction.h
 CMakeFiles/QuadTree.dir/Node.cpp.o: ../Point.h
 CMakeFiles/QuadTree.dir/Node.cpp.o: ../Rectangle.h
 CMakeFiles/QuadTree.dir/Node.cpp.o: ../Square.h
+CMakeFiles/QuadTree.dir/Node.cpp.o: ../twoVectsDoub.h
 CMakeFiles/QuadTree.dir/Node.cpp.o: /usr/local/include/SFML/Config.hpp
 CMakeFiles/QuadTree.dir/Node.cpp.o: /usr/local/include/SFML/Graphics.hpp
 CMakeFiles/QuadTree.dir/Node.cpp.o: /usr/local/include/SFML/Graphics/BlendMode.hpp
@@ -259,12 +276,18 @@ CMakeFiles/QuadTree.dir/Node.cpp.o: /usr/local/include/SFML/Window/Window.hpp
 CMakeFiles/QuadTree.dir/Node.cpp.o: /usr/local/include/SFML/Window/WindowHandle.hpp
 CMakeFiles/QuadTree.dir/Node.cpp.o: /usr/local/include/SFML/Window/WindowStyle.hpp
 
+CMakeFiles/QuadTree.dir/OneDFunction.cpp.o: ../OneDFunction.cpp
+CMakeFiles/QuadTree.dir/OneDFunction.cpp.o: ../OneDFunction.h
+
 CMakeFiles/QuadTree.dir/Point.cpp.o: ../Point.cpp
 CMakeFiles/QuadTree.dir/Point.cpp.o: ../Point.h
 
 CMakeFiles/QuadTree.dir/QuadTree.cpp.o: ../Function.h
+CMakeFiles/QuadTree.dir/QuadTree.cpp.o: ../GaussianQuadrature.h
 CMakeFiles/QuadTree.dir/QuadTree.cpp.o: ../GraphicsMechanics.h
+CMakeFiles/QuadTree.dir/QuadTree.cpp.o: ../LegendrePolynomial.h
 CMakeFiles/QuadTree.dir/QuadTree.cpp.o: ../Node.h
+CMakeFiles/QuadTree.dir/QuadTree.cpp.o: ../OneDFunction.h
 CMakeFiles/QuadTree.dir/QuadTree.cpp.o: ../Point.h
 CMakeFiles/QuadTree.dir/QuadTree.cpp.o: ../QuadTree.cpp
 CMakeFiles/QuadTree.dir/QuadTree.cpp.o: ../QuadTree.h
@@ -349,11 +372,15 @@ CMakeFiles/QuadTree.dir/QuadTree.cpp.o: /usr/local/include/SFML/Window/WindowHan
 CMakeFiles/QuadTree.dir/QuadTree.cpp.o: /usr/local/include/SFML/Window/WindowStyle.hpp
 
 CMakeFiles/QuadTree.dir/Rectangle.cpp.o: ../Function.h
+CMakeFiles/QuadTree.dir/Rectangle.cpp.o: ../GaussianQuadrature.h
 CMakeFiles/QuadTree.dir/Rectangle.cpp.o: ../GraphicsMechanics.h
+CMakeFiles/QuadTree.dir/Rectangle.cpp.o: ../LegendrePolynomial.h
+CMakeFiles/QuadTree.dir/Rectangle.cpp.o: ../OneDFunction.h
 CMakeFiles/QuadTree.dir/Rectangle.cpp.o: ../Point.h
 CMakeFiles/QuadTree.dir/Rectangle.cpp.o: ../Rectangle.cpp
 CMakeFiles/QuadTree.dir/Rectangle.cpp.o: ../Rectangle.h
 CMakeFiles/QuadTree.dir/Rectangle.cpp.o: ../Square.h
+CMakeFiles/QuadTree.dir/Rectangle.cpp.o: ../twoVectsDoub.h
 CMakeFiles/QuadTree.dir/Rectangle.cpp.o: /usr/local/include/SFML/Config.hpp
 CMakeFiles/QuadTree.dir/Rectangle.cpp.o: /usr/local/include/SFML/Graphics.hpp
 CMakeFiles/QuadTree.dir/Rectangle.cpp.o: /usr/local/include/SFML/Graphics/BlendMode.hpp
@@ -430,11 +457,15 @@ CMakeFiles/QuadTree.dir/Rectangle.cpp.o: /usr/local/include/SFML/Window/WindowHa
 CMakeFiles/QuadTree.dir/Rectangle.cpp.o: /usr/local/include/SFML/Window/WindowStyle.hpp
 
 CMakeFiles/QuadTree.dir/Square.cpp.o: ../Function.h
+CMakeFiles/QuadTree.dir/Square.cpp.o: ../GaussianQuadrature.h
 CMakeFiles/QuadTree.dir/Square.cpp.o: ../GraphicsMechanics.h
+CMakeFiles/QuadTree.dir/Square.cpp.o: ../LegendrePolynomial.h
+CMakeFiles/QuadTree.dir/Square.cpp.o: ../OneDFunction.h
 CMakeFiles/QuadTree.dir/Square.cpp.o: ../Point.h
 CMakeFiles/QuadTree.dir/Square.cpp.o: ../Rectangle.h
 CMakeFiles/QuadTree.dir/Square.cpp.o: ../Square.cpp
 CMakeFiles/QuadTree.dir/Square.cpp.o: ../Square.h
+CMakeFiles/QuadTree.dir/Square.cpp.o: ../twoVectsDoub.h
 CMakeFiles/QuadTree.dir/Square.cpp.o: /usr/local/include/SFML/Config.hpp
 CMakeFiles/QuadTree.dir/Square.cpp.o: /usr/local/include/SFML/Graphics.hpp
 CMakeFiles/QuadTree.dir/Square.cpp.o: /usr/local/include/SFML/Graphics/BlendMode.hpp
@@ -510,16 +541,24 @@ CMakeFiles/QuadTree.dir/Square.cpp.o: /usr/local/include/SFML/Window/Window.hpp
 CMakeFiles/QuadTree.dir/Square.cpp.o: /usr/local/include/SFML/Window/WindowHandle.hpp
 CMakeFiles/QuadTree.dir/Square.cpp.o: /usr/local/include/SFML/Window/WindowStyle.hpp
 
+CMakeFiles/QuadTree.dir/TestExponentialFunction.cpp.o: ../OneDFunction.h
+CMakeFiles/QuadTree.dir/TestExponentialFunction.cpp.o: ../TestExponentialFunction.cpp
+CMakeFiles/QuadTree.dir/TestExponentialFunction.cpp.o: ../TestExponentialFunction.h
+
 CMakeFiles/QuadTree.dir/main.cpp.o: ../CompTwoFunc.h
 CMakeFiles/QuadTree.dir/main.cpp.o: ../Forest.h
 CMakeFiles/QuadTree.dir/main.cpp.o: ../Function.h
 CMakeFiles/QuadTree.dir/main.cpp.o: ../Gaussian.h
+CMakeFiles/QuadTree.dir/main.cpp.o: ../GaussianQuadrature.h
 CMakeFiles/QuadTree.dir/main.cpp.o: ../GraphicsMechanics.h
+CMakeFiles/QuadTree.dir/main.cpp.o: ../LegendrePolynomial.h
 CMakeFiles/QuadTree.dir/main.cpp.o: ../Node.h
+CMakeFiles/QuadTree.dir/main.cpp.o: ../OneDFunction.h
 CMakeFiles/QuadTree.dir/main.cpp.o: ../Point.h
 CMakeFiles/QuadTree.dir/main.cpp.o: ../QuadTree.h
 CMakeFiles/QuadTree.dir/main.cpp.o: ../Rectangle.h
 CMakeFiles/QuadTree.dir/main.cpp.o: ../Square.h
+CMakeFiles/QuadTree.dir/main.cpp.o: ../TestExponentialFunction.h
 CMakeFiles/QuadTree.dir/main.cpp.o: ../main.cpp
 CMakeFiles/QuadTree.dir/main.cpp.o: ../tripleVect.h
 CMakeFiles/QuadTree.dir/main.cpp.o: ../twoVects.h
@@ -600,7 +639,10 @@ CMakeFiles/QuadTree.dir/main.cpp.o: /usr/local/include/SFML/Window/WindowHandle.
 CMakeFiles/QuadTree.dir/main.cpp.o: /usr/local/include/SFML/Window/WindowStyle.hpp
 
 CMakeFiles/QuadTree.dir/tripleVect.cpp.o: ../Function.h
+CMakeFiles/QuadTree.dir/tripleVect.cpp.o: ../GaussianQuadrature.h
 CMakeFiles/QuadTree.dir/tripleVect.cpp.o: ../GraphicsMechanics.h
+CMakeFiles/QuadTree.dir/tripleVect.cpp.o: ../LegendrePolynomial.h
+CMakeFiles/QuadTree.dir/tripleVect.cpp.o: ../OneDFunction.h
 CMakeFiles/QuadTree.dir/tripleVect.cpp.o: ../Point.h
 CMakeFiles/QuadTree.dir/tripleVect.cpp.o: ../Rectangle.h
 CMakeFiles/QuadTree.dir/tripleVect.cpp.o: ../tripleVect.cpp
@@ -683,11 +725,15 @@ CMakeFiles/QuadTree.dir/tripleVect.cpp.o: /usr/local/include/SFML/Window/WindowH
 CMakeFiles/QuadTree.dir/tripleVect.cpp.o: /usr/local/include/SFML/Window/WindowStyle.hpp
 
 CMakeFiles/QuadTree.dir/twoVects.cpp.o: ../Function.h
+CMakeFiles/QuadTree.dir/twoVects.cpp.o: ../GaussianQuadrature.h
 CMakeFiles/QuadTree.dir/twoVects.cpp.o: ../GraphicsMechanics.h
+CMakeFiles/QuadTree.dir/twoVects.cpp.o: ../LegendrePolynomial.h
+CMakeFiles/QuadTree.dir/twoVects.cpp.o: ../OneDFunction.h
 CMakeFiles/QuadTree.dir/twoVects.cpp.o: ../Point.h
 CMakeFiles/QuadTree.dir/twoVects.cpp.o: ../Rectangle.h
 CMakeFiles/QuadTree.dir/twoVects.cpp.o: ../twoVects.cpp
 CMakeFiles/QuadTree.dir/twoVects.cpp.o: ../twoVects.h
+CMakeFiles/QuadTree.dir/twoVects.cpp.o: ../twoVectsDoub.h
 CMakeFiles/QuadTree.dir/twoVects.cpp.o: /usr/local/include/SFML/Config.hpp
 CMakeFiles/QuadTree.dir/twoVects.cpp.o: /usr/local/include/SFML/Graphics.hpp
 CMakeFiles/QuadTree.dir/twoVects.cpp.o: /usr/local/include/SFML/Graphics/BlendMode.hpp

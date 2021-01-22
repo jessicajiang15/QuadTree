@@ -280,5 +280,9 @@ public:
      * */
     tripleVect *getAllRelevantVectsAcc(Function *F, double cutoff, int accuracy, int cutoffAcc);
     void normalizeAcc(Function *F, int accuracy);
+    //get cutoff relative to a 20x20 grid, which corresponds to a cutoff of 0.0001
+    double getScaledCutoff(double cutoff);
+    double getScaledCutOffMinSizeDif(int NBOXES, double cutoff);
+
 };
 #endif
