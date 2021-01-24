@@ -88,5 +88,10 @@
   "directory": "/Users/Jessica/git/QuadTree/build",
   "command": "/usr/bin/clang++   -isystem /usr/local/include  -O0 -ggdb -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk   -std=gnu++11 -o CMakeFiles/QuadTree.dir/OneDFunction.cpp.o -c /Users/Jessica/git/QuadTree/OneDFunction.cpp",
   "file": "/Users/Jessica/git/QuadTree/OneDFunction.cpp"
+},
+{
+  "directory": "/Users/Jessica/git/QuadTree/build",
+  "command": "/usr/bin/clang++   -isystem /usr/local/include  -O0 -ggdb -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk   -std=gnu++11 -o CMakeFiles/QuadTree.dir/Test2DExpFcn.cpp.o -c /Users/Jessica/git/QuadTree/Test2DExpFcn.cpp",
+  "file": "/Users/Jessica/git/QuadTree/Test2DExpFcn.cpp"
 }
 ]

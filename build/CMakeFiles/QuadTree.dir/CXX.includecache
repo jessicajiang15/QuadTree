@@ -104,6 +104,12 @@ iomanip
 Rectangle.h
 /Users/Jessica/git/QuadTree/Rectangle.h
 
+/Users/Jessica/git/QuadTree/Test2DExpFcn.h
+Function.h
+/Users/Jessica/git/QuadTree/Function.h
+math.h
+/Users/Jessica/git/QuadTree/math.h
+
 /Users/Jessica/git/QuadTree/TestExponentialFunction.h
 OneDFunction.h
 /Users/Jessica/git/QuadTree/OneDFunction.h
@@ -123,6 +129,8 @@ TestExponentialFunction.h
 /Users/Jessica/git/QuadTree/TestExponentialFunction.h
 chrono
 -
+Test2DExpFcn.h
+/Users/Jessica/git/QuadTree/Test2DExpFcn.h
 
 /Users/Jessica/git/QuadTree/tripleVect.h
 vector

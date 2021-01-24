@@ -496,6 +496,33 @@ Square.cpp.s:
 	$(MAKE) -f CMakeFiles/QuadTree.dir/build.make CMakeFiles/QuadTree.dir/Square.cpp.s
 .PHONY : Square.cpp.s
 
+Test2DExpFcn.o: Test2DExpFcn.cpp.o
+
+.PHONY : Test2DExpFcn.o
+
+# target to build an object file
+Test2DExpFcn.cpp.o:
+	$(MAKE) -f CMakeFiles/QuadTree.dir/build.make CMakeFiles/QuadTree.dir/Test2DExpFcn.cpp.o
+.PHONY : Test2DExpFcn.cpp.o
+
+Test2DExpFcn.i: Test2DExpFcn.cpp.i
+
+.PHONY : Test2DExpFcn.i
+
+# target to preprocess a source file
+Test2DExpFcn.cpp.i:
+	$(MAKE) -f CMakeFiles/QuadTree.dir/build.make CMakeFiles/QuadTree.dir/Test2DExpFcn.cpp.i
+.PHONY : Test2DExpFcn.cpp.i
+
+Test2DExpFcn.s: Test2DExpFcn.cpp.s
+
+.PHONY : Test2DExpFcn.s
+
+# target to generate assembly for a file
+Test2DExpFcn.cpp.s:
+	$(MAKE) -f CMakeFiles/QuadTree.dir/build.make CMakeFiles/QuadTree.dir/Test2DExpFcn.cpp.s
+.PHONY : Test2DExpFcn.cpp.s
+
 TestExponentialFunction.o: TestExponentialFunction.cpp.o
 
 .PHONY : TestExponentialFunction.o
@@ -681,6 +708,9 @@ help:
 	@echo "... Square.o"
 	@echo "... Square.i"
 	@echo "... Square.s"
+	@echo "... Test2DExpFcn.o"
+	@echo "... Test2DExpFcn.i"
+	@echo "... Test2DExpFcn.s"
 	@echo "... TestExponentialFunction.o"
 	@echo "... TestExponentialFunction.i"
 	@echo "... TestExponentialFunction.s"

@@ -532,3 +532,24 @@ double Forest::getScaledCutOffMinSizeDif(int NBOXES, double cutoff)
     std::cout<<"THE CUTOFF:"<<(sqrt(abs(NBOXES-20)))<<std::endl;
     return cutoff/pow(NBOXES/20,2);
 }
+
+tripleVect* Forest::getAllRelevantVectsGaussQuad(Function *F, double cutoff, int MAX_ITERATIONS, double acc, int cutoffAcc, int m)
+{
+        vector<Rectangle *> t1;
+    vector<Rectangle *> t2;
+    vector<double> t3;
+    vector<double> t4;
+    twoVects *temp1 = new twoVects(t1, t2);
+    twoVectsDoub *temp2 = new twoVectsDoub(t3, t4);
+    tripleVect *temp = new tripleVect(temp1, temp2);
+    for (int r = 0; r < rows; r++)
+    {
+        for (int c = 0; c < cols; c++)
+        {
+            QuadTree *a = forest[index(r, c)];
+            tripleVect *t = a->getAllRelevantVectsGaussQuad(a->getRoot(), F, cutoff,  MAX_ITERATIONS,  acc,  cutoffAcc, m);
+            temp->append(t);
+        }
+    }
+    return temp;
+}

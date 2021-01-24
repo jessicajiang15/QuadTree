@@ -541,6 +541,10 @@ CMakeFiles/QuadTree.dir/Square.cpp.o
  /usr/local/include/SFML/Window/Window.hpp
  /usr/local/include/SFML/Window/WindowHandle.hpp
  /usr/local/include/SFML/Window/WindowStyle.hpp
+CMakeFiles/QuadTree.dir/Test2DExpFcn.cpp.o
+ /Users/Jessica/git/QuadTree/Function.h
+ /Users/Jessica/git/QuadTree/Test2DExpFcn.cpp
+ /Users/Jessica/git/QuadTree/Test2DExpFcn.h
 CMakeFiles/QuadTree.dir/TestExponentialFunction.cpp.o
  /Users/Jessica/git/QuadTree/OneDFunction.h
  /Users/Jessica/git/QuadTree/TestExponentialFunction.cpp
@@ -559,6 +563,7 @@ CMakeFiles/QuadTree.dir/main.cpp.o
  /Users/Jessica/git/QuadTree/QuadTree.h
  /Users/Jessica/git/QuadTree/Rectangle.h
  /Users/Jessica/git/QuadTree/Square.h
+ /Users/Jessica/git/QuadTree/Test2DExpFcn.h
  /Users/Jessica/git/QuadTree/TestExponentialFunction.h
  /Users/Jessica/git/QuadTree/main.cpp
  /Users/Jessica/git/QuadTree/tripleVect.h

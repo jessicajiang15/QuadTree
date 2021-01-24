@@ -179,6 +179,9 @@ public:
     //unused
     twoVectsDoub getSupplyDemandAmt(Function *F, double cutoff);
     double normalizeAcc(Node *n, Function *F, int accuracy);
+
+    tripleVect* getAllRelevantVectsGaussQuad(Node *n, Function *F, double cutoff, int MAX_ITERATIONS, double acc, int cutoffAcc, int m);
+
 };
 
 #endif

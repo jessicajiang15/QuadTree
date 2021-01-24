@@ -4,10 +4,11 @@
 #include "CompTwoFunc.h"
 #include "TestExponentialFunction.h"
 #include <chrono>
+#include "Test2DExpFcn.h"
 /**
  * Parameters of the forest
  * */
-#define NBOXES 5
+#define NBOXES 20
 #define MIN_Y -4
 #define MAX_Y 4
 #define MIN_X -8
@@ -23,7 +24,7 @@
 #define AUTO_NORM true
 #define P 0.25
 #define RHO 0.5
-#define THETA -M_PI/2
+#define THETA -M_PI/6
 #define X1 0
 #define Y1 0
 #define AINIT 1/M_PI
@@ -35,7 +36,7 @@
 //defines the maximum level you will allow the grid to divide to.
 #define MAX_LEVEL 4
 //determines how finely you divide the grid
-#define TOL 0.1
+#define TOL 0.001
 //determines how accurate the numerical integrals are, overall. 10 means "divide the current box into 10, then
 //calculate the midpoint riemann sum for all 10 mini-boxes and add them up to get my approximation."
 //note that this includes the normalization accuracy.
@@ -51,8 +52,10 @@ int main()
     **/
     ofstream inData;
     ofstream outData;
+    ofstream zeros;
     inData.open("inData.csv");
     outData.open("outData.csv");
+    zeros.open("zeros.txt");
 
     /**
      * Unimportant graphics stuff. The graphics is mainly here for debugging purposes.
@@ -115,10 +118,20 @@ int main()
 
     GaussianQuadrature *temp=new GaussianQuadrature(10,2e-15);
     OneDFunction *func=new TestExponentialFunction();
-    double integral=temp->getOneDIntegral(-3,3,func,1000); 
+        Function *f=new Test2DExpFcn();
 
-    cout<<std::setprecision(10)<<"INTEGRAL: "<<integral<<endl;
-    cout<<std::setprecision(10)<<"ACTUAL INTEGRAL: "<<(exp(3)-exp(-3))<<endl;
+        double integral=temp->getOneDIntegral(0,3,func,1000); 
+
+        GaussianQuadrature *temp1=new GaussianQuadrature(20,20,2e-20);
+
+        double doubleint=temp1->getTwoDIntegral(0,3,0,3,f,1000);
+
+
+    cout<<std::setprecision(20)<<"INTEGRAL: "<<integral<<endl;
+    cout<<std::setprecision(20)<<"ACTUAL INTEGRAL: "<<(exp(3)-exp(0))<<endl;
+
+    cout<<std::setprecision(20)<<"INTEGRAL: "<<doubleint<<endl;
+    cout<<std::setprecision(20)<<"INTEGRAL: "<<0.7853634641091725<<endl;
 
 
     cout<<"I'm done!"<<endl;

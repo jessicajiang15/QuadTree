@@ -284,5 +284,8 @@ public:
     double getScaledCutoff(double cutoff);
     double getScaledCutOffMinSizeDif(int NBOXES, double cutoff);
 
+    tripleVect* getAllRelevantVectsGaussQuad(Function *F, double cutoff, int MAX_ITERATIONS, double acc, int cutoffAcc, int m);
+
+
 };
 #endif

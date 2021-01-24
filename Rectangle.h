@@ -110,5 +110,7 @@ class Rectangle
     double getAccurateApprox(Function *F, int accuracy);
     void setColor(std::string s);
 
+    double integralGaussApprox(int MAX_ITERATIONS, Function *F, GaussianQuadrature* quadrature);
+
 };
 #endif

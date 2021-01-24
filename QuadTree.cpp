@@ -488,3 +488,46 @@ double QuadTree::normalizeAcc(Node *n, Function *F, int accuracy)
         return temp;
         
 }
+
+    tripleVect* QuadTree::getAllRelevantVectsGaussQuad(Node *n, Function *F, double cutoff, int MAX_ITERATIONS, double acc, int cutoffAcc, int m)
+    {
+        GaussianQuadrature *gaussQuad=new GaussianQuadrature(m,acc);
+    vector<Rectangle *> temp1;
+    vector<Rectangle *> temp2;
+
+    vector<double> supply;
+    vector<double> demand;
+    twoVects *t1 = new twoVects(temp1, temp2);
+    twoVectsDoub *t2=new twoVectsDoub(supply, demand);
+    tripleVect *temp=new tripleVect(t1, t2);
+    if (n->isLeaf())
+    {
+            double integral = n->getRekt()->integralGaussApprox(MAX_ITERATIONS, F,gaussQuad);
+            if (integral < -(scaleCutoff(cutoff,n->getLevel())))
+            {
+                t1->v2.push_back(n->getRekt());
+                n->getRekt()->setColor("inbox");
+                t2->v2.push_back(integral);
+            }
+            else if(integral>scaleCutoff(cutoff,n->getLevel()))
+            {
+                t1->v1.push_back(n->getRekt());
+                n->getRekt()->setColor("outbox");
+                t2->v1.push_back(integral);
+            }
+        temp->setDoub(t2);
+        temp->setRect(t1);
+        return temp;
+    }
+    vector<Node *> children = n->getChildren();
+    tripleVect *r1 = getAllRelevantVectsGaussQuad(children[0], F, cutoff, MAX_ITERATIONS, acc, cutoffAcc, m);
+    tripleVect *r2 = getAllRelevantVectsGaussQuad(children[1], F, cutoff, MAX_ITERATIONS, acc, cutoffAcc, m);
+    tripleVect *r3 = getAllRelevantVectsGaussQuad(children[2], F, cutoff, MAX_ITERATIONS, acc, cutoffAcc, m);
+    tripleVect *r4 = getAllRelevantVectsGaussQuad(children[3], F, cutoff, MAX_ITERATIONS, acc, cutoffAcc, m);
+
+    temp->append(r1);
+    temp->append(r2);
+    temp->append(r3);
+    temp->append(r4);
+    return temp;
+    }

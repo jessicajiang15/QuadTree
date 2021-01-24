@@ -541,6 +541,10 @@ CMakeFiles/QuadTree.dir/Square.cpp.o: /usr/local/include/SFML/Window/Window.hpp
 CMakeFiles/QuadTree.dir/Square.cpp.o: /usr/local/include/SFML/Window/WindowHandle.hpp
 CMakeFiles/QuadTree.dir/Square.cpp.o: /usr/local/include/SFML/Window/WindowStyle.hpp
 
+CMakeFiles/QuadTree.dir/Test2DExpFcn.cpp.o: ../Function.h
+CMakeFiles/QuadTree.dir/Test2DExpFcn.cpp.o: ../Test2DExpFcn.cpp
+CMakeFiles/QuadTree.dir/Test2DExpFcn.cpp.o: ../Test2DExpFcn.h
+
 CMakeFiles/QuadTree.dir/TestExponentialFunction.cpp.o: ../OneDFunction.h
 CMakeFiles/QuadTree.dir/TestExponentialFunction.cpp.o: ../TestExponentialFunction.cpp
 CMakeFiles/QuadTree.dir/TestExponentialFunction.cpp.o: ../TestExponentialFunction.h
@@ -558,6 +562,7 @@ CMakeFiles/QuadTree.dir/main.cpp.o: ../Point.h
 CMakeFiles/QuadTree.dir/main.cpp.o: ../QuadTree.h
 CMakeFiles/QuadTree.dir/main.cpp.o: ../Rectangle.h
 CMakeFiles/QuadTree.dir/main.cpp.o: ../Square.h
+CMakeFiles/QuadTree.dir/main.cpp.o: ../Test2DExpFcn.h
 CMakeFiles/QuadTree.dir/main.cpp.o: ../TestExponentialFunction.h
 CMakeFiles/QuadTree.dir/main.cpp.o: ../main.cpp
 CMakeFiles/QuadTree.dir/main.cpp.o: ../tripleVect.h

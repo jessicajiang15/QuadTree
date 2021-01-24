@@ -12,6 +12,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/QuadTree.dir/QuadTree.cpp.o"
   "CMakeFiles/QuadTree.dir/Rectangle.cpp.o"
   "CMakeFiles/QuadTree.dir/Square.cpp.o"
+  "CMakeFiles/QuadTree.dir/Test2DExpFcn.cpp.o"
   "CMakeFiles/QuadTree.dir/TestExponentialFunction.cpp.o"
   "CMakeFiles/QuadTree.dir/main.cpp.o"
   "CMakeFiles/QuadTree.dir/tripleVect.cpp.o"
