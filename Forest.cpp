@@ -503,8 +503,8 @@ tripleVect *Forest::getAllRelevantVectsAcc(Function *F, double cutoff, int accur
     }
     return temp;
 }
-    void Forest::normalizeAcc(Function *F, int accuracy)
-    {
+void Forest::normalizeAcc(Function *F, int accuracy)
+{
     double value = 0;
     for (int r = 0; r < rows; r++)
     {
@@ -514,28 +514,29 @@ tripleVect *Forest::getAllRelevantVectsAcc(Function *F, double cutoff, int accur
         }
     }
     F->normalize(1 / value);
-    }
+}
 
 double Forest::getScaledCutoff(double cutoff)
 {
-    double area=this->width*this->height;
-    double xInt=this->maxCoordX-this->minCoordX;
-    double yInt=this->maxCoordY-this->minCoordY;
-    double areaComp=(xInt/20)*(yInt/20);
+    double area = this->width * this->height;
+    double xInt = this->maxCoordX - this->minCoordX;
+    double yInt = this->maxCoordY - this->minCoordY;
+    double areaComp = (xInt / 20) * (yInt / 20);
     //double difx=this->rows-20;
     //double dify=this->rows-20;
-    return cutoff/pow(areaComp/area,3);
+    return cutoff / pow(areaComp / area, 3);
 }
 
 double Forest::getScaledCutOffMinSizeDif(int NBOXES, double cutoff)
 {
-    std::cout<<"THE CUTOFF:"<<(sqrt(abs(NBOXES-20)))<<std::endl;
-    return cutoff/pow(NBOXES/20,2);
+    std::cout << "THE CUTOFF:" << (sqrt(abs(NBOXES - 20))) << std::endl;
+    return cutoff / pow(NBOXES / 20, 2);
 }
 
-tripleVect* Forest::getAllRelevantVectsGaussQuad(Function *F, double cutoff, int MAX_ITERATIONS, double acc, int cutoffAcc, int m)
+tripleVect *Forest::getAllRelevantVectsGaussQuad(Function *F, double cutoff, int MAX_ITERATIONS, double acc, int m)
 {
-        vector<Rectangle *> t1;
+    GaussianQuadrature *gaussQuad = new GaussianQuadrature(m, m, acc, MAX_ITERATIONS);
+    vector<Rectangle *> t1;
     vector<Rectangle *> t2;
     vector<double> t3;
     vector<double> t4;
@@ -547,9 +548,65 @@ tripleVect* Forest::getAllRelevantVectsGaussQuad(Function *F, double cutoff, int
         for (int c = 0; c < cols; c++)
         {
             QuadTree *a = forest[index(r, c)];
-            tripleVect *t = a->getAllRelevantVectsGaussQuad(a->getRoot(), F, cutoff,  MAX_ITERATIONS,  acc,  cutoffAcc, m);
+            tripleVect *t = a->getAllRelevantVectsGaussQuad(a->getRoot(), F, cutoff, MAX_ITERATIONS, gaussQuad);
             temp->append(t);
         }
     }
     return temp;
+}
+
+void Forest::appendEverythingToTwoFilesGaussQuad(ofstream *outbox, ofstream *inbox, Function *F, double cutoff, int MAX_ITERATIONS, double acc, int m, int PRECISION)
+{
+    tripleVect *temp = getAllRelevantVectsGaussQuad(F, cutoff, MAX_ITERATIONS, acc, m);
+    vector<Rectangle *> outboxes = temp->rect->v1;
+    vector<Rectangle *> inboxes = temp->rect->v2;
+    vector<double> supply = temp->doub->v1;
+    vector<double> demand = temp->doub->v2;
+    std::cout << "size" << supply.size() << std::endl;
+    std::cout << "size" << demand.size() << std::endl;
+
+    int i = 0;
+    for (int i = 0; i < inboxes.size(); i++)
+    {
+        *inbox << setprecision(PRECISION) << inboxes[i]->toStringCoord();
+        *inbox << "\t";
+        *inbox << demand[i];
+        *inbox << "\n";
+    }
+    for (int i = 0; i < outboxes.size(); i++)
+    {
+        *outbox << setprecision(PRECISION) << outboxes[i]->toStringCoord();
+        *outbox << "\t";
+        *outbox << supply[i];
+        *outbox << "\n";
+    }
+}
+
+void Forest::appendCoordsCellsToFiles(ofstream *coords, int PRECISION)
+{
+    vector<std::string> c=getAllCoords();
+    for(int i=0;i<c.size();i++)
+    {
+        *coords<<setprecision(PRECISION)<<c[i];
+        *coords<<"\t";
+        if(i%2==0)
+        {
+            *coords<<"\n";
+        }
+    }
+}
+
+vector<std::string> Forest::getAllCoords()
+{
+    vector<std::string> allCoords;
+     for (int r = 0; r < rows; r++)
+    {
+        for (int c = 0; c < cols; c++)
+        {
+            QuadTree *a = forest[index(r, c)];
+            vector<std::string> temp=a->getStringCoordOfAllCells(a->getRoot());
+            allCoords.insert(allCoords.end(), temp.begin(),temp.end());
+        }
+    }
+    return allCoords;
 }

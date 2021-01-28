@@ -93,6 +93,8 @@ class Rectangle
      * */
     double approx(Function *F);
     std::string toStringCoord();
+    std::string toStringCoordBottomRight();
+    std::string toStringCoordTopLeft();
     //draws the rectangle
     void draw(sf::RenderWindow *window);
     /**

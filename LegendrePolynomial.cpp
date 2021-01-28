@@ -1,8 +1,10 @@
 #include "LegendrePolynomial.h"
 
-LegendrePolynomial::LegendrePolynomial(int n)
+LegendrePolynomial::LegendrePolynomial(int n, double acc, int MAX_ITERATIONS)
 {
-    this->n = n;
+        this->n = n;
+
+    this->zeros = calcZeros(acc, MAX_ITERATIONS);
 }
 
 double LegendrePolynomial::evaluate(double x, int n)
@@ -72,6 +74,7 @@ if(this->n%2!=0)
 {
     roots.push_back(0);
 }
+std::cout<<"root size"<<roots.size()<<std::endl;
     return roots;
 }
 
@@ -84,8 +87,9 @@ double LegendrePolynomial::getGuess(int i)
 //acc digits of precision
 double LegendrePolynomial::newtonRaphsonIthRoot(int i, double acc, int MAX_ITERATIONS)
 {
+               // std::cout<<"ASJKANJSKA"<<std::endl;
+
     double currRoot = getGuess(i);
-    //std::cout<<"First guess"<<getGuess(i)<<std::endl;
     double dx;
     int iterations = 0;
     do
@@ -93,6 +97,8 @@ double LegendrePolynomial::newtonRaphsonIthRoot(int i, double acc, int MAX_ITERA
         iterations++;
         dx = -value(currRoot) / derivative(currRoot);
         currRoot = currRoot + dx;
+           // std::cout<<"currRoot"<<currRoot<<std::endl;
+
     } while (abs(dx) > acc&&iterations<MAX_ITERATIONS);
     return currRoot;
 }

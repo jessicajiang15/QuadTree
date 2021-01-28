@@ -284,7 +284,11 @@ public:
     double getScaledCutoff(double cutoff);
     double getScaledCutOffMinSizeDif(int NBOXES, double cutoff);
 
-    tripleVect* getAllRelevantVectsGaussQuad(Function *F, double cutoff, int MAX_ITERATIONS, double acc, int cutoffAcc, int m);
+    tripleVect* getAllRelevantVectsGaussQuad(Function *F, double cutoff, int MAX_ITERATIONS, double acc, int m);
+
+    void appendEverythingToTwoFilesGaussQuad(ofstream *outbox, ofstream *inbox, Function *F, double cutoff, int MAX_ITERATIONS, double acc, int m, int PRECISION);
+    void appendCoordsCellsToFiles(ofstream *coords, int PRECISION);
+    vector<std::string> getAllCoords();
 
 
 };

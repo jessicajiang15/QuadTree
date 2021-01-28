@@ -127,5 +127,23 @@ double Rectangle::getAccurateApprox(Function *F, int accuracy)
 
     double Rectangle::integralGaussApprox(int MAX_ITERATIONS, Function *F, GaussianQuadrature *quadrature)
     {
-        return quadrature->getTwoDIntegral(this->getX(), this->getX()+this->getWidth(), this->getY(), this->getY()+this->getHeight(),F,MAX_ITERATIONS);
+        //std::cout<<"x"<<this->getX()<<std::endl;
+        //std::cout<<"x"<<this->getX()+this->getWidth()<<std::endl;
+
+        //std::cout<<"y"<<this->getY()<<std::endl;
+        //std::cout<<"y"<<this->getY()-this->getHeight()<<std::endl;
+        return quadrature->getTwoDIntegral(this->getX(), this->getX()+this->getWidth(), this->getY()-this->getHeight(),this->getY(),F,MAX_ITERATIONS);
     }
+
+
+    std::string Rectangle::toStringCoordBottomRight()
+    {
+            return std::to_string(getX()+width)+"\t"+std::to_string(getY()-height);
+    }
+
+
+    std::string Rectangle::toStringCoordTopLeft()
+    {
+            return std::to_string(getX())+"\t"+std::to_string(getY());
+    }
+
