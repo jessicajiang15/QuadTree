@@ -2,6 +2,7 @@
 #define _FUNCTION_H
 #include <string>
 #include <vector>
+#include <iostream>
 
 //Placeholder class to store many differnt kinds of 3D functions later. It is currently unused outside 
 //of being an interface.

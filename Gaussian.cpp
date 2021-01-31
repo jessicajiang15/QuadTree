@@ -1,58 +1,90 @@
 #include "Gaussian.h"
 
-
+//Gaussian *final = new Gaussian(AFIN, RHO, P, THETA);
+//Gaussian *initial = new Gaussian(AINIT, X1, Y1, RHO, 1);
 Gaussian::Gaussian(double a, double rho, double p, double theta)
 {
-    type=2;
-    this->a=a;
-    this->aa=(pow(cos(theta),2)/pow(p,2))+(pow(p, 2)*pow(sin(theta),2)/pow(rho,2));
-    this->bb=2*sin(theta)*cos(theta)*(1/pow(p,2)-pow(p,2)/pow(rho,2));
-    this->cc=(pow(sin(theta),2)/pow(p,2))+(pow(p, 2)*pow(cos(theta),2)/pow(rho,2));
+    type = 2;
+    this->a = a;
+    this->aa = ((cos(theta) * cos(theta)) / (p * p)) + (p * p * sin(theta) * sin(theta)) / (rho * rho);
+    this->bb = 2 * sin(theta) * cos(theta) * (1 / (p * p) - p * p / (rho * rho));
+    this->cc = (sin(theta) * sin(theta)) / (p * p) + (p * p * cos(theta) * cos(theta) * cos(theta) / (rho * rho));
     /**
      * constructs a gaussian of the form A*exp(-(x-b)^2/(2c^2)+-(y-d)^2/(2e^2))
     **/
-    normConst=1;
-
+    normConst = 1;
 }
 
 Gaussian::Gaussian(double a, double x1, double y1, double rho, int type)
 {
-    type=1;
+    type = 1;
     //constructs a gaussian of the form A*exp(-(x-b)^2/(2c^2)+-(y-d)^2/(2e^2))
-    this->b=x1;
-    this->d=y1;
-    this->e=rho/sqrt(2);
-    this->a=1/M_PI;
-    this->c=1/sqrt(2);
-    normConst=1;
+    this->b = x1;
+    this->d = y1;
+    this->e = rho / sqrt(2);
+    this->a = 1 / M_PI;
+    this->c = 1 / sqrt(2);
+    normConst = 1;
 }
 
-Gaussian::Gaussian(double a, double b, double c, double d, double e) : Function()
+Gaussian::Gaussian(double a, double b, double c, double d, double e, int type) : Function()
 {
-    type=1;
-    this->a=a;
-    this->b=b;
-    this->c=c;
-    this->d=d;
-    this->e=e;
-    normConst=1;
+    type = 1;
+    this->a = a;
+    this->b = b;
+    this->c = c;
+    this->d = d;
+    this->e = e;
+    normConst = 1;
 }
 
 double Gaussian::value(double x, double y)
 {
-    if(type==2)
+    if (type == 2)
     {
-        return a*normConst*exp(-(aa*pow(x, 2)+bb*x*y+cc*pow(y,2)));
+                //std::cout << "TYPE 2" << std::endl;
+
+        //std::cout << "cnst:" << a*normConst << std::endl;
+        //std::cout << "aa:" << aa << std::endl;
+        //std::cout << "bb:" << bb << std::endl;
+        //std::cout << "cc:" << cc << std::endl;
+        return a * normConst * exp(-(aa * x * x + bb * x * y + cc * y * y));
     }
-    return this->normConst*this->a*exp(-pow(x-b,2)/(2*pow(c,2))-pow(y-d,2)/(2*pow(e,2)));
+    else if(type==3)
+    {
+        double temp=a*normConst*exp(-(x-b)*(x-b)-(y-d)*(y-d)/(rho*rho));
+    std::cout<<"the const"<<normConst<<std::endl;
+        return temp;
+    }
+                    //std::cout << "TYPE 1" << std::endl;
+
+    //std::cout << "a*normconst:" << a * normConst << std::endl;
+    //std::cout << "1/2*c*c:" << 1 / (2 * c * c) << std::endl;
+    //std::cout << "1/(2*e*e):" << 1 / (2 * e * e) << std::endl;
+
+    return this->normConst * this->a * exp(-(x - b) * (x - b) / (2 * c * c) - (y - d) * (y - d) / (2 * e * e));
 }
 
 void Gaussian::normalize(double normConst)
 {
-        this->normConst=normConst;
+    this->normConst = normConst;
 }
 
 double Gaussian::getNormConst()
 {
     return normConst;
 }
+
+double Gaussian::getOverallConst()
+{
+    return normConst*a;
+}
+
+    Gaussian::Gaussian(double a, double x1, double y1, double rho, std::string str)
+    {
+        this->type=3;
+        this->a=a;
+        this->b=x1;
+        this->d=y1;
+        this->rho=rho;
+    }

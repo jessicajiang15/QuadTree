@@ -18,6 +18,7 @@ class Gaussian : public Function
     double cc;
     double bb;
     double normConst;
+    double rho;
     int type;
 
     public:
@@ -30,9 +31,14 @@ class Gaussian : public Function
  * bb=2 * Sin[THETA] * Cos[THETA] *(1/P^2 - P^2/RHO^2)
  * cc=Sin[THETA]^2/P^2+(P^2) (Cos[THETA]^2)/RHO^2
      * */
-    Gaussian(double a, double b, double c, double d, double e);
-    Gaussian(double a, double x1, double y2, double rho, int type);
+    //type 0
+    Gaussian(double a, double b, double c, double d, double e, int type);
+    //type 1
+    Gaussian(double a, double x1, double y1, double rho, int type);
+    //type 2
     Gaussian(double a,double rho, double p, double theta);
+
+    Gaussian(double a, double x1, double y1, double rho, std::string str);
     /**
      * Evaluates the function at the cartesian point (x, y)
      * */
@@ -45,5 +51,6 @@ class Gaussian : public Function
      * Getter for the normConst
      * */
     double getNormConst();
+    double getOverallConst();
 };
 #endif

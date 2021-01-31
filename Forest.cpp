@@ -585,11 +585,12 @@ void Forest::appendEverythingToTwoFilesGaussQuad(ofstream *outbox, ofstream *inb
 void Forest::appendCoordsCellsToFiles(ofstream *coords, int PRECISION)
 {
     vector<std::string> c=getAllCoords();
+    std::cout<<c.size()<<std::endl;
     for(int i=0;i<c.size();i++)
     {
         *coords<<setprecision(PRECISION)<<c[i];
         *coords<<"\t";
-        if(i%2==0)
+        if(i%2!=0)
         {
             *coords<<"\n";
         }
@@ -599,13 +600,24 @@ void Forest::appendCoordsCellsToFiles(ofstream *coords, int PRECISION)
 vector<std::string> Forest::getAllCoords()
 {
     vector<std::string> allCoords;
+    int count=0;
      for (int r = 0; r < rows; r++)
     {
         for (int c = 0; c < cols; c++)
         {
             QuadTree *a = forest[index(r, c)];
             vector<std::string> temp=a->getStringCoordOfAllCells(a->getRoot());
+            if(temp.size()<2)
+            {
+                std::cout<<"WE EXIST"<<std::endl;
+            }
+            //std::cout<<"the size"<<temp.size()<<std::endl;
             allCoords.insert(allCoords.end(), temp.begin(),temp.end());
+            std::cout<<allCoords.size()<<std::endl;
+            count++;
+            std::cout<<"count"<<count<<std::endl;
+            //std::cout<<"row"<<r<<std::endl;
+            //std::cout<<"col"<<c<<std::endl;
         }
     }
     return allCoords;

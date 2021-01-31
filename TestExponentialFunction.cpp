@@ -8,5 +8,5 @@
 
 double TestExponentialFunction::value(double x)
 {
-    return exp(x);
+    return (1/M_PI)*exp(-4*x*x);
 }

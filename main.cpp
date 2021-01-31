@@ -22,7 +22,7 @@
  * bb=2 * Sin[THETA] * Cos[THETA] *(1/P^2 - P^2/RHO^2)
  * cc=Sin[THETA]^2/P^2+(P^2) (Cos[THETA]^2)/RHO^2
  *  * */
-#define AUTO_NORM true
+#define AUTO_NORM false
 #define P 0.25
 #define RHO 0.5
 #define THETA -M_PI / 2
@@ -30,8 +30,8 @@
 #define Y1 0
 #define AINIT 1 / M_PI
 #define AFIN 1 / M_PI
-#define NORM_CONST_INIT 2.000006548
-#define NORM_CONST_FIN 2.000141678
+#define NORM_CONST_INIT 2.00000654782506394749318255732403311315
+#define NORM_CONST_FIN 2.00000658749708382840650092398361064387
 //determines which inboxes and outboxes to throw out
 #define CUTOFF 0.0001
 //defines the maximum level you will allow the grid to divide to.
@@ -49,9 +49,10 @@ Gaussian Quadrature related definitions.
 */
 //true if auto, false if read
 #define GAUSS_AUTO_OR_READ false
-#define N 20
+#define N 10
 #define MAX_ITERATIONS 1000
 #define GAUSS_ACC 2e-20
+//how many digits you want in the final value
 #define PRECISION 20
 
 int main()
@@ -69,6 +70,10 @@ int main()
     ifstream weights1;
     ifstream nodes2;
     ifstream weights2;
+
+    ofstream cellCoords;
+
+    cellCoords.open("cellCoords.csv");
 
     inData.open("inData.csv");
     outData.open("outData.csv");
@@ -150,42 +155,9 @@ int main()
 
     //forest->appendEverythingToTwoFilesGaussQuad(&outData, &inData, gaussian, cutoff, MAX_ITERATIONS, ACC, N, PRECISION);
     //&outData,&inData, gaussian, cutoff, MAX_ITERATIONS, ACC,N,PRECISION
-    forest->appendEverythingToTwoFilesGaussQuad(&outData,&inData, gaussian,cutoff, MAX_ITERATIONS, GAUSS_ACC, CUTOFF_ACC, N);
+    //forest->appendEverythingToTwoFilesGaussQuad(&outData,&inData, gaussian,cutoff, MAX_ITERATIONS, GAUSS_ACC, CUTOFF_ACC, N);
 
-    //beeps when its done
-
-    //GaussianQuadrature *gauss = new GaussianQuadrature(N, N, GAUSS_ACC, MAX_ITERATIONS);
-    // auto start = std::chrono::high_resolution_clock::now();
-    //gauss->appendZerosToFiles(MAX_ITERATIONS, &zeros);
-    GaussianQuadrature *temp=new GaussianQuadrature(20,20,GAUSS_ACC, MAX_ITERATIONS);
-    // OneDFunction *func=new TestExponentialFunction();
-
-    //Function *f=gaussian;
-    //double integral1=temp->getOneDIntegral(0,3,func,10000);
-
-    // double integral=temp->getOneDIntegralFromFile(&weights1, &nodes1, 0,3,func);
-    OneDFunction *func=new TestExponentialFunction();
-
-    Function *f=new Test2DExpFcn();
-
-    double integral=temp->getTwoDIntegralFromFile(&weights1, &nodes1,&weights2, &nodes2, 0,3,0,3,f);
-
-    double integral1=temp->getTwoDIntegral(0,3,0,3,f, MAX_ITERATIONS);
-
-    //double integral=temp->getOneDIntegralFromFile(&weights1, &nodes1,0,3,func);
-
-    //GaussianQuadrature *temp1=new GaussianQuadrature(20,20,2e-50);
-
-    //double doubleint=temp1->getTwoDIntegral(0,3,0,3,f,1000);
-
-    cout<<std::setprecision(50)<<"FILE INTEGRAL: "<<integral<<endl;
-        cout<<std::setprecision(50)<<"FILE INTEGRAL: "<<integral1<<endl;
-
-    //  cout<<std::setprecision(50)<<"MY INTEGRAL: "<<integral1<<endl;
-    //cout<<std::setprecision(50)<<"ACTUAL INTEGRAL: "<<(sin(3)-sin(0))<<endl;
-
-    //cout<<std::setprecision(20)<<"double INTEGRAL: "<<  doubleint<<endl;
-    cout<<std::setprecision(20)<<"REAL double INTEGRAL: "<<364.2577196637446<<endl;
+    forest->appendCoordsCellsToFiles(&cellCoords, PRECISION);
     //  auto end = std::chrono::high_resolution_clock::now();
 
     //cout<<"time: "<<std::chrono::duration_cast<std::chrono::microseconds>(end - start).count()<<endl;
@@ -232,4 +204,5 @@ int main()
     nodes2.close();
     weights1.close();
     weights2.close();
+    zeros.close();
 }

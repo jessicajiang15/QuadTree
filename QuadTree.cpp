@@ -535,6 +535,7 @@ vector<std::string> QuadTree::getStringCoordOfAllCells(Node *n)
     {
         temp.push_back(n->getRekt()->toStringCoordTopLeft());
         temp.push_back(n->getRekt()->toStringCoordBottomRight());
+        //std::cout<<n->getRekt()->toStringCoordTopLeft()<<std::endl;
         return temp;
     }
     vector<Node *> children = n->getChildren();

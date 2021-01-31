@@ -200,7 +200,7 @@ public:
      * @param F the function we are dividing over
      * @param cutoff the minimum allowed amount of sand for us to keep the box
      * */
-    vector<double> getDifArray(Function *F, double cutoff);
+    std::vector<double> getDifArray(Function *F, double cutoff);
     /**
      * Obtains a twoVectsDoub object where v1 is the supply amount and v2 is the demand amount.
      * @param F the function that we are considering
