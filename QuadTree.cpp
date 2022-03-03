@@ -485,6 +485,7 @@ double QuadTree::normalizeAcc(Node *n, Function *F, int accuracy)
 
 tripleVect *QuadTree::getAllRelevantVectsGaussQuad(Node *n, Function *F, double cutoff, int MAX_ITERATIONS, GaussianQuadrature *gaussQuad)
 {
+    //std::cout<<cutoff<<std::endl;
     vector<Rectangle *> temp1;
     vector<Rectangle *> temp2;
 
@@ -497,7 +498,7 @@ tripleVect *QuadTree::getAllRelevantVectsGaussQuad(Node *n, Function *F, double 
     {
 
         double integral = n->getRekt()->integralGaussApprox(MAX_ITERATIONS, F, gaussQuad);
-        cout << "integral: " << integral << endl;
+        //cout << "integral: " << integral << endl;
         if (integral < -(scaleCutoff(cutoff, n->getLevel())))
         {
             t1->v2.push_back(n->getRekt());

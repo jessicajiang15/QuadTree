@@ -529,8 +529,11 @@ double Forest::getScaledCutoff(double cutoff)
 
 double Forest::getScaledCutOffMinSizeDif(int NBOXES, double cutoff)
 {
-    std::cout << "THE CUTOFF:" << (sqrt(abs(NBOXES - 20))) << std::endl;
-    return cutoff / pow(NBOXES / 20, 2);
+    std::cout << "THE CUTOFF:" << cutoff / ((NBOXES/20)*(NBOXES/20)) << std::endl;
+        std::cout << "in CUTOFF:" << cutoff << std::endl;
+        std::cout << "NBOX:" << NBOXES << std::endl;
+
+    return cutoff / (((double)NBOXES/10)*((double)NBOXES/10));
 }
 
 tripleVect *Forest::getAllRelevantVectsGaussQuad(Function *F, double cutoff, int MAX_ITERATIONS, double acc, int m)
@@ -615,7 +618,6 @@ vector<std::string> Forest::getAllCoords()
             allCoords.insert(allCoords.end(), temp.begin(),temp.end());
             std::cout<<allCoords.size()<<std::endl;
             count++;
-            std::cout<<"count"<<count<<std::endl;
             //std::cout<<"row"<<r<<std::endl;
             //std::cout<<"col"<<c<<std::endl;
         }

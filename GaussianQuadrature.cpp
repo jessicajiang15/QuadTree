@@ -18,8 +18,8 @@ GaussianQuadrature::GaussianQuadrature(int n, int m, double acc, int MAX_ITERATI
     this->m = m;
     this->NWeightsAndAbscissae = initializeWeightsAndAbscissae(MAX_ITERATIONS, n);
     this->MWeightsAndAbscissae = initializeWeightsAndAbscissae(MAX_ITERATIONS, m);
-        std::cout<<NWeightsAndAbscissae->v1.size()<<std::endl;
-        std::cout<<NWeightsAndAbscissae->v2.size()<<std::endl;
+        //std::cout<<NWeightsAndAbscissae->v1.size()<<std::endl;
+        //std::cout<<NWeightsAndAbscissae->v2.size()<<std::endl;
 
 }
 
@@ -61,17 +61,16 @@ double GaussianQuadrature::getTwoDIntegral(double xi, double xf, double yi, doub
         std::cout<<"Error: not initialzied for 2D integral"<<std::endl;
         return 0;
     }
-                std::cout << "HIHIHI " << std::endl;
     double integral = 0;
     for (int j = 0; j < MWeightsAndAbscissae->v1.size(); j++)
     {
         for (int i = 0; i < NWeightsAndAbscissae->v1.size(); i++)
         {
-            std::cout << "weights " << MWeightsAndAbscissae->v1[j] * NWeightsAndAbscissae->v1[i] << std::endl;
+            //std::cout << "weights " << MWeightsAndAbscissae->v1[j] * NWeightsAndAbscissae->v1[i] << std::endl;
             //std::cout<<"value "<<weightsAndAbscissaeM->v1[j] * weightsAndAbscissaeN->v1[i]<<std::endl;
 
             double add = MWeightsAndAbscissae->v1[j] * NWeightsAndAbscissae->v1[i] * F->value(((xf - xi) / 2) * (NWeightsAndAbscissae->v2[i]) + (xf + xi) / 2, ((yf - yi) / 2) * (MWeightsAndAbscissae->v2[j]) + (yf + yi) / 2);
-            std::cout << "add" << add << std::endl;
+            //std::cout << "add" << add << std::endl;
             integral += add;
         }
     }
@@ -83,14 +82,14 @@ twoVectsDoub *GaussianQuadrature::initializeWeightsAndAbscissae(int MAX_ITERATIO
     LegendrePolynomial *legpoly = new LegendrePolynomial(n, acc, MAX_ITERATIONS);
     std::vector<double> weights;
     std::vector<double> abscissae = legpoly->getZeros();
-    std::cout << "abscissae size"<<abscissae.size() << std::endl;
+    //std::cout << "abscissae size"<<abscissae.size() << std::endl;
 
     // std::cout << "weights end" << std::endl;
     for (int i = 0; i < abscissae.size(); i++)
     {
         //std::cout << "xvalues"<<abscissae[i] << std::endl;
         weights.push_back(2 / ((1 - pow(abscissae[i], 2)) * pow(legpoly->derivative(abscissae[i]), 2)));
-        std::cout << "weights " << weights[i] << std::endl;
+        //std::cout << "weights " << weights[i] << std::endl;
     }
     twoVectsDoub *weightsAndAbscissae = new twoVectsDoub(weights, abscissae);
     std::cout << "weights done" << std::endl;

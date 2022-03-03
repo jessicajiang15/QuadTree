@@ -10,10 +10,10 @@
  * Parameters of the forest
  * */
 #define NBOXES 20
-#define MIN_Y -4
-#define MAX_Y 4
-#define MIN_X -8
-#define MAX_X 8
+#define MIN_Y -5
+#define MAX_Y 5
+#define MIN_X -5
+#define MAX_X 5
 /**
  * Parameters of the gaussian functions
  * Gives an initial gaussian of the form AINIT*E^[-(x-X1)^2-(y-Y1)^2/RHO^2]
@@ -22,10 +22,10 @@
  * bb=2 * Sin[THETA] * Cos[THETA] *(1/P^2 - P^2/RHO^2)
  * cc=Sin[THETA]^2/P^2+(P^2) (Cos[THETA]^2)/RHO^2
  *  * */
-#define AUTO_NORM false
+#define AUTO_NORM true
 #define P 0.25
 #define RHO 0.5
-#define THETA -M_PI / 2
+#define THETA M_PI/4
 #define X1 0
 #define Y1 0
 #define AINIT 1 / M_PI
@@ -37,7 +37,7 @@
 //defines the maximum level you will allow the grid to divide to.
 #define MAX_LEVEL 4
 //determines how finely you divide the grid
-#define TOL 100
+#define TOL 1
 //determines how accurate the numerical integrals are, overall. 10 means "divide the current box into 10, then
 //calculate the midpoint riemann sum for all 10 mini-boxes and add them up to get my approximation."
 //note that this includes the normalization accuracy.
@@ -47,13 +47,17 @@
 /*
 Gaussian Quadrature related definitions.
 */
-//true if auto, false if read
+//true if auto (generate weights with algorithm inside this program), false if read (directly take weights from file)
 #define GAUSS_AUTO_OR_READ false
+//Order of legendre polynomial if auto, ignored if read
 #define N 10
+//Maximum iterations for newton's method
 #define MAX_ITERATIONS 1000
 #define GAUSS_ACC 2e-20
 //how many digits you want in the final value
-#define PRECISION 20
+#define PRECISION 50
+
+void appendDataToFile(ofstream *file);
 
 int main()
 {
@@ -65,6 +69,21 @@ int main()
     ofstream inData;
     ofstream outData;
     ofstream zeros;
+
+    //first: 4 coords, xmin, xmax, ymin, ymax
+    //sec: NBOXES
+    //3rd: initialcutoff
+    /**
+ * #define P 0.25
+#define RHO 0.5
+#define THETA -M_PI / 4
+#define X1 0
+#define Y1 0
+#define AINIT 1 / M_PI
+#define AFIN 1 / M_PI
+ * */
+
+    ofstream appendData;
 
     ifstream nodes1;
     ifstream weights1;
@@ -78,6 +97,8 @@ int main()
     inData.open("inData.csv");
     outData.open("outData.csv");
     zeros.open("zeros.txt");
+
+    appendData.open("data.csv");
 
     nodes1.open("nodes1.txt");
     nodes2.open("nodes2.txt");
@@ -153,11 +174,12 @@ int main()
     forest->divideComp(TOL, gaussian, MAX_LEVEL);
     //forest->appendEverythingToTwoFilesAcc(&outData, &inData, gaussian, cutoff, ACC, CUTOFF_ACC);
 
-    //forest->appendEverythingToTwoFilesGaussQuad(&outData, &inData, gaussian, cutoff, MAX_ITERATIONS, ACC, N, PRECISION);
+    forest->appendEverythingToTwoFilesGaussQuad(&outData, &inData, gaussian, cutoff, MAX_ITERATIONS, ACC, N, PRECISION);
     //&outData,&inData, gaussian, cutoff, MAX_ITERATIONS, ACC,N,PRECISION
     //forest->appendEverythingToTwoFilesGaussQuad(&outData,&inData, gaussian,cutoff, MAX_ITERATIONS, GAUSS_ACC, CUTOFF_ACC, N);
 
     forest->appendCoordsCellsToFiles(&cellCoords, PRECISION);
+    appendDataToFile(&appendData);
     //  auto end = std::chrono::high_resolution_clock::now();
 
     //cout<<"time: "<<std::chrono::duration_cast<std::chrono::microseconds>(end - start).count()<<endl;
@@ -169,7 +191,7 @@ int main()
         return -1;
     }
     music.setVolume(50);
-    music.play();
+    //music.play();
 
     cout << "I'm done!" << endl;
     //this while loop basically keeps the graphics up and running.
@@ -205,4 +227,31 @@ int main()
     weights1.close();
     weights2.close();
     zeros.close();
+}
+
+void appendDataToFile(ofstream *file)
+{
+    /**
+     * #define P 0.25
+#define RHO 0.5
+#define THETA -M_PI / 4
+#define X1 0
+#define Y1 0
+     * */
+    *file << NBOXES <<"\t"<< 0 << "\t" << 0 << "\t" << 0 << "\t"
+          << "\n";
+    *file << MIN_Y << "\t";
+    *file << MAX_Y << "\t";
+    *file << MIN_X << "\t";
+    *file << MAX_X << "\n";
+    *file << CUTOFF <<"\t"<< 0 << "\t" << 0 << "\t" << 0 << "\t"
+          << "\n";
+    *file << P <<"\t"<< 0 << "\t" << 0 << "\t" << 0 << "\t"
+          << "\n";
+    *file << RHO <<"\t"<< 0 << "\t" << 0 << "\t" << 0 << "\t"
+          << "\n";
+    *file << X1 <<"\t"<< 0 << "\t" << 0 << "\t" << 0 << "\t"
+          << "\n";
+    *file << Y1 <<"\t"<< 0 << "\t" << 0 << "\t" << 0 << "\t"
+          << "\n";
 }
