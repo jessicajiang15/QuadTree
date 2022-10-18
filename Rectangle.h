@@ -92,6 +92,7 @@ class Rectangle
      * of a function F over the region represented by this rectangle.
      * */
     double approx(Function *F);
+    double approx(double **F);
     std::string toStringCoord();
     std::string toStringCoordBottomRight();
     std::string toStringCoordTopLeft();

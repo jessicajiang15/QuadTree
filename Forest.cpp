@@ -469,6 +469,7 @@ void Forest::normalize(Function *F)
             value += forest[index(r, c)]->normalize(forest[index(r, c)]->getRoot(), F);
         }
     }
+    cout<<"lmaomalmao!!!!"<<value<<endl;
     F->normalize(1 / value);
 }
 
@@ -527,13 +528,13 @@ double Forest::getScaledCutoff(double cutoff)
     return cutoff / pow(areaComp / area, 3);
 }
 
-double Forest::getScaledCutOffMinSizeDif(int NBOXES, double cutoff)
+double Forest::getScaledCutOffMinSizeDif(int nboxes, double cutoff)
 {
-    std::cout << "THE CUTOFF:" << cutoff / ((NBOXES/20)*(NBOXES/20)) << std::endl;
+    std::cout << "THE CUTOFF:" << cutoff / ((nboxes/20)*(nboxes/20)) << std::endl;
         std::cout << "in CUTOFF:" << cutoff << std::endl;
-        std::cout << "NBOX:" << NBOXES << std::endl;
+        std::cout << "NBOX:" << nboxes << std::endl;
 
-    return cutoff / (((double)NBOXES/10)*((double)NBOXES/10));
+    return cutoff / (((double)nboxes/10)*((double)nboxes/10));
 }
 
 tripleVect *Forest::getAllRelevantVectsGaussQuad(Function *F, double cutoff, int MAX_ITERATIONS, double acc, int m)
@@ -588,7 +589,7 @@ void Forest::appendEverythingToTwoFilesGaussQuad(ofstream *outbox, ofstream *inb
 void Forest::appendCoordsCellsToFiles(ofstream *coords, int PRECISION)
 {
     vector<std::string> c=getAllCoords();
-    std::cout<<c.size()<<std::endl;
+    //std::cout<<c.size()<<std::endl;
     for(int i=0;i<c.size();i++)
     {
         *coords<<setprecision(PRECISION)<<c[i];
@@ -616,7 +617,7 @@ vector<std::string> Forest::getAllCoords()
             }
             //std::cout<<"the size"<<temp.size()<<std::endl;
             allCoords.insert(allCoords.end(), temp.begin(),temp.end());
-            std::cout<<allCoords.size()<<std::endl;
+            //std::cout<<allCoords.size()<<std::endl;
             count++;
             //std::cout<<"row"<<r<<std::endl;
             //std::cout<<"col"<<c<<std::endl;

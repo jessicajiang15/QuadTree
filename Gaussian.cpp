@@ -26,7 +26,6 @@ Gaussian::Gaussian(double a, double x1, double y1, double rho, int type)
     this->c = 1 / sqrt(2);
     normConst = 1;
 }
-
 Gaussian::Gaussian(double a, double b, double c, double d, double e, int type) : Function()
 {
     type = 1;

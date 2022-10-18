@@ -9,7 +9,9 @@
 /**
  * Parameters of the forest
  * */
-#define NBOXES 20
+
+
+#define NBOXES 40
 #define MIN_Y -5
 #define MAX_Y 5
 #define MIN_X -5
@@ -33,16 +35,17 @@
 #define NORM_CONST_INIT 2.00000654782506394749318255732403311315
 #define NORM_CONST_FIN 2.00000658749708382840650092398361064387
 //determines which inboxes and outboxes to throw out
-#define CUTOFF 0.0001
+#define CUTOFF 0.001
 //defines the maximum level you will allow the grid to divide to.
-#define MAX_LEVEL 4
+#define MAX_LEVEL 5
 //determines how finely you divide the grid
-#define TOL 1
+#define TOL 0.001
 //determines how accurate the numerical integrals are, overall. 10 means "divide the current box into 10, then
 //calculate the midpoint riemann sum for all 10 mini-boxes and add them up to get my approximation."
 //note that this includes the normalization accuracy.
 #define ACC 1000
 #define CUTOFF_ACC 10
+#define READ_FILE true
 
 /*
 Gaussian Quadrature related definitions.
@@ -57,7 +60,30 @@ Gaussian Quadrature related definitions.
 //how many digits you want in the final value
 #define PRECISION 50
 
+
+int nboxes=NBOXES;
+int min_y=MIN_Y;
+int max_y=MAX_Y;
+int min_x=MIN_X;
+int max_x=MAX_X;
+double cutoff=CUTOFF;
+int max_level=MAX_LEVEL;
+double tol=TOL;
+double acc=ACC;
+
+double p=P;
+double rho=RHO;
+double theta=THETA;
+double x1=X1;
+double y1=Y1;
+
+
 void appendDataToFile(ofstream *file);
+
+void defineAllConstants(ifstream *file);
+
+void defineAllConstantsNoRead();
+
 
 int main()
 {
@@ -89,6 +115,8 @@ int main()
     ifstream weights1;
     ifstream nodes2;
     ifstream weights2;
+    ifstream params;
+
 
     ofstream cellCoords;
 
@@ -104,6 +132,7 @@ int main()
     nodes2.open("nodes2.txt");
     weights1.open("weights1.txt");
     weights2.open("weights2.txt");
+    params.open("params.csv");
 
     if (weights2.fail())
     {
@@ -122,6 +151,32 @@ int main()
     {
         std::cout << "fail!" << std::endl;
     }
+    if(params.fail())
+    {
+        std::cout<<"I FAILELDELDELDLE"<< std::endl;
+    }
+
+    if(READ_FILE)
+    {
+        cout<<"helloooo"<<endl;
+        defineAllConstants(&params);
+        //defineAllConstantsNoRead();
+
+    }
+    else
+    {
+        //defineAllConstantsNoRead();
+        std::cout<< cutoff << std::endl;
+        cout<<"nBOXX"<<nboxes<<endl;
+        cout<<min_x<<endl;
+        cout<<max_x<<endl;
+        cout<<min_y<<endl;
+        cout<<max_y<<endl;
+        cout<<cutoff<<endl;
+        cout<<tol<<endl;
+        cout<<max_level<<endl;
+        cout<<acc<<endl;
+    }
 
     /**
      * The graphics is mainly here for debugging purposes.
@@ -138,25 +193,31 @@ int main()
      * preprocessors.
      * */
 
-    Forest *forest = new Forest(NBOXES, NBOXES, MIN_X, MAX_X, MIN_Y, MAX_Y);
-    double cutoff = forest->getScaledCutOffMinSizeDif(NBOXES, CUTOFF);
-    cout << "cutoff: " << cutoff << endl;
+    Forest *forest = new Forest(nboxes, nboxes, min_x, max_x, min_y, max_y);
+    double cut = forest->getScaledCutOffMinSizeDif(nboxes, cutoff);
+    cout << "cutoff: " << cut << endl;
     //normalization should not depend on how precise we define the grid to be, so we create
     //a second forest
-    Forest *normForest = new Forest(100, 100, MIN_X, MAX_X, MIN_Y, MAX_Y);
+    Forest *normForest = new Forest(100, 100, min_x, max_x, min_y, max_y);
     Gaussian *final = new Gaussian(AFIN, RHO, P, THETA);
     Gaussian *initial = new Gaussian(AINIT, X1, Y1, RHO, 1);
+
+    //cout << "val2"<<final->value(0, 0) << endl;
+    cout << "lmaomlamo"<<final->getNormConst() << endl;
+
     /**
      * Normalize our initial and final functions with the normForest, which splits
      * the function into an 100x100 grid and calculates the midpoint riemann sum.
      * */
     if (AUTO_NORM)
     {
+        cout<<"auto norm"<<endl;
         normForest->normalize(final);
         normForest->normalize(initial);
     }
     else
     {
+        cout<<"not norm"<<endl;
         initial->normalize(NORM_CONST_INIT);
         final->normalize(NORM_CONST_FIN);
     }
@@ -164,17 +225,17 @@ int main()
     cout << final->getNormConst() << endl;
     cout << initial->getNormConst() << endl;
     CompTwoFunc *gaussian = new CompTwoFunc(initial, final);
-    cout << gaussian->value(0, 0) << endl;
+    cout << "val"<<gaussian->value(0, 0) << endl;
 
     //cout<<final->getNormConst()<<endl;
     //cout<<initial->getNormConst()<<endl;
     //if anything in this program is taking too long, feel free to use these commented out lines of code
     //to figure out how much time a portion of the code is taking.
 
-    forest->divideComp(TOL, gaussian, MAX_LEVEL);
+    forest->divideComp(tol, gaussian, max_level);
     //forest->appendEverythingToTwoFilesAcc(&outData, &inData, gaussian, cutoff, ACC, CUTOFF_ACC);
 
-    forest->appendEverythingToTwoFilesGaussQuad(&outData, &inData, gaussian, cutoff, MAX_ITERATIONS, ACC, N, PRECISION);
+    forest->appendEverythingToTwoFilesGaussQuad(&outData, &inData, gaussian, cut, MAX_ITERATIONS, acc, N, PRECISION);
     //&outData,&inData, gaussian, cutoff, MAX_ITERATIONS, ACC,N,PRECISION
     //forest->appendEverythingToTwoFilesGaussQuad(&outData,&inData, gaussian,cutoff, MAX_ITERATIONS, GAUSS_ACC, CUTOFF_ACC, N);
 
@@ -183,7 +244,7 @@ int main()
     //  auto end = std::chrono::high_resolution_clock::now();
 
     //cout<<"time: "<<std::chrono::duration_cast<std::chrono::microseconds>(end - start).count()<<endl;
-
+/*
     sf::Music music;
 
     if (!music.openFromFile("../music/alarm.ogg"))
@@ -192,7 +253,7 @@ int main()
     }
     music.setVolume(50);
     //music.play();
-
+*/
     cout << "I'm done!" << endl;
     //this while loop basically keeps the graphics up and running.
     while (window.isOpen())
@@ -254,4 +315,105 @@ void appendDataToFile(ofstream *file)
           << "\n";
     *file << Y1 <<"\t"<< 0 << "\t" << 0 << "\t" << 0 << "\t"
           << "\n";
+}
+
+void defineAllConstants(ifstream *thefile)
+{
+    int a=0;
+    double temp;
+    nboxes=NBOXES;
+    min_y=MIN_Y;
+    max_y=MAX_Y;
+    min_x=MIN_X;
+    max_x=MAX_X;
+    cutoff=CUTOFF;
+    max_level=MAX_LEVEL;
+    acc=ACC;
+        while (*thefile >> temp)
+        {
+            switch(a)
+            {
+            case 0:
+            {
+                nboxes=temp;
+            }
+            case 1:
+            {
+                min_y=temp;
+            }
+            case 2:
+            {
+                max_y=temp;
+            }
+            case 3:
+            {
+                min_x=temp;
+            }
+            case 4:
+            {
+                max_x=temp;
+            }
+            case 5:
+            {
+                cutoff=temp;
+            }
+            case 6:
+            {
+                max_level=temp;
+            }
+            case 7:
+            {
+                acc=temp;
+            }
+            case 8:
+            {
+                tol=temp;
+            }
+            case 9:
+            {
+                theta=temp;
+            }
+            case 10:
+            {
+                p=temp;
+            }
+            case 11:
+            {
+                rho=temp;
+            }
+            case 12:
+            {
+                x1=temp;
+            }
+            case 13:
+            {
+                y1=temp;
+            }
+            
+            }
+        a++;
+        }
+        cout<<nboxes<<endl;
+        cout<<min_y<<endl;
+        cout<<max_y<<endl;
+        cout<<min_x<<endl;
+        cout<<max_x<<endl;
+        cout<<cutoff<<endl;
+        cout<<max_level<<endl;
+        cout<<acc<<endl;
+        cout<<tol<<endl;
+
+    return;
+}
+
+void defineAllConstantsNoRead()
+{
+    nboxes=NBOXES;
+    min_y=MIN_Y;
+    max_y=MAX_Y;
+    min_x=MIN_X;
+    max_x=MAX_X;
+    cutoff=CUTOFF;
+    max_level=MAX_LEVEL;
+    acc=ACC;
 }

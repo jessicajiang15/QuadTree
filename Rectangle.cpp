@@ -71,6 +71,11 @@ double Rectangle::approx(Function *F)
     return getArea()*F->value(point->getX()+width/2,point->getY()-height/2);
 }
 
+double Rectangle::approx(double **F)
+{
+    return 0;
+}
+
 void Rectangle::draw(sf::RenderWindow *window)
 {
     window->draw(*rect);

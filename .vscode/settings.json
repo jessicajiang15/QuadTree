@@ -68,6 +68,7 @@
         "__tree": "cpp",
         "map": "cpp",
         "filesystem": "cpp",
-        "set": "cpp"
+        "set": "cpp",
+        "clocale": "cpp"
     }
 }
