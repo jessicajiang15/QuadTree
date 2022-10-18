@@ -75,7 +75,7 @@ double p=P;
 double rho=RHO;
 double theta=THETA;
 double x1=X1;
-double y1=Y1;
+double y_1=Y1;
 
 
 void appendDataToFile(ofstream *file);
@@ -199,8 +199,8 @@ int main()
     //normalization should not depend on how precise we define the grid to be, so we create
     //a second forest
     Forest *normForest = new Forest(100, 100, min_x, max_x, min_y, max_y);
-    Gaussian *final = new Gaussian(AFIN, RHO, P, THETA);
-    Gaussian *initial = new Gaussian(AINIT, X1, Y1, RHO, 1);
+    Gaussian *final = new Gaussian(AFIN, rho, p, theta);
+    Gaussian *initial = new Gaussian(AINIT, x1, y_1, rho, 1);
 
     //cout << "val2"<<final->value(0, 0) << endl;
     cout << "lmaomlamo"<<final->getNormConst() << endl;
@@ -371,7 +371,9 @@ void defineAllConstants(ifstream *thefile)
             }
             case 9:
             {
+                cout<<"JKSANJKSNAKLSNAKSAKLSMLA"<<endl;
                 theta=temp;
+                cout<<"JKSANJKSNAKLSNAKSAKLSMLA: "<<temp<<endl;
             }
             case 10:
             {
@@ -387,21 +389,18 @@ void defineAllConstants(ifstream *thefile)
             }
             case 13:
             {
-                y1=temp;
+                y_1=temp;
             }
             
             }
         a++;
         }
-        cout<<nboxes<<endl;
-        cout<<min_y<<endl;
-        cout<<max_y<<endl;
-        cout<<min_x<<endl;
-        cout<<max_x<<endl;
-        cout<<cutoff<<endl;
-        cout<<max_level<<endl;
-        cout<<acc<<endl;
-        cout<<tol<<endl;
+        cout<<theta<<endl;
+        cout<<p<<endl;
+        cout<<rho<<endl;
+        cout<<y_1<<endl;
+        cout<<x1<<endl;
+        cout<<"HEHEHEHE"<<endl;
 
     return;
 }
