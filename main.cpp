@@ -12,10 +12,10 @@
 
 
 #define NBOXES 40
-#define MIN_Y -5
-#define MAX_Y 5
-#define MIN_X -5
-#define MAX_X 5
+#define MIN_Y -4
+#define MAX_Y 4
+#define MIN_X -8
+#define MAX_X 8
 /**
  * Parameters of the gaussian functions
  * Gives an initial gaussian of the form AINIT*E^[-(x-X1)^2-(y-Y1)^2/RHO^2]
@@ -25,10 +25,11 @@
  * cc=Sin[THETA]^2/P^2+(P^2) (Cos[THETA]^2)/RHO^2
  *  * */
 #define AUTO_NORM true
-#define P 0.25
-#define RHO 0.5
-#define THETA M_PI/4
-#define X1 0
+#define P 1
+#define RHO 1
+#define THETA 0
+//note: x1 and y1 are equivalent to x2 and y2 in the mathematica notebook
+#define X1 0.6
 #define Y1 0
 #define AINIT 1 / M_PI
 #define AFIN 1 / M_PI
@@ -39,7 +40,7 @@
 //defines the maximum level you will allow the grid to divide to.
 #define MAX_LEVEL 5
 //determines how finely you divide the grid
-#define TOL 0.001
+#define TOL 1
 //determines how accurate the numerical integrals are, overall. 10 means "divide the current box into 10, then
 //calculate the midpoint riemann sum for all 10 mini-boxes and add them up to get my approximation."
 //note that this includes the normalization accuracy.
@@ -199,10 +200,9 @@ int main()
     //normalization should not depend on how precise we define the grid to be, so we create
     //a second forest
     Forest *normForest = new Forest(100, 100, min_x, max_x, min_y, max_y);
-    Gaussian *final = new Gaussian(AFIN, rho, p, theta);
-    Gaussian *initial = new Gaussian(AINIT, x1, y_1, rho, 1);
+    Gaussian *final = new Gaussian(AFIN, rho, p, theta,x1,y_1);
+    Gaussian *initial = new Gaussian(AINIT, rho,3);
 
-    //cout << "val2"<<final->value(0, 0) << endl;
     cout << "lmaomlamo"<<final->getNormConst() << endl;
 
     /**
@@ -225,7 +225,7 @@ int main()
     cout << final->getNormConst() << endl;
     cout << initial->getNormConst() << endl;
     CompTwoFunc *gaussian = new CompTwoFunc(initial, final);
-    cout << "val"<<gaussian->value(0, 0) << endl;
+    cout << "val"<<gaussian->value(-1, 0) << endl;
 
     //cout<<final->getNormConst()<<endl;
     //cout<<initial->getNormConst()<<endl;
@@ -254,6 +254,7 @@ int main()
     music.setVolume(50);
     //music.play();
 */
+    cout<<"HELLOOOOOOO"<<x1<<endl;
     cout << "I'm done!" << endl;
     //this while loop basically keeps the graphics up and running.
     while (window.isOpen())
@@ -299,21 +300,21 @@ void appendDataToFile(ofstream *file)
 #define X1 0
 #define Y1 0
      * */
-    *file << NBOXES <<"\t"<< 0 << "\t" << 0 << "\t" << 0 << "\t"
+    *file << nboxes <<"\t"<< 0 << "\t" << 0 << "\t" << 0 << "\t"
           << "\n";
-    *file << MIN_Y << "\t";
-    *file << MAX_Y << "\t";
-    *file << MIN_X << "\t";
-    *file << MAX_X << "\n";
-    *file << CUTOFF <<"\t"<< 0 << "\t" << 0 << "\t" << 0 << "\t"
+    *file << min_y << "\t";
+    *file << max_y << "\t";
+    *file << min_x << "\t";
+    *file << max_x << "\n";
+    *file << cutoff <<"\t"<< 0 << "\t" << 0 << "\t" << 0 << "\t"
           << "\n";
-    *file << P <<"\t"<< 0 << "\t" << 0 << "\t" << 0 << "\t"
+    *file << p <<"\t"<< 0 << "\t" << 0 << "\t" << 0 << "\t"
           << "\n";
-    *file << RHO <<"\t"<< 0 << "\t" << 0 << "\t" << 0 << "\t"
+    *file << rho <<"\t"<< 0 << "\t" << 0 << "\t" << 0 << "\t"
           << "\n";
-    *file << X1 <<"\t"<< 0 << "\t" << 0 << "\t" << 0 << "\t"
+    *file << x1 <<"\t"<< 0 << "\t" << 0 << "\t" << 0 << "\t"
           << "\n";
-    *file << Y1 <<"\t"<< 0 << "\t" << 0 << "\t" << 0 << "\t"
+    *file << y_1 <<"\t"<< 0 << "\t" << 0 << "\t" << 0 << "\t"
           << "\n";
 }
 
@@ -371,9 +372,7 @@ void defineAllConstants(ifstream *thefile)
             }
             case 9:
             {
-                cout<<"JKSANJKSNAKLSNAKSAKLSMLA"<<endl;
                 theta=temp;
-                cout<<"JKSANJKSNAKLSNAKSAKLSMLA: "<<temp<<endl;
             }
             case 10:
             {
@@ -415,4 +414,10 @@ void defineAllConstantsNoRead()
     cutoff=CUTOFF;
     max_level=MAX_LEVEL;
     acc=ACC;
+
+    theta=THETA;
+    p=P;
+    rho=RHO;
+    x1=X1;
+    y_1=Y1;
 }

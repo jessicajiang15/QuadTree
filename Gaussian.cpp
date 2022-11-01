@@ -2,7 +2,7 @@
 
 //Gaussian *final = new Gaussian(AFIN, RHO, P, THETA);
 //Gaussian *initial = new Gaussian(AINIT, X1, Y1, RHO, 1);
-Gaussian::Gaussian(double a, double rho, double p, double theta)
+Gaussian::Gaussian(double a, double rho, double p, double theta,double x1, double y1)
 {
     type = 2;
     this->a = a;
@@ -13,14 +13,16 @@ Gaussian::Gaussian(double a, double rho, double p, double theta)
      * constructs a gaussian of the form A*exp(-(x-b)^2/(2c^2)+-(y-d)^2/(2e^2))
     **/
     normConst = 1;
+    this->b=x1;
+    this->d=y1;
 }
 
-Gaussian::Gaussian(double a, double x1, double y1, double rho, int type)
+Gaussian::Gaussian(double a, double rho, int type)
 {
     type = 1;
     //constructs a gaussian of the form A*exp(-(x-b)^2/(2c^2)+-(y-d)^2/(2e^2))
-    this->b = x1;
-    this->d = y1;
+    this->b = 0;
+    this->d = 0;
     this->e = rho / sqrt(2);
     this->a = 1 / M_PI;
     this->c = 1 / sqrt(2);
@@ -28,7 +30,7 @@ Gaussian::Gaussian(double a, double x1, double y1, double rho, int type)
 }
 Gaussian::Gaussian(double a, double b, double c, double d, double e, int type) : Function()
 {
-    type = 1;
+    //type = 1;
     this->a = a;
     this->b = b;
     this->c = c;
@@ -47,12 +49,12 @@ double Gaussian::value(double x, double y)
         //std::cout << "aa:" << aa << std::endl;
         //std::cout << "bb:" << bb << std::endl;
         //std::cout << "cc:" << cc << std::endl;
-        return a * normConst * exp(-(aa * x * x + bb * x * y + cc * y * y));
+        return a * normConst * exp(-(aa * (x-b) * (x-b) + bb * (x-b) * (y-d) + cc * (y-d) * (y-d)));
     }
     else if(type==3)
     {
-        double temp=a*normConst*exp(-(x-b)*(x-b)-(y-d)*(y-d)/(rho*rho));
-    std::cout<<"the const"<<normConst<<std::endl;
+        double temp=a*normConst*exp(-(x)*(x)-(y)*(y)/(rho*rho));
+    std::cout<<"the const!!!!!! HAHAHAHAHHAHAA"<<normConst<<std::endl;
         return temp;
     }
                     //std::cout << "TYPE 1" << std::endl;
@@ -61,7 +63,7 @@ double Gaussian::value(double x, double y)
     //std::cout << "1/2*c*c:" << 1 / (2 * c * c) << std::endl;
     //std::cout << "1/(2*e*e):" << 1 / (2 * e * e) << std::endl;
 
-    return this->normConst * this->a * exp(-(x - b) * (x - b) / (2 * c * c) - (y - d) * (y - d) / (2 * e * e));
+    return this->normConst * this->a * exp(-(x) * (x) / (2 * c * c) - (y) * (y) / (2 * e * e));
 }
 
 void Gaussian::normalize(double normConst)

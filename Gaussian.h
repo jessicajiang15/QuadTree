@@ -34,9 +34,9 @@ class Gaussian : public Function
     //type 0
     Gaussian(double a, double b, double c, double d, double e, int type);
     //type 1
-    Gaussian(double a, double x1, double y1, double rho, int type);
+    Gaussian(double a, double rho, int type);
     //type 2
-    Gaussian(double a,double rho, double p, double theta);
+    Gaussian(double a,double rho, double p, double theta,double x1, double y1);
 
     Gaussian(double a, double x1, double y1, double rho, std::string str);
     /**
