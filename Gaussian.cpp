@@ -8,7 +8,7 @@ Gaussian::Gaussian(double a, double rho, double p, double theta,double x1, doubl
     this->a = a;
     this->aa = ((cos(theta) * cos(theta)) / (p * p)) + (p * p * sin(theta) * sin(theta)) / (rho * rho);
     this->bb = 2 * sin(theta) * cos(theta) * (1 / (p * p) - p * p / (rho * rho));
-    this->cc = (sin(theta) * sin(theta)) / (p * p) + (p * p * cos(theta) * cos(theta) * cos(theta) / (rho * rho));
+    this->cc = (sin(theta) * sin(theta)) / (p * p) + (p * p * cos(theta) * cos(theta) / (rho * rho));
     /**
      * constructs a gaussian of the form A*exp(-(x-b)^2/(2c^2)+-(y-d)^2/(2e^2))
     **/
@@ -19,7 +19,7 @@ Gaussian::Gaussian(double a, double rho, double p, double theta,double x1, doubl
 
 Gaussian::Gaussian(double a, double rho, int type)
 {
-    type = 1;
+    type=1;
     //constructs a gaussian of the form A*exp(-(x-b)^2/(2c^2)+-(y-d)^2/(2e^2))
     this->b = 0;
     this->d = 0;
@@ -43,7 +43,8 @@ double Gaussian::value(double x, double y)
 {
     if (type == 2)
     {
-                //std::cout << "TYPE 2" << std::endl;
+
+        //std::cout << "TYPE 2" << std::endl;
 
         //std::cout << "cnst:" << a*normConst << std::endl;
         //std::cout << "aa:" << aa << std::endl;
@@ -51,10 +52,11 @@ double Gaussian::value(double x, double y)
         //std::cout << "cc:" << cc << std::endl;
         return a * normConst * exp(-(aa * (x-b) * (x-b) + bb * (x-b) * (y-d) + cc * (y-d) * (y-d)));
     }
-    else if(type==3)
+    else if(type==1)
     {
+        //std::cout << "TYPE 3" << std::endl;
+
         double temp=a*normConst*exp(-(x)*(x)-(y)*(y)/(rho*rho));
-    std::cout<<"the const!!!!!! HAHAHAHAHHAHAA"<<normConst<<std::endl;
         return temp;
     }
                     //std::cout << "TYPE 1" << std::endl;

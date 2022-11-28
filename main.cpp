@@ -11,11 +11,11 @@
  * */
 
 
-#define NBOXES 40
-#define MIN_Y -4
-#define MAX_Y 4
-#define MIN_X -8
-#define MAX_X 8
+#define NBOXES 20
+#define MIN_Y -5
+#define MAX_Y 5
+#define MIN_X -5
+#define MAX_X 5
 /**
  * Parameters of the gaussian functions
  * Gives an initial gaussian of the form AINIT*E^[-(x-X1)^2-(y-Y1)^2/RHO^2]
@@ -25,22 +25,22 @@
  * cc=Sin[THETA]^2/P^2+(P^2) (Cos[THETA]^2)/RHO^2
  *  * */
 #define AUTO_NORM true
-#define P 1
+#define P 3
 #define RHO 1
-#define THETA 0
+#define THETA M_PI/4
 //note: x1 and y1 are equivalent to x2 and y2 in the mathematica notebook
-#define X1 0.6
+#define X1 0
 #define Y1 0
 #define AINIT 1 / M_PI
 #define AFIN 1 / M_PI
 #define NORM_CONST_INIT 2.00000654782506394749318255732403311315
 #define NORM_CONST_FIN 2.00000658749708382840650092398361064387
 //determines which inboxes and outboxes to throw out
-#define CUTOFF 0.001
+#define CUTOFF 0.0001
 //defines the maximum level you will allow the grid to divide to.
-#define MAX_LEVEL 5
+#define MAX_LEVEL 4
 //determines how finely you divide the grid
-#define TOL 1
+#define TOL 0.001
 //determines how accurate the numerical integrals are, overall. 10 means "divide the current box into 10, then
 //calculate the midpoint riemann sum for all 10 mini-boxes and add them up to get my approximation."
 //note that this includes the normalization accuracy.
@@ -197,9 +197,13 @@ int main()
     Forest *forest = new Forest(nboxes, nboxes, min_x, max_x, min_y, max_y);
     double cut = forest->getScaledCutOffMinSizeDif(nboxes, cutoff);
     cout << "cutoff: " << cut << endl;
+        cout << "x1: " << x1 << endl;
+
     //normalization should not depend on how precise we define the grid to be, so we create
     //a second forest
     Forest *normForest = new Forest(100, 100, min_x, max_x, min_y, max_y);
+    //double a, double rho, double p, double theta,double x1, double y1
+    //double a, double b, double c, double d, double e, int type
     Gaussian *final = new Gaussian(AFIN, rho, p, theta,x1,y_1);
     Gaussian *initial = new Gaussian(AINIT, rho,3);
 
@@ -225,12 +229,28 @@ int main()
     cout << final->getNormConst() << endl;
     cout << initial->getNormConst() << endl;
     CompTwoFunc *gaussian = new CompTwoFunc(initial, final);
-    cout << "val"<<gaussian->value(-1, 0) << endl;
+    cout << "val"<<gaussian->value(5, 5) << endl;
+
+    cout << "val"<<gaussian->value(4, 4) << endl;
+
+    cout << "val"<<initial->value(5, 5) << endl;
+
+    cout << "val"<<initial->value(5, 5) << endl;
+
+
+
+    cout << "val"<<final->value(2, 2) << endl;
+
+    cout << "val"<<final->value(1, 1) << endl;
+
+    cout << "val"<<gaussian->value(0, 0) << endl;
+
 
     //cout<<final->getNormConst()<<endl;
     //cout<<initial->getNormConst()<<endl;
     //if anything in this program is taking too long, feel free to use these commented out lines of code
     //to figure out how much time a portion of the code is taking.
+
 
     forest->divideComp(tol, gaussian, max_level);
     //forest->appendEverythingToTwoFilesAcc(&outData, &inData, gaussian, cutoff, ACC, CUTOFF_ACC);

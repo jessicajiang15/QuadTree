@@ -280,7 +280,13 @@ void QuadTree::divideTreeNTimes(double minX, double maxX, double minY, double ma
 void QuadTree::divideCompMid(double minX, double maxX, double minY, double maxY, Node *n, Function *F, double tol, int maximumLevel)
 {
     vector<Node *> fakeChildren = n->createFakeChildren();
-    if (abs(abs(fakeChildren[0]->getRekt()->approx(F)) - abs(n->getRekt()->approx(F))) > tol && n->getLevel() < maximumLevel)
+    double sum=0;
+    for(int i=0;i<fakeChildren.size();i++)
+    {
+        sum+=abs(fakeChildren[i]->getRekt()->approx(F));
+    }
+    double temp=fakeChildren[0]->getRekt()->approx(F);
+    if (abs(sum-abs(n->getRekt()->approx(F))) > tol && n->getLevel() < maximumLevel)
     {
         n->createChildren(fakeChildren);
         divideCompMid(minX, maxX, minY, maxY, fakeChildren[0], F, tol, maximumLevel);
