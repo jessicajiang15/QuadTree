@@ -6,16 +6,19 @@
 #include <chrono>
 #include "Test2DExpFcn.h"
 
+
+//define everything as a floating point
+
 /**
  * Parameters of the forest
  * */
 
 
 #define NBOXES 20
-#define MIN_Y -5
-#define MAX_Y 5
-#define MIN_X -5
-#define MAX_X 5
+#define MIN_Y -5.0
+#define MAX_Y 5.0
+#define MIN_X -5.0
+#define MAX_X 5.0
 /**
  * Parameters of the gaussian functions
  * Gives an initial gaussian of the form AINIT*E^[-(x-X1)^2-(y-Y1)^2/RHO^2]
@@ -25,8 +28,8 @@
  * cc=Sin[THETA]^2/P^2+(P^2) (Cos[THETA]^2)/RHO^2
  *  * */
 #define AUTO_NORM true
-#define P 3
-#define RHO 1
+#define P 0.25
+#define RHO 0.5
 #define THETA M_PI/4
 //note: x1 and y1 are equivalent to x2 and y2 in the mathematica notebook
 #define X1 0
@@ -63,10 +66,10 @@ Gaussian Quadrature related definitions.
 
 
 int nboxes=NBOXES;
-int min_y=MIN_Y;
-int max_y=MAX_Y;
-int min_x=MIN_X;
-int max_x=MAX_X;
+double min_y=MIN_Y;
+double max_y=MAX_Y;
+double min_x=MIN_X;
+double max_x=MAX_X;
 double cutoff=CUTOFF;
 int max_level=MAX_LEVEL;
 double tol=TOL;
@@ -414,6 +417,7 @@ void defineAllConstants(ifstream *thefile)
             }
         a++;
         }
+        cout<<"HAHAHAHAHHAHA: "<<min_y<<endl;
         cout<<theta<<endl;
         cout<<p<<endl;
         cout<<rho<<endl;
