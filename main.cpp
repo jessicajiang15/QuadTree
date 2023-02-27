@@ -49,7 +49,7 @@
 //note that this includes the normalization accuracy.
 #define ACC 1000
 #define CUTOFF_ACC 10
-#define READ_FILE true
+#define READ_FILE false
 
 /*
 Gaussian Quadrature related definitions.
